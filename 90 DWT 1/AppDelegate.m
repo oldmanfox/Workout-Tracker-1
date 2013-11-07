@@ -14,7 +14,6 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize mainBannerView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -23,41 +22,24 @@
     // For In App Purchases - check to see if any transactions were purchased but not completed due to network loss or somethign similar.
     [DWT1IAPHelper sharedInstance];
     
-    // Check to see what device you are using iPad or iPhone.
-    NSString *deviceModel = [UIDevice currentDevice].model;
+    //  Configure for iOS 7
     
-    // If your device is iPad then create the iAd banner sized appropriately for the iPad screen.
-    // If not iPad then create iAd banner sized appropriatly for the iPhone/iPod touch.
-    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"]) {
-        
-        mainBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 0, 768, 66)];
-    }
+    // style the navigation bar
+    //UIColor* navColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+    UIColor* navColor = [UIColor colorWithRed:0/255.0f green:167/255.0f blue:255/255.0f alpha:1.0f];
+    [[UINavigationBar appearance] setBarTintColor:navColor];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
-    else {
-        
-        mainBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    }
+    // make the status bar white
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
-    mainBannerView.delegate = self;
+    //[[UITabBar appearance] setBarTintColor:navColor];
+    [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
     
     return YES;
-}
-
-// These bannerView methods have to do with displaying iAds.
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
-    
-}
-
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner {
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

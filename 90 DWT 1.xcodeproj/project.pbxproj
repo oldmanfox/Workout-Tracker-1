@@ -117,6 +117,18 @@
 		A5C8242C16763C41002ACE3D /* UITableViewController+Design.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8242916763C41002ACE3D /* UITableViewController+Design.m */; };
 		A5C8242D16763C41002ACE3D /* UIViewController+Social.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8242B16763C41002ACE3D /* UIViewController+Social.m */; };
 		A5C8243416763F7A002ACE3D /* MainTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8243316763F7A002ACE3D /* MainTBC.m */; };
+		A5CE5899182C3EE00083772F /* iPhone_Core Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE5898182C3EE00083772F /* iPhone_Core Fitness.storyboard */; };
+		A5CE589C182C3F1F0083772F /* iPhone_Complete Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE589B182C3F1F0083772F /* iPhone_Complete Fitness.storyboard */; };
+		A5CE589E182C3F4A0083772F /* iPhone_Strenght + Stability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE589D182C3F4A0083772F /* iPhone_Strenght + Stability.storyboard */; };
+		A5CE58A0182C3F660083772F /* iPhone_Chest + Back + Stability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE589F182C3F660083772F /* iPhone_Chest + Back + Stability.storyboard */; };
+		A5CE58A2182C3F7C0083772F /* iPhone_Shoulder + Bi + Tri.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58A1182C3F7C0083772F /* iPhone_Shoulder + Bi + Tri.storyboard */; };
+		A5CE58A4182C3F940083772F /* iPhone_Legs + Back.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58A3182C3F940083772F /* iPhone_Legs + Back.storyboard */; };
+		A5CE58A6182C3FCE0083772F /* iPad_Core Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58A5182C3FCE0083772F /* iPad_Core Fitness.storyboard */; };
+		A5CE58A9182C3FF10083772F /* iPad_Complete Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58A8182C3FF10083772F /* iPad_Complete Fitness.storyboard */; };
+		A5CE58AB182C40070083772F /* iPad_Strength + Stability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58AA182C40070083772F /* iPad_Strength + Stability.storyboard */; };
+		A5CE58AD182C40240083772F /* iPad_Chest + Back + Stability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58AC182C40240083772F /* iPad_Chest + Back + Stability.storyboard */; };
+		A5CE58AF182C403E0083772F /* iPad_Shoulder + Bi + Tri.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58AE182C403E0083772F /* iPad_Shoulder + Bi + Tri.storyboard */; };
+		A5CE58B1182C40510083772F /* iPad_Legs + Back.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58B0182C40510083772F /* iPad_Legs + Back.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -356,6 +368,18 @@
 		A5C8242B16763C41002ACE3D /* UIViewController+Social.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Social.m"; path = "../UIViewController+Social.m"; sourceTree = "<group>"; };
 		A5C8243216763F7A002ACE3D /* MainTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTBC.h; path = ../MainTBC.h; sourceTree = "<group>"; };
 		A5C8243316763F7A002ACE3D /* MainTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTBC.m; path = ../MainTBC.m; sourceTree = "<group>"; };
+		A5CE5898182C3EE00083772F /* iPhone_Core Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Core Fitness.storyboard"; sourceTree = "<group>"; };
+		A5CE589B182C3F1F0083772F /* iPhone_Complete Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Complete Fitness.storyboard"; sourceTree = "<group>"; };
+		A5CE589D182C3F4A0083772F /* iPhone_Strenght + Stability.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Strenght + Stability.storyboard"; sourceTree = "<group>"; };
+		A5CE589F182C3F660083772F /* iPhone_Chest + Back + Stability.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Chest + Back + Stability.storyboard"; sourceTree = "<group>"; };
+		A5CE58A1182C3F7C0083772F /* iPhone_Shoulder + Bi + Tri.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Shoulder + Bi + Tri.storyboard"; sourceTree = "<group>"; };
+		A5CE58A3182C3F940083772F /* iPhone_Legs + Back.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Legs + Back.storyboard"; sourceTree = "<group>"; };
+		A5CE58A5182C3FCE0083772F /* iPad_Core Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Core Fitness.storyboard"; sourceTree = "<group>"; };
+		A5CE58A8182C3FF10083772F /* iPad_Complete Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Complete Fitness.storyboard"; sourceTree = "<group>"; };
+		A5CE58AA182C40070083772F /* iPad_Strength + Stability.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Strength + Stability.storyboard"; sourceTree = "<group>"; };
+		A5CE58AC182C40240083772F /* iPad_Chest + Back + Stability.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Chest + Back + Stability.storyboard"; sourceTree = "<group>"; };
+		A5CE58AE182C403E0083772F /* iPad_Shoulder + Bi + Tri.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Shoulder + Bi + Tri.storyboard"; sourceTree = "<group>"; };
+		A5CE58B0182C40510083772F /* iPad_Legs + Back.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Legs + Back.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,6 +609,8 @@
 				A5C823831676338A002ACE3D /* TVC's */,
 				A5C8238216763364002ACE3D /* ViewControllers */,
 				A54B62C815CB0FC70085C0E5 /* Supporting Files */,
+				A5CE589A182C3EF80083772F /* iPhone Storyboards */,
+				A5CE58A7182C3FD70083772F /* iPad Storyboards */,
 			);
 			path = "90 DWT 1";
 			sourceTree = "<group>";
@@ -859,6 +885,32 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		A5CE589A182C3EF80083772F /* iPhone Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE5898182C3EE00083772F /* iPhone_Core Fitness.storyboard */,
+				A5CE589B182C3F1F0083772F /* iPhone_Complete Fitness.storyboard */,
+				A5CE589D182C3F4A0083772F /* iPhone_Strenght + Stability.storyboard */,
+				A5CE589F182C3F660083772F /* iPhone_Chest + Back + Stability.storyboard */,
+				A5CE58A1182C3F7C0083772F /* iPhone_Shoulder + Bi + Tri.storyboard */,
+				A5CE58A3182C3F940083772F /* iPhone_Legs + Back.storyboard */,
+			);
+			name = "iPhone Storyboards";
+			sourceTree = "<group>";
+		};
+		A5CE58A7182C3FD70083772F /* iPad Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE58A5182C3FCE0083772F /* iPad_Core Fitness.storyboard */,
+				A5CE58A8182C3FF10083772F /* iPad_Complete Fitness.storyboard */,
+				A5CE58AA182C40070083772F /* iPad_Strength + Stability.storyboard */,
+				A5CE58AC182C40240083772F /* iPad_Chest + Back + Stability.storyboard */,
+				A5CE58AE182C403E0083772F /* iPad_Shoulder + Bi + Tri.storyboard */,
+				A5CE58B0182C40510083772F /* iPad_Legs + Back.storyboard */,
+			);
+			name = "iPad Storyboards";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,6 +939,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Grant, Jared";
+				TargetAttributes = {
+					A54B62BA15CB0FC70085C0E5 = {
+						DevelopmentTeam = 5SHF8ESE26;
+					};
+				};
 			};
 			buildConfigurationList = A54B62B515CB0FC70085C0E5 /* Build configuration list for PBXProject "90 DWT 1" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -910,6 +967,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CE589E182C3F4A0083772F /* iPhone_Strenght + Stability.storyboard in Resources */,
 				A54B62CC15CB0FC70085C0E5 /* InfoPlist.strings in Resources */,
 				A5C8239B16763694002ACE3D /* background-iPad-brushedmetal.png in Resources */,
 				A5C8239C16763694002ACE3D /* background-iPad-brushedmetal@2x.png in Resources */,
@@ -918,18 +976,25 @@
 				A5C823A116763694002ACE3D /* background-iPhone-chrome.png in Resources */,
 				A5C823A216763694002ACE3D /* background-iPhone-chrome@2x.png in Resources */,
 				A5C823C01676378D002ACE3D /* icon-arrow-blue.png in Resources */,
+				A5CE58AF182C403E0083772F /* iPad_Shoulder + Bi + Tri.storyboard in Resources */,
 				A5C823C11676378D002ACE3D /* icon-arrow-blue@2x.png in Resources */,
 				A5C823C21676378D002ACE3D /* icon-button-blue-iPhone.png in Resources */,
 				A5C823C31676378D002ACE3D /* icon-button-blue-iPhone@2x.png in Resources */,
 				A5C823C41676378D002ACE3D /* icon-mail1.png in Resources */,
+				A5CE58B1182C40510083772F /* iPad_Legs + Back.storyboard in Resources */,
 				A5C823C51676378D002ACE3D /* icon-mail1@2x.png in Resources */,
 				A5C823C61676378D002ACE3D /* icon-pics2.png in Resources */,
+				A5CE58A4182C3F940083772F /* iPhone_Legs + Back.storyboard in Resources */,
+				A5CE58AB182C40070083772F /* iPad_Strength + Stability.storyboard in Resources */,
 				A5C823C71676378D002ACE3D /* icon-pics2@2x.png in Resources */,
 				A5C823C81676378D002ACE3D /* icon-ruler.png in Resources */,
+				A5CE58A9182C3FF10083772F /* iPad_Complete Fitness.storyboard in Resources */,
+				A5CE58A2182C3F7C0083772F /* iPhone_Shoulder + Bi + Tri.storyboard in Resources */,
 				A5C823C91676378D002ACE3D /* icon-ruler@2x.png in Resources */,
 				A5C823CA1676378D002ACE3D /* icon-settings1.png in Resources */,
 				A5C823CB1676378D002ACE3D /* icon-settings1@2x.png in Resources */,
 				A5C823CC1676378D002ACE3D /* icon-twitter-t.png in Resources */,
+				A5CE589C182C3F1F0083772F /* iPhone_Complete Fitness.storyboard in Resources */,
 				A5C823CD1676378D002ACE3D /* icon-twitter-t@2x.png in Resources */,
 				A5C823CE1676378D002ACE3D /* icon-workout.png in Resources */,
 				A5C823CF1676378D002ACE3D /* icon-workout@2x.png in Resources */,
@@ -939,13 +1004,16 @@
 				A5C823D31676378D002ACE3D /* tableviewcell-iPhone-chrome@2x.png in Resources */,
 				A5C823F416763870002ACE3D /* MainStoryboard_iPad.storyboard in Resources */,
 				A5C823F516763870002ACE3D /* MainStoryboard_iPhone.storyboard in Resources */,
+				A5CE58AD182C40240083772F /* iPad_Chest + Back + Stability.storyboard in Resources */,
 				A5C8242716763BEF002ACE3D /* Default-568h@2x.png in Resources */,
 				A54DBE351677961100947619 /* background-iPhone-brushedmetal.png in Resources */,
 				A54DBE361677961100947619 /* background-iPhone-brushedmetal@2x.png in Resources */,
 				A5786747168FB97D00C26C6C /* Icon.png in Resources */,
 				A5786749168FB98600C26C6C /* Icon@2x.png in Resources */,
 				A578674B168FB99000C26C6C /* Icon-72.png in Resources */,
+				A5CE58A6182C3FCE0083772F /* iPad_Core Fitness.storyboard in Resources */,
 				A578674D168FB99B00C26C6C /* Icon-72@2x.png in Resources */,
+				A5CE58A0182C3F660083772F /* iPhone_Chest + Back + Stability.storyboard in Resources */,
 				A578674F168FBDF200C26C6C /* Default-Portrait~ipad.png in Resources */,
 				A5786751168FBDFA00C26C6C /* Default-Portrait@2x~ipad.png in Resources */,
 				A5786753168FC19600C26C6C /* Default.png in Resources */,
@@ -954,6 +1022,7 @@
 				58E2CF83173E000800BC3107 /* icon-reveal@2x.png in Resources */,
 				580E7DF4174340BD0088AB0A /* icon-cart.png in Resources */,
 				580E7DF5174340BD0088AB0A /* icon-cart@2x.png in Resources */,
+				A5CE5899182C3EE00083772F /* iPhone_Core Fitness.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1170,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -1121,6 +1191,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -1171,6 +1242,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";

@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, ADBannerViewDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-// This is the iAd bannerview
-@property (strong, nonatomic) ADBannerView *mainBannerView;
+
 @property (strong, nonatomic) NSString *month;          // Current month.
 @property (strong, nonatomic) NSString *routine;        // Current workout routine (Normal, 2-A-Days, or Tone).
 @property (strong, nonatomic) NSString *week;           // Current week of workout.
