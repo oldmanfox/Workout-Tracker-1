@@ -207,14 +207,6 @@
     if (self.view.frame.size.width < 768) {
         [self createSliderButton];
     }
-    
-    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (mainAppDelegate.mainBannerView.bannerLoaded)
-    {
-        [self.view addSubview:(mainAppDelegate.mainBannerView)];
-    }
-    
-    mainAppDelegate.mainBannerView.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -278,8 +270,7 @@
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [mainAppDelegate.mainBannerView removeFromSuperview];
+
 }
 
 - (void)bannerViewActionDidFinish:(ADBannerView *)banner
@@ -289,8 +280,7 @@
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [self.view addSubview:(mainAppDelegate.mainBannerView)];
+
 }
 
 - (void)bannerViewWillLoadAd:(ADBannerView *)banner

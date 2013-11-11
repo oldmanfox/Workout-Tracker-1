@@ -26,6 +26,7 @@
     
     // style the navigation bar
     //UIColor* navColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+    /*
     UIColor* navColor = [UIColor colorWithRed:0/255.0f green:167/255.0f blue:255/255.0f alpha:1.0f];
     [[UINavigationBar appearance] setBarTintColor:navColor];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -38,6 +39,7 @@
     //[[UITabBar appearance] setBarTintColor:navColor];
     [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
+     */
     
     return YES;
 }
