@@ -54,7 +54,7 @@
                                 @YES,
                                 @YES,
                                 @YES];
-    //[self configureTableView:tableCell :accessoryIcon];
+    [self configureTableView:tableCell :accessoryIcon];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

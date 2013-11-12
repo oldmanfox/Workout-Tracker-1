@@ -129,6 +129,7 @@
 		A5CE58AD182C40240083772F /* iPad_Chest + Shoulder + Tri.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58AC182C40240083772F /* iPad_Chest + Shoulder + Tri.storyboard */; };
 		A5CE58AF182C403E0083772F /* iPad_Back + Biceps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58AE182C403E0083772F /* iPad_Back + Biceps.storyboard */; };
 		A5CE58B1182C40510083772F /* iPad_Legs + Back.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CE58B0182C40510083772F /* iPad_Legs + Back.storyboard */; };
+		A5D3E1B31832D3A500814553 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D3E1B21832D3A500814553 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -380,6 +381,7 @@
 		A5CE58AC182C40240083772F /* iPad_Chest + Shoulder + Tri.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Chest + Shoulder + Tri.storyboard"; sourceTree = "<group>"; };
 		A5CE58AE182C403E0083772F /* iPad_Back + Biceps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Back + Biceps.storyboard"; sourceTree = "<group>"; };
 		A5CE58B0182C40510083772F /* iPad_Legs + Back.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Legs + Back.storyboard"; sourceTree = "<group>"; };
+		A5D3E1B21832D3A500814553 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -611,6 +613,7 @@
 				A54B62C815CB0FC70085C0E5 /* Supporting Files */,
 				A5CE589A182C3EF80083772F /* iPhone Storyboards */,
 				A5CE58A7182C3FD70083772F /* iPad Storyboards */,
+				A5D3E1B21832D3A500814553 /* Images.xcassets */,
 			);
 			path = "90 DWT 1";
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				A5C823C31676378D002ACE3D /* icon-button-blue-iPhone@2x.png in Resources */,
 				A5C823C41676378D002ACE3D /* icon-mail1.png in Resources */,
 				A5CE58B1182C40510083772F /* iPad_Legs + Back.storyboard in Resources */,
+				A5D3E1B31832D3A500814553 /* Images.xcassets in Resources */,
 				A5C823C51676378D002ACE3D /* icon-mail1@2x.png in Resources */,
 				A5C823C61676378D002ACE3D /* icon-pics2.png in Resources */,
 				A5CE58A4182C3F940083772F /* iPhone_Legs + Back.storyboard in Resources */,
@@ -1169,6 +1173,8 @@
 		A54B62D915CB0FC70085C0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1190,6 +1196,8 @@
 		A54B62DA15CB0FC70085C0E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1241,6 +1249,8 @@
 		A5B9D45E1691654500CD9828 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

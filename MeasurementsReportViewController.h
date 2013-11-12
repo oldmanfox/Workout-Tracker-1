@@ -10,13 +10,15 @@
 #import <MessageUI/MessageUI.h>
 #import "UIViewController+Social.h"
 
-@interface MeasurementsReportViewController : UIViewController<MFMailComposeViewControllerDelegate>
+@interface MeasurementsReportViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *htmlView;
 @property (strong, nonatomic) NSDictionary *month1Dict;
 @property (strong, nonatomic) NSDictionary *month2Dict;
 @property (strong, nonatomic) NSDictionary *month3Dict;
 @property (strong, nonatomic) NSDictionary *finalDict;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 
-- (IBAction)emailSummary:(id)sender;
-- (IBAction)sendTweet:(id)sender;
+- (void)emailSummary;
+- (IBAction)actionSheet:(id)sender;
+
 @end

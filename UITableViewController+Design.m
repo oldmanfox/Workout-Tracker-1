@@ -11,50 +11,27 @@
 @implementation UITableViewController (Design)
 
 - (void)configureTableView:(NSArray*)tableCell :(NSArray*)accessoryIcon {
-    UIImage *backgroundImage;
-    UIColor *backgroundColor;
-    UIImage *cellbackgroundImage;
-    UIColor *cellbackgroundColor;
     
-    [self.tableView setBackgroundView:nil];
-    [self.tableView setBackgroundView:[[UIView alloc] init]];
-    
-    [self.tableView setBackgroundColor:[UIColor clearColor]]; // this is for iPhone
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPhone) {
-        // iPad
-        backgroundImage = [UIImage imageNamed:@"background-iPad-chrome.png"];
-        backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-        
-        cellbackgroundImage = [UIImage imageNamed:@"tableviewcell-iPad-chrome.png"];
-        cellbackgroundColor = [UIColor colorWithPatternImage:cellbackgroundImage];
-        
-    }
-    else {
-        // iPhone
-        backgroundImage = [UIImage imageNamed:@"background-iPhone-chrome.png"];
-        backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-        
-        cellbackgroundImage = [UIImage imageNamed:@"tableviewcell-iPhone-chrome.png"];
-        cellbackgroundColor = [UIColor colorWithPatternImage:cellbackgroundImage];
-    }
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    UIColor *midGrey = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
+    //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
     
     // TableView background color
-    self.tableView.backgroundColor = backgroundColor;
+    self.tableView.backgroundColor = midGrey;
     
     // Accessory view icon
-    UIImage* accessory = [UIImage imageNamed:@"icon-arrow-blue.png"];
+    UIImage* accessory = [UIImage imageNamed:@"nav_r_arrow_grey"];
     
     for (int i = 0; i < tableCell.count; i++) {
         
         UITableViewCell *cell = tableCell[i];
         
         // Cell background color
-        cell.backgroundColor = cellbackgroundColor;
+        cell.backgroundColor = lightGrey;
         
         // Label backgrounds
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        UIColor* detailTextColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+        cell.detailTextLabel.textColor = detailTextColor;
         
         // Accessory view icon
         if ([accessoryIcon[i] boolValue]) {
@@ -64,6 +41,7 @@
     }
 }
 
+/*
 - (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection {
     
     UIView *hView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -97,4 +75,5 @@
     
     return hView;
 }
+ */
 @end

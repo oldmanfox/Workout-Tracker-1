@@ -10,6 +10,7 @@
 #import "SettingsNavController.h"
 
 @interface EmailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *defaultEmail;
 
 - (IBAction)hideKeyboard:(id)sender;

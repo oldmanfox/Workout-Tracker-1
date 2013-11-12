@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self configureViewForIOSVersion];
     self.defaultEmail.text = ((SettingsNavController *)self.parentViewController).emailAddress;
 }
 
@@ -58,5 +60,20 @@
     // Clear the text field and show the placeholder text.
     self.defaultEmail.placeholder = self.defaultEmail.text;
     self.defaultEmail.text = @"";
+}
+
+- (void)configureViewForIOSVersion {
+    
+    // Colors
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    //self.emailLabel.textColor = blueColor;
+    
+    // Apply Background Colors
+    self.view.backgroundColor = lightGrey;
+    
+    // Apply Keyboard Color
+    self.defaultEmail.keyboardAppearance = UIKeyboardAppearanceDark;
 }
 @end
