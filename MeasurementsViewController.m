@@ -28,6 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self configureViewForIOSVersion];
     [self loadMeasurements];
 }
 
@@ -36,7 +37,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)emailMeasurements:(id)sender {
+- (void)emailMeasurements {
     // Send email
     NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
     [writeString appendString:[NSString stringWithFormat:@"Month,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n"]];
@@ -59,6 +60,7 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Array to store the default email address.
     NSArray *emailAddresses; 
@@ -88,17 +90,14 @@
     subject = [subject stringByAppendingFormat:@" %@ Measurements", self.navigationItem.title];
     [mailComposer setSubject:subject];
     [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:fileName];
-    [self presentViewController:mailComposer animated:YES completion:nil];
+    [self presentViewController:mailComposer animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)sendTwitter:(id)sender {
-    
-    [self twitter];
 }
 
 - (void)loadMeasurements {
@@ -127,9 +126,41 @@
     }
 }
 
-- (IBAction)saveMeasurements:(id)sender {
+- (void)saveMeasurements {
     NSString *fileTitle = self.navigationItem.title;
     fileTitle = [fileTitle stringByAppendingString:@" Measurements.out"];
+    
+    if (self.weight.text == nil) {
+        self.weight.text = @"0";
+    }
+    
+    if (self.chest.text == nil) {
+        self.chest.text = @"0";
+    }
+    
+    if (self.leftArm.text == nil) {
+        self.leftArm.text = @"0";
+    }
+    
+    if (self.rightArm.text == nil) {
+        self.rightArm.text = @"0";
+    }
+    
+    if (self.waist.text == nil) {
+        self.waist.text = @"0";
+    }
+    
+    if (self.hips.text == nil) {
+        self.hips.text = @"0";
+    }
+    
+    if (self.leftThigh.text == nil) {
+        self.leftThigh.text = @"0";
+    }
+    
+    if (self.rightThigh.text == nil) {
+        self.rightThigh.text = @"0";
+    }
     
     self.measurementsDictonary = nil;
     self.measurementsDictonary = @{@"Weight": self.weight.text,
@@ -171,4 +202,63 @@
     [self.leftThigh resignFirstResponder];
     [self.rightThigh resignFirstResponder];
 }
+
+- (IBAction)actionSheet:(UIBarButtonItem *)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    [action showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (IBAction)saveAction:(UIButton *)sender {
+    
+    [self saveMeasurements];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self emailMeasurements];
+    }
+    
+    if (buttonIndex == 1) {
+        [self facebook];
+    }
+    
+    if (buttonIndex == 2) {
+        [self twitter];
+    }
+}
+
+- (void)configureViewForIOSVersion {
+    
+    // Colors
+    UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    UIColor *midGrey = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
+    UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    self.weightLabel.textColor = blueColor;
+    self.leftArmLabel.textColor = blueColor;
+    self.rightArmLabel.textColor = blueColor;
+    self.chestLabel.textColor = blueColor;
+    self.waistLabel.textColor = blueColor;
+    self.hipsLabel.textColor = blueColor;
+    self.leftThighLabel.textColor = blueColor;
+    self.rightThighLabel.textColor = blueColor;
+    
+    // Apply Background Colors
+    self.view.backgroundColor = lightGrey;
+    
+    // Apply Keyboard Color
+    self.weight.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.chest.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.leftArm.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.rightArm.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.waist.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.hips.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.leftThigh.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.rightThigh.keyboardAppearance = UIKeyboardAppearanceDark;
+}
+
 @end

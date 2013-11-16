@@ -21,6 +21,7 @@
 		580E7DF117432EA00088AB0A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580E7DF017432E9F0088AB0A /* Security.framework */; };
 		580E7DF4174340BD0088AB0A /* icon-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 580E7DF2174340BD0088AB0A /* icon-cart.png */; };
 		580E7DF5174340BD0088AB0A /* icon-cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580E7DF3174340BD0088AB0A /* icon-cart@2x.png */; };
+		581CDD131837FC1A0012829F /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581CDD121837FC1A0012829F /* photoCollectionViewCell.m */; };
 		5836DFEA172B47FD005759B6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5836DFE9172B47FD005759B6 /* SWRevealViewController.m */; };
 		5893AFD01745D0BA0029F500 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5893AFCF1745D0BA0029F500 /* libCorePlot-CocoaTouch.a */; };
 		58E2CF82173E000800BC3107 /* icon-reveal.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E2CF80173E000800BC3107 /* icon-reveal.png */; };
@@ -156,6 +157,8 @@
 		580E7DF017432E9F0088AB0A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		580E7DF2174340BD0088AB0A /* icon-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cart.png"; sourceTree = "<group>"; };
 		580E7DF3174340BD0088AB0A /* icon-cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cart@2x.png"; sourceTree = "<group>"; };
+		581CDD111837FC1A0012829F /* photoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoCollectionViewCell.h; sourceTree = "<group>"; };
+		581CDD121837FC1A0012829F /* photoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoCollectionViewCell.m; sourceTree = "<group>"; };
 		5836DFE8172B47FD005759B6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5836DFE9172B47FD005759B6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		5893AF851745D0BA0029F500 /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
@@ -461,6 +464,15 @@
 			name = CorePlot;
 			sourceTree = "<group>";
 		};
+		581CDD0A1837F5740012829F /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				581CDD111837FC1A0012829F /* photoCollectionViewCell.h */,
+				581CDD121837FC1A0012829F /* photoCollectionViewCell.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		5836DFE7172B47FD005759B6 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +605,7 @@
 		A54B62C715CB0FC70085C0E5 /* 90 DWT 1 */ = {
 			isa = PBXGroup;
 			children = (
+				581CDD0A1837F5740012829F /* Layout */,
 				580E7D9917432DD30088AB0A /* CorePlot */,
 				580E7D7A174321520088AB0A /* In-App Purchases */,
 				A5B9D4641691758900CD9828 /* 90 DWT 1.entitlements */,
@@ -1046,6 +1059,7 @@
 				A5C8237F16763345002ACE3D /* WorkoutListDoublesPhase2TVC.m in Sources */,
 				A5C8238016763345002ACE3D /* WorkoutListLeanPhase2TVC.m in Sources */,
 				A5C8238116763345002ACE3D /* WorkoutListRecoveryTVC.m in Sources */,
+				581CDD131837FC1A0012829F /* photoCollectionViewCell.m in Sources */,
 				A5C823A916763754002ACE3D /* DataNavController.m in Sources */,
 				A5C823AA16763754002ACE3D /* EmailViewController.m in Sources */,
 				A5C823AB16763754002ACE3D /* ExerciseViewController.m in Sources */,

@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PhotoScrollerDetailViewController.h"
+//#import "PhotoScrollerDetailViewController.h"
 #import "PhotoNavController.h"
 #import <CoreImage/CoreImage.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MessageUI/MessageUI.h>
 #import "UIViewController+Social.h"
+#import "photoCollectionViewCell.h"
 
-@interface PhotoScrollerViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, MPMediaPickerControllerDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate>
+@interface PhotoScrollerViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, MPMediaPickerControllerDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
