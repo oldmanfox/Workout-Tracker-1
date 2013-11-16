@@ -11,6 +11,6 @@
 @interface UITableViewController (Design)
 
 - (void)configureTableView:(NSArray*)tableCell :(NSArray*)needAccessoryIcon;
-- (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection;
+//- (UIView*)configureSectionHeader:(NSArray*)tvHeaderStrings :(int)tvWidth :(int)tvSection;
 
 @end

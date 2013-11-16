@@ -26,6 +26,17 @@
     
     // style the navigation bar
     //UIColor* navColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+    
+    UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    [[UINavigationBar appearance] setBarTintColor:darkGrey];
+    
+    // make the status bar white
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
+    /*
     UIColor* navColor = [UIColor colorWithRed:0/255.0f green:167/255.0f blue:255/255.0f alpha:1.0f];
     [[UINavigationBar appearance] setBarTintColor:navColor];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -38,6 +49,7 @@
     //[[UITabBar appearance] setBarTintColor:navColor];
     [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
+     */
     
     return YES;
 }

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell3; // Author
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell4; // Website
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell5; // Bands
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell6; // Workout level
 @property (weak, nonatomic) IBOutlet UILabel *emailDetail;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *defaultWorkout; // Normal, Tone, or 2-A-Days.  Default is Normal.
 - (IBAction)selectDefaultWorkout:(id)sender;

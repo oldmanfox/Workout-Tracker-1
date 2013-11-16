@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    self.view.backgroundColor = lightGrey;
     
     [self loadDictionary];
     [self.htmlView loadHTMLString:[self createHTML] baseURL:nil];
@@ -39,7 +41,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)emailSummary:(id)sender {
+- (void)emailSummary {
     // Send email
     
     // Create an array of measurements to iterate thru when building the table rows.
@@ -101,14 +103,29 @@
     [self presentViewController:mailComposer animated:YES completion:nil];
 }
 
+- (IBAction)actionSheet:(id)sender {
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    [action showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self emailSummary];
+    }
+    
+    if (buttonIndex == 1) {
+        [self facebook];
+    }
+    
+    if (buttonIndex == 2) {
+        [self twitter];
+    }
+}
+
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)sendTweet:(id)sender {
-    
-    [self twitter];
 }
 
 - (void)loadDictionary {

@@ -28,16 +28,18 @@
     [super viewDidLoad];
     
     // Configure tableview.
-    NSArray *tableCell = @[self.cell1,   // email
+    NSArray *tableCell = @[self.cell1,  // email
                            self.cell2,  // version
                            self.cell3,  // author
                            self.cell4,  // website
-                           self.cell5]; // bands
+                           self.cell5,  // bands
+                           self.cell6]; // workout level
     
     NSArray *accessoryIcon = @[@YES,
                                @NO,
                                @NO,
                                @YES,
+                               @NO,
                                @NO];
     
     [self configureTableView:tableCell :accessoryIcon];
@@ -109,7 +111,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 2;
+        return 3;
     }
     else {
         return 3;
