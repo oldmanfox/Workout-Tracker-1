@@ -32,8 +32,25 @@
     mainAppDelegate.week = ((DataNavController *)self.parentViewController).week;
     mainAppDelegate.workout =((DataNavController *)self.parentViewController).workout;
     mainAppDelegate.index = ((DataNavController *)self.parentViewController).index;
-    mainAppDelegate.exerciseName = self.exerciseName.text;
-    mainAppDelegate.exerciseRound = self.round.text;
+    mainAppDelegate.exerciseName = self.currentExercise.title;
+    mainAppDelegate.exerciseRound = self.renamedRound;
+}
+
+- (void)renameRoundText {
+    
+    if ([self.roundButton.title isEqualToString:@"R1"]) {
+        self.renamedRound = @"Round 1";
+    }
+    
+    else if ([self.roundButton.title isEqualToString:@"R2"])
+    {
+        self.renamedRound = @"Round 2";
+    }
+    
+    else if ([self.roundButton.title isEqualToString:@"R3"])
+    {
+        self.renamedRound = @"Round 3";
+    }
 }
 
 -(void)keyboardType {
@@ -81,8 +98,8 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
-                         self.exerciseName.text,
-                         self.round.text,
+                         self.currentExercise.title,
+                         self.renamedRound,
                          [((DataNavController *)self.parentViewController).index integerValue]];
     [request setPredicate:pred];
     NSManagedObject *matches = nil;
@@ -159,8 +176,8 @@
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
                              ((DataNavController *)self.parentViewController).routine,
                              ((DataNavController *)self.parentViewController).workout,
-                             self.exerciseName.text,
-                             self.round.text,
+                             self.currentExercise.title,
+                             self.renamedRound,
                              [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
         [request setPredicate:pred];
         NSManagedObject *matches = nil;
@@ -192,11 +209,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self configureViewForIOSVersion];
     [self keyboardType];
+    [self renameRoundText];
     [self queryDatabase];
     
     if (self.view.frame.size.width < 768) {
-        [self addToolbarButton];
+        [self createSliderButton];
     }
 }
 
@@ -204,32 +223,14 @@
 {
     [self setUpVariables];
     
-    if (self.view.frame.size.width < 768) {
-        [self createSliderButton];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self renameRoundText];
     [self setUpVariables];
     [self queryDatabase];
-}
-
-- (void)addToolbarButton {
-    
-    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.slidergraph"]) {
-        //NSLog(@"Allow Toolbar Button");
-        UIBarButtonItem *buttonOne = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"icon-reveal.png"]
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self
-                                                                     action:@selector(action)];
-        NSArray *buttons = [NSArray arrayWithObjects: buttonOne, nil];
-        [self.sliderToolbar setItems: buttons animated:NO];
-        
-    } else {
-        //NSLog(@"Don't allow Toolbar Button");
-    }
 }
 
 - (void)createSliderButton {
@@ -237,18 +238,12 @@
     if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.slidergraph"]) {
         
         //NSLog(@"Allow Slider");
-        UIButton *sliderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [sliderBtn setFrame:CGRectMake(0, 0, 60, self.view.frame.size.height)];
-        [self.view addSubview:sliderBtn];
+        self.sliderButton.enabled = YES;
         
         // Slider Setup
-        SWRevealViewController *revealController = self.revealViewController;
-        
-        [sliderBtn addGestureRecognizer:revealController.panGestureRecognizer];
-        [sliderBtn addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-        
-    } else {
-        //NSLog(@"Don't allow Slider");
+        [self.sliderButton setTarget: self.revealViewController];
+        [self.sliderButton setAction: @selector(revealToggle:)];
+        [self.toolbar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     }
 }
 
@@ -301,8 +296,8 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
-                         self.exerciseName.text,
-                         self.round.text,
+                         self.currentExercise.title,
+                         self.renamedRound,
                          [((DataNavController *)self.parentViewController).index integerValue]];
     [request setPredicate:pred];
     NSManagedObject *matches = nil;
@@ -318,8 +313,8 @@
         [newExercise setValue:self.currentWeight.text forKey:@"weight"];
         [newExercise setValue:self.currentNotes.text forKey:@"notes"];
         [newExercise setValue:todaysDate forKey:@"date"];
-        [newExercise setValue:self.exerciseName.text forKey:@"exercise"];
-        [newExercise setValue:self.round.text forKey:@"round"];
+        [newExercise setValue:self.currentExercise.title forKey:@"exercise"];
+        [newExercise setValue:self.renamedRound forKey:@"round"];
         [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
         [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
         [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
@@ -384,4 +379,47 @@
     }
 }
 
+- (void)configureViewForIOSVersion {
+    
+    // Colors
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
+    UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    self.currentRepsLabel.textColor = blueColor;
+    self.currentWeightLabel.textColor = blueColor;
+    self.currentNotesLabel.textColor = blueColor;
+    
+    self.previousRepsLabel.textColor = darkGrey;
+    self.previousWeightLabel.textColor = darkGrey;
+    self.previousNotesLabel.textColor = darkGrey;
+    
+    self.previousReps.textColor = darkGrey;
+    self.previousWeight.textColor = darkGrey;
+    self.previousNotes.textColor = darkGrey;
+    
+    self.sliderButton.tintColor = blueColor;
+    self.currentExercise.tintColor = blueColor;
+    self.roundButton.tintColor = blueColor;
+    
+    self.currentExercise.style = UIBarButtonItemStyleDone;
+    
+    // Apply Background Colors
+    self.previousReps.backgroundColor = lightGrey;
+    self.previousWeight.backgroundColor = lightGrey;
+    self.previousNotes.backgroundColor = lightGrey;
+    
+    self.view.backgroundColor = lightGrey;
+    self.toolbar.backgroundColor = midGrey;
+    
+    // Apply Keyboard Color
+    self.currentReps.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.currentWeight.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.currentNotes.keyboardAppearance = UIKeyboardAppearanceDark;
+    
+    // iOS 7 Style
+    self.canDisplayBannerAds = YES;
+}
 @end

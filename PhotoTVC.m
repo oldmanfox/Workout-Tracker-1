@@ -45,12 +45,6 @@
                                 @YES,
                                 @YES];
     [self configureTableView:tableCell :accessoryIcon];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -94,7 +88,7 @@
     
     
     // View Photos
-    PhotoNavController *photoNC = [[PhotoNavController alloc]  init];
+    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
     NSMutableArray *monthPhotoAngle = [[NSMutableArray alloc] init];
     NSArray *tempMonthPhotoAngle = [[NSArray alloc] init];
     
@@ -142,15 +136,19 @@
         @"Final Back"];
     }
     
-    for (int i = 0; i < tempMonthPhotoAngle.count; i++) {
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[photoNC fileLocation:tempMonthPhotoAngle[i] ]]) {
-            
-            [monthPhotoAngle addObject:[photoNC loadImage:tempMonthPhotoAngle[i] ]];
-        }
-    }
+    if (tempMonthPhotoAngle.count != 0) {
     
-    // Convert the mutable array to a normal unmutable array.
-    ppvc.pageImages = [monthPhotoAngle copy];
+        for (int i = 0; i < tempMonthPhotoAngle.count; i++) {
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:[photoNC fileLocation:tempMonthPhotoAngle[i] ]]) {
+                
+                [monthPhotoAngle addObject:[photoNC loadImage:tempMonthPhotoAngle[i] ]];
+            }
+        }
+    
+        // Convert the mutable array to a normal unmutable array.
+        ppvc.arrayOfImages = [monthPhotoAngle copy];
+        ppvc.arrayOfImageTitles = tempMonthPhotoAngle;
+    }
 }
 @end

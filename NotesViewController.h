@@ -14,15 +14,19 @@
 #import "Workout_AbRipper_ResultsViewController.h"
 #import "UIViewController+Social.h"
 
-@interface NotesViewController : UIViewController <ADBannerViewDelegate, MFMailComposeViewControllerDelegate, UITextViewDelegate>
+@interface NotesViewController : UIViewController <ADBannerViewDelegate, MFMailComposeViewControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextView *currentNotes;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseName;
 @property (weak, nonatomic) IBOutlet UILabel *round;
 @property (weak, nonatomic) IBOutlet UITextView *previousNotes;
 
+@property (weak, nonatomic) IBOutlet UILabel *currentNotesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *previousNotesLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareActionButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
 - (IBAction)submitEntry:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
-- (IBAction)emailResults:(id)sender;
-- (IBAction)sendTwitter:(id)sender;
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender;
 
 @end

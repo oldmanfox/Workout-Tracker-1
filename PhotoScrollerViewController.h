@@ -13,14 +13,16 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <MessageUI/MessageUI.h>
 #import "UIViewController+Social.h"
+#import "UIImage+Resizing.h"
 #import "photoCollectionViewCell.h"
 
-@interface PhotoScrollerViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, MPMediaPickerControllerDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PhotoScrollerViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, MPMediaPickerControllerDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareActionButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (IBAction)emailPhotos:(id)sender;
-- (IBAction)sendTwitter:(id)sender;
+@property (strong, nonatomic) NSMutableArray *arrayOfImages;
+@property (strong, nonatomic) UIPopoverController *myPopoverController;
+
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender;
 @end

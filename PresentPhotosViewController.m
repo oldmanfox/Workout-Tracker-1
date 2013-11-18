@@ -10,11 +10,6 @@
 
 @interface PresentPhotosViewController ()
 
-@property (nonatomic, strong) NSMutableArray *pageViews;
-
-- (void)loadVisiblePages;
-- (void)loadPage:(NSInteger)page;
-- (void)purgePage:(NSInteger)page;
 @end
 
 @implementation PresentPhotosViewController
@@ -33,47 +28,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSInteger pageCount = self.pageImages.count;
+    [self configureViewForIOSVersion];
     
-    // Set up the page control
-    self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = pageCount;
-    
-    // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i) {
-        [self.pageViews addObject:[NSNull null]];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // Only for iPad because it's storyboard doesn't use autolayout.  For iPhone, this step is done in ViewDidAppear.
-    if (self.view.frame.size.width > 640) {
-        
-        // Set up the content size of the scroll view
-        CGSize pagesScrollViewSize = self.scrollView.frame.size;
-        self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
-        
-        // Load the initial set of pages that are on screen
-        [self loadVisiblePages];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Only for iPhone because it's storyboard uses autolayout and this needs to be done in ViewDidAppear.  For iPad, this step can be done in ViewWillAppear.
-    if (self.view.frame.size.width <= 640) {
-        
-        // Set up the content size of the scroll view
-        CGSize pagesScrollViewSize = self.scrollView.frame.size;
-        self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
-        
-        // Load the initial set of pages that are on screen
-        [self loadVisiblePages];
-    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -81,77 +47,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)loadVisiblePages {
-    // First, determine which page is currently visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    
-    // Update the page control
-    self.pageControl.currentPage = page;
-    
-    // Work out which pages you want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i=0; i<firstPage; i++) {
-        [self purgePage:i];
-    }
-    for (NSInteger i=firstPage; i<=lastPage; i++) {
-        [self loadPage:i];
-    }
-    for (NSInteger i=lastPage+1; i<self.pageImages.count; i++) {
-        [self purgePage:i];
-    }
-}
-
-- (void)loadPage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Load an individual page, first checking if you've already loaded it
-    UIView *pageView = (self.pageViews)[page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        CGRect frame = self.scrollView.bounds;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        frame = CGRectInset(frame, 10.0f, 0.0f);
-        
-        UIImageView *newPageView = [[UIImageView alloc] initWithImage:(self.pageImages)[page]];
-        newPageView.contentMode = UIViewContentModeScaleAspectFit;
-        newPageView.frame = frame;
-        [self.scrollView addSubview:newPageView];
-        (self.pageViews)[page] = newPageView;
-    }
-}
-
-- (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what you have to display, then do nothing
-        return;
-    }
-    
-    // Remove a page from the scroll view and reset the container array
-    UIView *pageView = (self.pageViews)[page];
-    if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        (self.pageViews)[page] = [NSNull null];
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // Load the pages that are now on screen
-    [self loadVisiblePages];
-}
-
-- (IBAction)emailPhotos:(id)sender 
+- (void)emailPhotos
 {
     // Create MailComposerViewController object.
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Check to see if the device has at least 1 email account configured.
     if ([MFMailComposeViewController canSendMail]) {
@@ -342,7 +244,9 @@
             }
         }
         
-        [self presentViewController:mailComposer animated:YES completion:nil];
+        [self presentViewController:mailComposer animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
     }
 }
 
@@ -351,8 +255,75 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)sendTwitter:(id)sender 
-{
-    [self twitter];
+- (void)configureViewForIOSVersion {
+    
+    // Colors
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    //UIColor *midGrey = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
+    //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    
+    // Apply Background Colors
+    
+    //self.view.backgroundColor = [UIColor blackColor];
+    self.collectionView.backgroundColor = lightGrey;
+    
+    // Apply Keyboard Color
+}
+
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    
+    [action showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self emailPhotos];
+    }
+    
+    if (buttonIndex == 1) {
+        [self facebook];
+    }
+    
+    if (buttonIndex == 2) {
+        [self twitter];
+    }
+}
+
+#pragma mark - UICollectionView Datasource
+
+// 1
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    
+    return [self.arrayOfImages count];
+}
+// 2
+- (NSInteger)numberOfSectionsInCollectionView:
+(UICollectionView *)collectionView {
+    
+    return 1;
+}
+// 3
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UIColor *blueColor = [UIColor colorWithRed:76/255.0f green:152/255.0f blue:213/255.0f alpha:1.0f];
+    
+    photoCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.myImage.image = [self.arrayOfImages objectAtIndex:indexPath.item];
+    
+    cell.myLabel.text = self.arrayOfImageTitles[indexPath.item];
+    cell.myLabel.backgroundColor = [UIColor blackColor];
+    cell.myLabel.textColor = blueColor;
+    cell.myLabel.textAlignment = NSTextAlignmentCenter;
+    
+    return cell;
 }
 @end

@@ -16,16 +16,35 @@
 #import "DWT1IAPHelper.h"
 
 @interface ExerciseViewController : UIViewController <ADBannerViewDelegate>
+
+// Current Labels
+@property (weak, nonatomic) IBOutlet UILabel *currentRepsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentWeightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentNotesLabel;
+
+// Current TextFields
 @property (weak, nonatomic) IBOutlet UITextField *currentReps;
 @property (weak, nonatomic) IBOutlet UITextField *currentWeight;
 @property (weak, nonatomic) IBOutlet UITextField *currentNotes;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseName;
-@property (weak, nonatomic) IBOutlet UILabel *round;
+
+// Previous Labels
+@property (weak, nonatomic) IBOutlet UILabel *previousRepsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *previousWeightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *previousNotesLabel;
+
+// Previous TextFields
 @property (weak, nonatomic) IBOutlet UITextField *previousReps;
 @property (weak, nonatomic) IBOutlet UITextField *previousWeight;
 @property (weak, nonatomic) IBOutlet UITextField *previousNotes;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *sliderToolbar;
+// Toolbar
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sliderButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *roundButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *currentExercise;
+
+@property (weak, nonatomic) IBOutlet UIButton *hideKeyboardButton;
+@property (weak, nonatomic) NSString *renamedRound;
 
 - (IBAction)submitEntry:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;

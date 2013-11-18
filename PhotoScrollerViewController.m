@@ -9,20 +9,17 @@
 #import "PhotoScrollerViewController.h"
 
 @interface PhotoScrollerViewController ()
-@property (nonatomic, strong) NSMutableArray *pageImages;
-@property (nonatomic, strong) NSMutableArray *pageViews;
 
-- (void)loadVisiblePages;
-- (void)loadPage:(NSInteger)page;
-- (void)purgePage:(NSInteger)page;
+@property (strong, nonatomic) NSString *actionButtonType;
+@property (strong, nonatomic) NSString *whereToGetPhoto;
+@property (strong, nonatomic) NSString *selectedPhotoTitle;
+
+@property CGRect selectedImageRect;
+@property int selectedPhotoIndex;
+
 @end
 
 @implementation PhotoScrollerViewController
-@synthesize scrollView = _scrollView;
-@synthesize pageControl = _pageControl;
-
-@synthesize pageImages = _pageImages;
-@synthesize pageViews = _pageViews;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,157 +30,29 @@
     return self;
 }
 
-- (void)loadVisiblePages {
-    // First, determine which page is currently visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    
-    // Update the page control
-    self.pageControl.currentPage = page;
-    
-    // Work out which pages you want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i=0; i<firstPage; i++) {
-        [self purgePage:i];
-    }
-    for (NSInteger i=firstPage; i<=lastPage; i++) {
-        [self loadPage:i];
-    }
-    for (NSInteger i=lastPage+1; i<self.pageImages.count; i++) {
-        [self purgePage:i];
-    }
-}
-
-- (void)loadPage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Load an individual page, first checking if you've already loaded it
-    UIView *pageView = (self.pageViews)[page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        CGRect frame = self.scrollView.bounds;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        frame = CGRectInset(frame, 10.0f, 0.0f);
-        
-        UIImageView *newPageView = [[UIImageView alloc] initWithImage:(self.pageImages)[page]];
-        newPageView.contentMode = UIViewContentModeScaleAspectFit;
-        newPageView.frame = frame;
-        [self.scrollView addSubview:newPageView];
-        (self.pageViews)[page] = newPageView;
-    }
-}
-
-- (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what you have to display, then do nothing
-        return;
-    }
-    
-    // Remove a page from the scroll view and reset the container array
-    UIView *pageView = (self.pageViews)[page];
-    if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        (self.pageViews)[page] = [NSNull null];
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // Load the pages that are now on screen
-    [self loadVisiblePages];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.spinner startAnimating];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
+    [self configureViewForIOSVersion];
+
+    self.arrayOfImages = [[NSMutableArray alloc] init];
+
+    [self getPhotos];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.spinner startAnimating];
-    
-    // ***Previously part of ViewDidLoad.
-    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
-    NSString *currentPhase = ((PhotoNavController *)self.parentViewController).month;
-    self.pageImages = [[NSMutableArray alloc] init];
-    
-    NSArray *photoAngle = @[@" Front",
-    @" Side",
-    @" Back"];
-    
-    for (int i = 0; i < photoAngle.count; i++) {
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath: [photoNC fileLocation:[currentPhase stringByAppendingString:photoAngle[i] ]]]) {
-            
-            [self.pageImages addObject:[photoNC loadImage:[currentPhase stringByAppendingString:photoAngle[i] ]]];
-        }
-    }
-     
-    NSInteger pageCount = [self.pageImages count];
-    
-    // Set up the page control
-    self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = pageCount;
-    
-    // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i) {
-        [self.pageViews addObject:[NSNull null]];
-    }
-    // ***End Previously part of ViewDidLoad.
-    
-    // Only for iPad because it's storyboard doesn't use autolayout.  For iPhone, this step is done in ViewDidAppear.
-    if (self.view.frame.size.width > 640) {
-        
-        // Set up the content size of the scroll view
-        CGSize pagesScrollViewSize = self.scrollView.frame.size;
-        self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
-        
-        // Load the initial set of pages that are on screen
-        [self loadVisiblePages];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Only for iPhone because it's storyboard uses autolayout and this needs to be done in ViewDidAppear.  For iPad, this step can be done in ViewWillAppear.
-    if (self.view.frame.size.width <= 640) {
-        
-        // Set up the content size of the scroll view
-        CGSize pagesScrollViewSize = self.scrollView.frame.size;
-        self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
-        
-        // Load the initial set of pages that are on screen
-        [self loadVisiblePages];
-    }
-    
-    [self.spinner stopAnimating];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     
-    for (NSInteger i = 0; i <= self.pageImages.count; i++) {
-        [self purgePage:i];
-    }
-}
-
-- (void)viewDidUnload
-{
-    [self setScrollView:nil];
-    [self setPageControl:nil];
-    [self setPageImages:nil];
-    [self setPageViews:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -191,57 +60,23 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    PhotoScrollerDetailViewController *psvc = (PhotoScrollerDetailViewController *)segue.destinationViewController;
-    
-    if ([segue.identifier isEqualToString:@"Camera"])
-    {
-        // Detect precence of a camera.
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO) {
-            
-            // Photo Library
-            psvc.navigationItem.title = @"Photo Library";
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Camera Not Detected"
-                                                            message:@"Choose from your Photo Library."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil, nil];
-            [alert show];
-        }
-        else
-        {
-            // Camera
-            psvc.navigationItem.title = segue.identifier;
-        }
-    }
-    else {
-        // Photo Library
-        psvc.navigationItem.title = segue.identifier;
-    }
-    
-    // Save the title of the phase in the PhotoNavControler
-    ((PhotoNavController *)self.parentViewController).month = self.navigationItem.title;
-    //NSLog(@"Phase = %@", ((PhotoNavController *)self.parentViewController).phase);
-}
-
-- (IBAction)emailPhotos:(id)sender
+- (void)emailPhotos
 {
     // Create MailComposerViewController object.
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Check to see if the device has at least 1 email account configured.
     if ([MFMailComposeViewController canSendMail]) {
         
         // Send email
-        PhotoNavController *photoNC = [[PhotoNavController alloc] init];
+        //PhotoNavController *photoNC = [[PhotoNavController alloc] init];
         
         // Get path to documents directory to get default email address and images.
         NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        NSString *imageFile = nil;
+        //NSString *imageFile = nil;
         
         // Create MailComposerViewController object.
         MFMailComposeViewController *mailComposer;
@@ -270,88 +105,43 @@
         
         [mailComposer setToRecipients:emailAddresses];
         
-        // START PHASE 1 PHOTOS
-        if ([self.navigationItem.title isEqualToString:@"Start Month 1"]) {
-            [mailComposer setSubject:@"90 DWT 1 Start Month 1 Photos"];
+        NSArray *monthArray = @[@"Start Month 1", @"Start Month 2", @"Start Month 3", @"Final"];
+        NSArray *picAngle = @[@"Front", @"Side", @"Back"];
+        
+        for (int i = 0; i < monthArray.count; i++) {
             
-            // PHASE 1
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Front"] mimeType:@"image/jpg" fileName:@"Start Month 1 Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Side"] mimeType:@"image/jpg" fileName:@"Start Month 1 Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Back"] mimeType:@"image/jpg" fileName:@"Start Month 1 Back.jpg"];
-            }
-        }
-        // START PHASE 2 PHOTOS
-        else if ([self.navigationItem.title isEqualToString:@"Start Month 2"]) {
-            [mailComposer setSubject:@"90 DWT 1 Start Month 2 Photos"];
-            
-            // PHASE 2
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Front"] mimeType:@"image/jpg" fileName:@"Start Month 2 Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Side"] mimeType:@"image/jpg" fileName:@"Start Month 2 Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Back"] mimeType:@"image/jpg" fileName:@"Start Month 2 Back.jpg"];
-            }
-        }
-        // START PHASE 3 PHOTOS
-        else if ([self.navigationItem.title isEqualToString:@"Start Month 3"]) {
-            [mailComposer setSubject:@"90 DWT 1 Start Month 3 Photos"];
-            
-            // PHASE 3
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Front"] mimeType:@"image/jpg" fileName:@"Start Month 3 Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Side"] mimeType:@"image/jpg" fileName:@"Start Month 3 Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Back"] mimeType:@"image/jpg" fileName:@"Start Month 3 Back.jpg"];
-            }
-        }
-        // FINAL PHOTOS
-        else if ([self.navigationItem.title isEqualToString:@"Final"]) {
-            [mailComposer setSubject:@"90 DWT 1 Final Photos"];
-            
-            // FINAL
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Front"] mimeType:@"image/jpg" fileName:@"Final Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Side"] mimeType:@"image/jpg" fileName:@"Final Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Back"] mimeType:@"image/jpg" fileName:@"Final Back.jpg"];
+            if ([self.navigationItem.title isEqualToString:monthArray[i]]) {
+                
+                // Prepare string for the Subject of the email
+                NSString *subjectTitle = @"";
+                subjectTitle = [subjectTitle stringByAppendingFormat:@"90 DWT 1 %@ Photos", monthArray[i]];
+                
+                [mailComposer setSubject:subjectTitle];
+                //NSLog(@"%@", subjectTitle);
+                
+                for (int b = 0; b < picAngle.count; b++) {
+                    
+                    if (self.arrayOfImages[b] != [UIImage imageNamed:@"PhotoPlaceHolder.png"]) {
+                        
+                        // Don't attach photos that just use the placeholder image.
+                        
+                        NSData *imageData = UIImageJPEGRepresentation(self.arrayOfImages[b], 1.0); //convert image into .JPG format.
+                        NSString *photoAttachmentFileName = @"";
+                        
+                        photoAttachmentFileName = [photoAttachmentFileName stringByAppendingFormat:@"%@ %@.jpg", monthArray[i], picAngle[b]];
+                        
+                        //NSLog(@"Image = %@", self.arrayOfImages[b]);
+                        //NSLog(@"File name = %@", photoAttachmentFileName);
+                        
+                        [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
+                    }
+                }
             }
         }
         
-        [self presentViewController:mailComposer animated:YES completion:nil];
+        [self presentViewController:mailComposer animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
     }
 }
 
@@ -360,9 +150,266 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)sendTwitter:(id)sender
-{
+- (void)configureViewForIOSVersion {
     
-    [self twitter];
+    // Colors
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    //UIColor *midGrey = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
+    //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    
+    // Apply Background Colors
+    
+    //self.view.backgroundColor = [UIColor blackColor];
+    self.collectionView.backgroundColor = lightGrey;
+    
+    // Apply Keyboard Color
+}
+
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    
+    self.actionButtonType = @"Share";
+    [action showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if ([self.actionButtonType isEqualToString:@"Share"]) {
+        
+        if (buttonIndex == 0) {
+            [self emailPhotos];
+        }
+        
+        if (buttonIndex == 1) {
+            [self facebook];
+        }
+        
+        if (buttonIndex == 2) {
+            [self twitter];
+        }
+    }
+    
+    else
+    {
+        // Photo
+        
+        if (buttonIndex == 0) {
+            
+            self.whereToGetPhoto = @"Camera";
+            [self cameraOrPhotoLibrary];
+        }
+        
+        if (buttonIndex == 1) {
+            
+            self.whereToGetPhoto = @"Photo Library";
+            [self cameraOrPhotoLibrary];
+        }
+        
+    }
+}
+
+#pragma mark - UICollectionView Datasource
+
+// 1
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    //NSString *searchTerm = self.searches[section];
+    
+    return [self.arrayOfImages count];
+}
+// 2
+- (NSInteger)numberOfSectionsInCollectionView:
+(UICollectionView *)collectionView {
+    
+    return 1;
+}
+// 3
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    
+    photoCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.myImage.image = [self.arrayOfImages objectAtIndex:indexPath.item];
+    
+    NSArray *photoAngle = @[@"Front",
+                            @"Side",
+                            @"Back"];
+    
+    cell.myLabel.text = photoAngle[indexPath.item];
+    cell.myLabel.backgroundColor = [UIColor blackColor];
+    cell.myLabel.textColor = blueColor;
+    cell.myLabel.textAlignment = NSTextAlignmentCenter;
+    
+    return cell;
+}
+
+- (void)getPhotos {
+    
+    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
+    NSString *currentPhase = ((PhotoNavController *)self.parentViewController).month;
+    
+    NSArray *photoAngle = @[@" Front",
+                            @" Side",
+                            @" Back"];
+    
+    for (int i = 0; i < photoAngle.count; i++) {
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath: [photoNC fileLocation:[currentPhase stringByAppendingString:photoAngle[i] ]]]) {
+            
+            [self.arrayOfImages addObject:[photoNC loadImage:[currentPhase stringByAppendingString:photoAngle[i] ]]];
+            
+            //NSLog(@"Photo = %@", self.arrayOfImages[i]);
+            
+        }
+        
+        else
+            // Load a placeholder image.
+        {
+            [self.arrayOfImages addObject:[UIImage imageNamed:@"PhotoPlaceHolder.png"]];
+            
+        }
+        
+    }
+    
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Select Item
+    
+    UIActionSheet *photoAction = [[UIActionSheet alloc] initWithTitle:@"Set Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Photo Library", nil];
+    
+    self.actionButtonType = @"Photo";
+    
+    NSArray *photoAngle = @[@" Front",
+                            @" Side",
+                            @" Back"];
+    
+    // Check to see what device you are using iPad or iPhone.
+    NSString *deviceModel = [UIDevice currentDevice].model;
+    
+    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"])
+    {
+        // Get the position of the image so the popover arrow can point to it.
+        static NSString *CellIdentifier = @"Cell";
+        photoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+        self.selectedImageRect = [collectionView convertRect:cell.frame toView:self.view];
+    }
+    
+    self.selectedPhotoTitle = [self.navigationItem.title stringByAppendingString:photoAngle[indexPath.item]];
+    self.selectedPhotoIndex = indexPath.item;
+    
+    [photoAction showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Deselect item
+}
+
+- (void)cameraOrPhotoLibrary {
+    UIImagePickerController *imagePicker;
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    
+    if ([self.whereToGetPhoto isEqualToString:@"Camera"]) {
+        
+        // Use Camera
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        
+        // Use Photo Library
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    // Check to see what device you are using iPad or iPhone.
+    NSString *deviceModel = [UIDevice currentDevice].model;
+    
+    // If your device is iPad then show the imagePicker in a popover.
+    // If not iPad then show the imagePicker modally.
+    if (([deviceModel isEqualToString:@"iPad"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
+        || ([deviceModel isEqualToString:@"iPad Simulator"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
+        
+        self.myPopoverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        self.myPopoverController.delegate = self;
+        [self.myPopoverController presentPopoverFromRect:self.selectedImageRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    
+    else {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    [self.arrayOfImages replaceObjectAtIndex:self.selectedPhotoIndex withObject:image];
+    UIImage *scaledImage = nil;
+    
+    if (image.size.height > image.size.width) {
+        
+        // Image was taken in Portriat mode.
+        scaledImage = [image resizedImageWithSize:CGSizeMake(1536,2048)];
+        
+    } else {
+        
+        // Image was taken in Landscape mode.
+        scaledImage = [image resizedImageWithSize:CGSizeMake(2048,1536)];
+    }
+    
+    // Only save image to photo library if it is a new pic taken with the camera.
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+    
+    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
+    
+    // Save image to application documents directory.
+    [photoNC saveImage:scaledImage imageName:self.selectedPhotoTitle];
+    
+    [self.collectionView reloadData];
+    
+    picker = nil;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    
+    /*
+     UIAlertView *alert;
+     
+     // Unable to save the image
+     if (error) {
+     alert = [[UIAlertView alloc] initWithTitle:@"Error"
+     message:@"Unable to save image to Photo Library."
+     delegate:self
+     cancelButtonTitle:@"Ok"
+     otherButtonTitles:nil, nil];
+     } else { // All is well
+     alert = [[UIAlertView alloc] initWithTitle:@"Success"
+     message:@"Image saved to Photo Library."
+     delegate:self
+     cancelButtonTitle:@"Ok"
+     otherButtonTitles:nil, nil];
+     }
+     
+     [alert show];
+     */
 }
 @end

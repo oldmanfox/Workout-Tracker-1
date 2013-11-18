@@ -95,7 +95,6 @@
 		A5C823FA16763870002ACE3D /* MeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823DF16763870002ACE3D /* MeasurementsViewController.m */; };
 		A5C823FB16763870002ACE3D /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823E116763870002ACE3D /* NotesViewController.m */; };
 		A5C823FC16763870002ACE3D /* PhotoNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823E316763870002ACE3D /* PhotoNavController.m */; };
-		A5C823FD16763870002ACE3D /* PhotoScrollerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823E516763870002ACE3D /* PhotoScrollerDetailViewController.m */; };
 		A5C823FE16763870002ACE3D /* PhotoScrollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823E716763870002ACE3D /* PhotoScrollerViewController.m */; };
 		A5C823FF16763870002ACE3D /* PhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823E916763870002ACE3D /* PhotoTVC.m */; };
 		A5C8240016763870002ACE3D /* PresentPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C823EB16763870002ACE3D /* PresentPhotosViewController.m */; };
@@ -327,8 +326,6 @@
 		A5C823E116763870002ACE3D /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = ../NotesViewController.m; sourceTree = "<group>"; };
 		A5C823E216763870002ACE3D /* PhotoNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoNavController.h; path = ../PhotoNavController.h; sourceTree = "<group>"; };
 		A5C823E316763870002ACE3D /* PhotoNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoNavController.m; path = ../PhotoNavController.m; sourceTree = "<group>"; };
-		A5C823E416763870002ACE3D /* PhotoScrollerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoScrollerDetailViewController.h; path = ../PhotoScrollerDetailViewController.h; sourceTree = "<group>"; };
-		A5C823E516763870002ACE3D /* PhotoScrollerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoScrollerDetailViewController.m; path = ../PhotoScrollerDetailViewController.m; sourceTree = "<group>"; };
 		A5C823E616763870002ACE3D /* PhotoScrollerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoScrollerViewController.h; path = ../PhotoScrollerViewController.h; sourceTree = "<group>"; };
 		A5C823E716763870002ACE3D /* PhotoScrollerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoScrollerViewController.m; path = ../PhotoScrollerViewController.m; sourceTree = "<group>"; };
 		A5C823E816763870002ACE3D /* PhotoTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoTVC.h; path = ../PhotoTVC.h; sourceTree = "<group>"; };
@@ -778,8 +775,6 @@
 				A5C823EB16763870002ACE3D /* PresentPhotosViewController.m */,
 				A5C823E616763870002ACE3D /* PhotoScrollerViewController.h */,
 				A5C823E716763870002ACE3D /* PhotoScrollerViewController.m */,
-				A5C823E416763870002ACE3D /* PhotoScrollerDetailViewController.h */,
-				A5C823E516763870002ACE3D /* PhotoScrollerDetailViewController.m */,
 			);
 			name = Photos;
 			sourceTree = "<group>";
@@ -1069,7 +1064,6 @@
 				A5C823FA16763870002ACE3D /* MeasurementsViewController.m in Sources */,
 				A5C823FB16763870002ACE3D /* NotesViewController.m in Sources */,
 				A5C823FC16763870002ACE3D /* PhotoNavController.m in Sources */,
-				A5C823FD16763870002ACE3D /* PhotoScrollerDetailViewController.m in Sources */,
 				A5C823FE16763870002ACE3D /* PhotoScrollerViewController.m in Sources */,
 				A5C823FF16763870002ACE3D /* PhotoTVC.m in Sources */,
 				A5C8240016763870002ACE3D /* PresentPhotosViewController.m in Sources */,

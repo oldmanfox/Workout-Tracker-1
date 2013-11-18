@@ -29,6 +29,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self configureViewForIOSVersion];
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
@@ -37,7 +39,7 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
-                         self.exerciseName.text,
+                         self.navigationItem.title,
                          self.round.text,
                          [((DataNavController *)self.parentViewController).index integerValue]];
     [request setPredicate:pred];
@@ -96,7 +98,7 @@
         
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"(workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
                              ((DataNavController *)self.parentViewController).workout,
-                             self.exerciseName.text,
+                             self.navigationItem.title,
                              self.round.text,
                              [((DataNavController *)self.parentViewController).index integerValue] -1];  // Previous workout index.
         [request setPredicate:pred];
@@ -147,26 +149,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
-{
-    
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner 
-{
-    
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner 
-{
-    
-}
-
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner 
-{
-    
-}
-
 - (IBAction)submitEntry:(id)sender {
     NSDate *todaysDate = [NSDate date];
     
@@ -179,7 +161,7 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"(routine = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
                          ((DataNavController *)self.parentViewController).routine,
                          ((DataNavController *)self.parentViewController).workout,
-                         self.exerciseName.text,
+                         self.navigationItem.title,
                          self.round.text,
                          [((DataNavController *)self.parentViewController).index integerValue]];
     [request setPredicate:pred];
@@ -194,7 +176,7 @@
         newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
         [newExercise setValue:self.currentNotes.text forKey:@"notes"];
         [newExercise setValue:todaysDate forKey:@"date"];
-        [newExercise setValue:self.exerciseName.text forKey:@"exercise"];
+        [newExercise setValue:self.navigationItem.title forKey:@"exercise"];
         [newExercise setValue:self.round.text forKey:@"round"];
         [newExercise setValue:((DataNavController *)self.parentViewController).routine forKey:@"routine"];
         [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
@@ -237,7 +219,58 @@
     [self.currentNotes resignFirstResponder];
 }
 
-- (IBAction)emailResults:(id)sender 
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    
+    [action showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self emailResults];
+    }
+    
+    if (buttonIndex == 1) {
+        [self facebook];
+    }
+    
+    if (buttonIndex == 2) {
+        [self twitter];
+    }
+}
+
+- (void)configureViewForIOSVersion {
+    
+    // Colors
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
+    UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    self.currentNotesLabel.textColor = blueColor;
+    
+    self.previousNotesLabel.textColor = darkGrey;
+    
+    self.round.hidden = YES;
+    
+    // Apply Background Colors
+    self.currentNotes.backgroundColor = [UIColor whiteColor];
+    self.previousNotes.backgroundColor = [UIColor whiteColor];
+    
+    self.view.backgroundColor = lightGrey;
+    self.toolbar.backgroundColor = midGrey;
+    
+    // Apply Keyboard Color
+    self.currentNotes.keyboardAppearance = UIKeyboardAppearanceDark;
+    
+    // iOS 7 Style
+    self.canDisplayBannerAds = YES;
+}
+
+- (void)emailResults
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -284,6 +317,7 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Array to store the default email address.
     NSArray *emailAddresses; 
@@ -310,19 +344,15 @@
     [mailComposer setToRecipients:emailAddresses];
     [mailComposer setSubject:@"90 DWT 1 Workout Data"];
     [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:workoutName];
-    [self presentViewController:mailComposer animated:YES completion:nil];
+    [self presentViewController:mailComposer animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (IBAction)sendTwitter:(id)sender 
-{
-    [self twitter];
-}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
