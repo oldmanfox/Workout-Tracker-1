@@ -14,11 +14,10 @@
 #import "AppDelegate.h"
 #import "UIViewController+Social.h"
 
-@interface ResultsViewController : UIViewController <ADBannerViewDelegate, MFMailComposeViewControllerDelegate>
+@interface ResultsViewController : UIViewController <ADBannerViewDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *workoutSummary;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareActionButton;
 @property (strong, nonatomic) NSArray *exerciseNames;
 
-- (IBAction)emailResults:(id)sender;
-- (IBAction)sendTwitter:(id)sender;
-
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender;
 @end

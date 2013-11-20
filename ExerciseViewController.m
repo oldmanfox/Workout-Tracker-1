@@ -263,26 +263,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner
-{
-    
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-
-}
-
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner
-{
-    
-}
-
 - (IBAction)submitEntry:(id)sender
 {
     NSDate *todaysDate = [NSDate date];

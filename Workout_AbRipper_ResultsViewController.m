@@ -28,6 +28,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self configureViewForIOSVersion];
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
@@ -107,32 +109,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
-{
-
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner 
-{
-    
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner 
-{
-    
-}
-
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner 
-{
-    
-}
-
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)emailResults:(id)sender 
+- (void)emailResults
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -207,6 +189,7 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Array to store the default email address.
     NSArray *emailAddresses; 
@@ -233,11 +216,50 @@
     [mailComposer setToRecipients:emailAddresses];
     [mailComposer setSubject:@"90 DWT 1 Workout Data"];
     [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:workoutName];
-    [self presentViewController:mailComposer animated:YES completion:nil];
+    [self presentViewController:mailComposer animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }];
 }
 
-- (IBAction)sendTwitter:(id)sender 
-{
-    [self twitter];
+- (IBAction)shareActionSheet:(UIBarButtonItem *)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
+    
+    [action showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self emailResults];
+    }
+    
+    if (buttonIndex == 1) {
+        [self facebook];
+    }
+    
+    if (buttonIndex == 2) {
+        [self twitter];
+    }
+}
+
+- (void)configureViewForIOSVersion {
+    
+    // Colors
+    UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+    //UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
+    //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+    //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+    
+    // Apply Text Colors
+    self.workoutSummary.backgroundColor = lightGrey;
+    
+    // Apply Background Colors
+    
+    
+    // Apply Keyboard Color
+    
+    // iOS 7 Style
+    self.canDisplayBannerAds = YES;
 }
 @end
