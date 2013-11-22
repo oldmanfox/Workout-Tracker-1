@@ -22,6 +22,5 @@
 @property (strong, nonatomic) NSArray *arrayOfImages;
 @property (strong, nonatomic) NSArray *arrayOfImageTitles;
 
-
 - (IBAction)shareActionSheet:(UIBarButtonItem *)sender;
 @end

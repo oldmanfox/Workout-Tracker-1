@@ -82,6 +82,7 @@
         MFMailComposeViewController *mailComposer;
         mailComposer = [[MFMailComposeViewController alloc] init];
         mailComposer.mailComposeDelegate = self;
+        mailComposer.navigationBar.tintColor = [UIColor whiteColor];
         
         // Array to store the default email address.
         NSArray *emailAddresses;

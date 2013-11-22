@@ -71,6 +71,7 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Array to store the default email address.
     NSArray *emailAddresses; 
@@ -100,7 +101,9 @@
     subject = [subject stringByAppendingFormat:@" %@ Measurements", self.navigationItem.title];
     [mailComposer setSubject:subject];
     [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:fileName];
-    [self presentViewController:mailComposer animated:YES completion:nil];
+    [self presentViewController:mailComposer animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }];
 }
 
 - (IBAction)actionSheet:(id)sender {
