@@ -49,6 +49,17 @@
 #pragma mark - Chart behavior
 -(void)initPlot {
     
+    // TESTING.  DELETE BEFORE PUBLIC RELEASE!!!!
+    //NSLog(@"Allow iPad Graph");
+    
+    self.matches = [self databaseMatches];
+    [self configureHost];
+    [self configureGraph];
+    [self configurePlots];
+    [self configureAxes];
+    [self configureLegend];
+    
+    /*
     if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.slidergraph"]) {
     
         //NSLog(@"Allow iPad Graph");
@@ -60,8 +71,18 @@
         [self configureAxes];
         [self configureLegend];
     } else {
+        
+        // Colors
+        //UIColor *lightGrey = [UIColor colorWithRed:234/255.0f green:234/255.0f blue:234/255.0f alpha:1.0f];
+        //UIColor *midGrey = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
+        //UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
+        //UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
+        
+        //self.view.backgroundColor = midGrey;
+
         self.hostView.backgroundColor = [UIColor clearColor];
     }
+     */
 }
 
 -(void)configureHost {
