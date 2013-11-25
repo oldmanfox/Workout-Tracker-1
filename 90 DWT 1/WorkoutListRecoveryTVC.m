@@ -48,6 +48,11 @@
     self.cell5.textLabel.text = ((DataNavController *)self.parentViewController).lightCell5;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [self.tableView reloadData];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

@@ -367,6 +367,10 @@
     UIColor *darkGrey = [UIColor colorWithRed:102/255.0f green:102/255.0f blue:102/255.0f alpha:1.0f];
     UIColor* blueColor = [UIColor colorWithRed:0/255.0f green:122/255.0f blue:255/255.0f alpha:1.0f];
     
+    //UIColor *midGreyLaunch = [UIColor colorWithRed:219/255.0f green:218/255.0f blue:218/255.0f alpha:1.0f];
+    
+    UIColor *lightGreyBlueColor = [UIColor colorWithRed:219/255.0f green:224/255.0f blue:234/255.0f alpha:1.0f];
+    
     // Apply Text Colors
     self.currentRepsLabel.textColor = blueColor;
     self.currentWeightLabel.textColor = blueColor;
@@ -387,12 +391,15 @@
     self.currentExercise.style = UIBarButtonItemStyleDone;
     
     // Apply Background Colors
-    self.previousReps.backgroundColor = lightGrey;
-    self.previousWeight.backgroundColor = lightGrey;
-    self.previousNotes.backgroundColor = lightGrey;
+    self.previousReps.backgroundColor = lightGreyBlueColor;
+    self.previousWeight.backgroundColor = lightGreyBlueColor;
+    self.previousNotes.backgroundColor = lightGreyBlueColor;
     
     self.view.backgroundColor = lightGrey;
     self.toolbar.backgroundColor = midGrey;
+    
+    // Launch Image Color
+    //self.view.backgroundColor = midGreyLaunch;
     
     // Apply Keyboard Color
     self.currentReps.keyboardAppearance = UIKeyboardAppearanceDark;
