@@ -88,9 +88,16 @@
 	self.hostView.hostedGraph = graph;
     
 	// 2 - Set graph title
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	NSString *title = appDelegate.exerciseName;
-	graph.title = title;
+    
+    // Check to see what device you are using iPad or iPhone.
+    NSString *deviceModel = [UIDevice currentDevice].model;
+    
+    // Only display the title if using iPad
+    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"]) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSString *title = appDelegate.exerciseName;
+        graph.title = title;
+    }
     
 	// 3 - Create and set text style
 	CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];

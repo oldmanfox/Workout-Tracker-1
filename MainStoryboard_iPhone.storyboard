@@ -1113,7 +1113,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="D0y-HW-SSh">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="D0y-HW-SSh">
                                                     <rect key="frame" x="20" y="8" width="280" height="29"/>
                                                     <segments>
                                                         <segment title="Tone"/>
@@ -1125,6 +1125,11 @@
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D0y-HW-SSh" firstAttribute="top" secondItem="QhN-9x-CEn" secondAttribute="top" constant="8" id="TKo-sL-lcc"/>
+                                                <constraint firstItem="D0y-HW-SSh" firstAttribute="leading" secondItem="QhN-9x-CEn" secondAttribute="leading" constant="20" id="YVb-pS-CBL"/>
+                                                <constraint firstAttribute="trailing" secondItem="D0y-HW-SSh" secondAttribute="trailing" constant="20" id="l30-1c-cMi"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" textLabel="rJx-wS-Q7O" detailTextLabel="oza-qg-qpn" style="IBUITableViewCellStyleValue1" id="wEp-yw-xXg">
