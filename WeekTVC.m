@@ -7,6 +7,7 @@
 //
 
 #import "WeekTVC.h"
+#import "DWT1IAPHelper.h"
 
 @interface WeekTVC ()
 
@@ -219,6 +220,19 @@
             
             ((DataNavController *)self.parentViewController).lightCell5 = @"Core Fitness";
         }
+    }
+    
+    // Show or Hide Ads
+    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        
+    } else {
+        
+        // Show the Interstitial Ad
+        UIViewController *c = segue.destinationViewController;
+        
+        c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     }
 }
 @end

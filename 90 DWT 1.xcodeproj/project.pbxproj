@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		580E7D7F174321BD0088AB0A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E7D7D174321BD0088AB0A /* NSData+Base64.m */; };
-		580E7D83174322100088AB0A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E7D82174322100088AB0A /* VerificationController.m */; };
 		580E7D86174323010088AB0A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E7D85174323010088AB0A /* IAPHelper.m */; };
 		580E7D891743231C0088AB0A /* DWT1IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E7D881743231C0088AB0A /* DWT1IAPHelper.m */; };
 		580E7D8C174325750088AB0A /* StoreListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E7D8B174325750088AB0A /* StoreListTVC.m */; };
@@ -22,6 +21,10 @@
 		581CDD131837FC1A0012829F /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581CDD121837FC1A0012829F /* photoCollectionViewCell.m */; };
 		5836DFEA172B47FD005759B6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5836DFE9172B47FD005759B6 /* SWRevealViewController.m */; };
 		5893AFD01745D0BA0029F500 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5893AFCF1745D0BA0029F500 /* libCorePlot-CocoaTouch.a */; };
+		A513287619E995D300CBCE86 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287519E995D300CBCE86 /* ShinobiCharts.framework */; };
+		A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287719E9962400CBCE86 /* OpenGLES.framework */; };
+		A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287919E9963D00CBCE86 /* CoreText.framework */; };
+		A513287C19E9966A00CBCE86 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287B19E9966A00CBCE86 /* libc++.dylib */; };
 		A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62BF15CB0FC70085C0E5 /* UIKit.framework */; };
 		A54B62C215CB0FC70085C0E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62C115CB0FC70085C0E5 /* Foundation.framework */; };
 		A54B62C415CB0FC70085C0E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62C315CB0FC70085C0E5 /* CoreGraphics.framework */; };
@@ -82,8 +85,6 @@
 /* Begin PBXFileReference section */
 		580E7D7C174321BD0088AB0A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		580E7D7D174321BD0088AB0A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		580E7D81174322100088AB0A /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
-		580E7D82174322100088AB0A /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
 		580E7D84174323010088AB0A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		580E7D85174323010088AB0A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		580E7D871743231C0088AB0A /* DWT1IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWT1IAPHelper.h; sourceTree = "<group>"; };
@@ -180,6 +181,10 @@
 		5893AFCD1745D0BA0029F500 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		5893AFCE1745D0BA0029F500 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		5893AFCF1745D0BA0029F500 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		A513287519E995D300CBCE86 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
+		A513287719E9962400CBCE86 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A513287919E9963D00CBCE86 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A513287B19E9966A00CBCE86 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		A54B62BB15CB0FC70085C0E5 /* 90 DWT 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54B62BF15CB0FC70085C0E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A54B62C115CB0FC70085C0E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -283,6 +288,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A513287C19E9966A00CBCE86 /* libc++.dylib in Frameworks */,
+				A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */,
+				A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */,
+				A513287619E995D300CBCE86 /* ShinobiCharts.framework in Frameworks */,
 				580E7DF117432EA00088AB0A /* Security.framework in Frameworks */,
 				580E7DEF17432E960088AB0A /* StoreKit.framework in Frameworks */,
 				580E7DED17432E8E0088AB0A /* QuartzCore.framework in Frameworks */,
@@ -312,7 +321,6 @@
 				580E7D881743231C0088AB0A /* DWT1IAPHelper.m */,
 				580E7D84174323010088AB0A /* IAPHelper.h */,
 				580E7D85174323010088AB0A /* IAPHelper.m */,
-				580E7D80174322100088AB0A /* VerificationController */,
 				580E7D7B174321BD0088AB0A /* Base64 */,
 				580E7D7E174321BD0088AB0A /* Cells */,
 			);
@@ -335,15 +343,6 @@
 				580E7D8E174325B30088AB0A /* StoreListTVCCell.m */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		580E7D80174322100088AB0A /* VerificationController */ = {
-			isa = PBXGroup;
-			children = (
-				580E7D81174322100088AB0A /* VerificationController.h */,
-				580E7D82174322100088AB0A /* VerificationController.m */,
-			);
-			path = VerificationController;
 			sourceTree = "<group>";
 		};
 		580E7D9917432DD30088AB0A /* CorePlot */ = {
@@ -474,6 +473,10 @@
 		A54B62BE15CB0FC70085C0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A513287B19E9966A00CBCE86 /* libc++.dylib */,
+				A513287919E9963D00CBCE86 /* CoreText.framework */,
+				A513287719E9962400CBCE86 /* OpenGLES.framework */,
+				A513287519E995D300CBCE86 /* ShinobiCharts.framework */,
 				580E7DF017432E9F0088AB0A /* Security.framework */,
 				580E7DEE17432E960088AB0A /* StoreKit.framework */,
 				580E7DEC17432E8D0088AB0A /* QuartzCore.framework */,
@@ -733,7 +736,7 @@
 		A54B62B215CB0FC70085C0E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Grant, Jared";
 				TargetAttributes = {
 					A54B62BA15CB0FC70085C0E5 = {
@@ -819,7 +822,6 @@
 				A5C8243416763F7A002ACE3D /* MainTBC.m in Sources */,
 				5836DFEA172B47FD005759B6 /* SWRevealViewController.m in Sources */,
 				580E7D7F174321BD0088AB0A /* NSData+Base64.m in Sources */,
-				580E7D83174322100088AB0A /* VerificationController.m in Sources */,
 				580E7D86174323010088AB0A /* IAPHelper.m in Sources */,
 				580E7D891743231C0088AB0A /* DWT1IAPHelper.m in Sources */,
 				580E7D8C174325750088AB0A /* StoreListTVC.m in Sources */,
@@ -855,9 +857,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -891,9 +895,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -918,6 +924,10 @@
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -931,6 +941,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -943,6 +954,10 @@
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -955,6 +970,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -970,9 +986,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -998,6 +1016,10 @@
 				CODE_SIGN_ENTITLEMENTS = "90 DWT 1/90 DWT 1.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -1010,6 +1032,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "App Store";

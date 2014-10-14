@@ -51,6 +51,8 @@
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
      */
     
+    [UIViewController prepareInterstitialAds];
+    
     return YES;
 }
 

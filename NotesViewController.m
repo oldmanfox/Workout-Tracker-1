@@ -8,6 +8,7 @@
 
 #import "NotesViewController.h"
 #import "SWRevealViewController.h"
+#import "DWT1IAPHelper.h"
 
 @interface NotesViewController ()
 
@@ -266,8 +267,17 @@
     // Apply Keyboard Color
     self.currentNotes.keyboardAppearance = UIKeyboardAppearanceDark;
     
-    // iOS 7 Style
-    self.canDisplayBannerAds = YES;
+    // Show or Hide Ads
+    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
 }
 
 - (void)emailResults
