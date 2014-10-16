@@ -21,7 +21,6 @@
 		581CDD131837FC1A0012829F /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581CDD121837FC1A0012829F /* photoCollectionViewCell.m */; };
 		5836DFEA172B47FD005759B6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5836DFE9172B47FD005759B6 /* SWRevealViewController.m */; };
 		5893AFD01745D0BA0029F500 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5893AFCF1745D0BA0029F500 /* libCorePlot-CocoaTouch.a */; };
-		A513287619E995D300CBCE86 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287519E995D300CBCE86 /* ShinobiCharts.framework */; };
 		A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287719E9962400CBCE86 /* OpenGLES.framework */; };
 		A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287919E9963D00CBCE86 /* CoreText.framework */; };
 		A513287C19E9966A00CBCE86 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287B19E9966A00CBCE86 /* libc++.dylib */; };
@@ -291,7 +290,6 @@
 				A513287C19E9966A00CBCE86 /* libc++.dylib in Frameworks */,
 				A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */,
 				A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */,
-				A513287619E995D300CBCE86 /* ShinobiCharts.framework in Frameworks */,
 				580E7DF117432EA00088AB0A /* Security.framework in Frameworks */,
 				580E7DEF17432E960088AB0A /* StoreKit.framework in Frameworks */,
 				580E7DED17432E8E0088AB0A /* QuartzCore.framework in Frameworks */,
