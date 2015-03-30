@@ -29,6 +29,9 @@
     [super viewDidLoad];
     
     // Configure tableview.
+    
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
+    
     NSArray *tableCell = @[self.cell1,
                             self.cell2,
                             self.cell3,

@@ -28,6 +28,9 @@
     [super viewDidLoad];
     
     // Configure tableview.
+    
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"pic_mountains_selected"];
+    
     NSArray *tableCell = @[self.cell1,
                             self.cell2,
                             self.cell3,
