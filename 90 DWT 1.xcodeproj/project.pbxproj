@@ -78,6 +78,9 @@
 		A5C8242C16763C41002ACE3D /* UITableViewController+Design.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8242916763C41002ACE3D /* UITableViewController+Design.m */; };
 		A5C8242D16763C41002ACE3D /* UIViewController+Social.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8242B16763C41002ACE3D /* UIViewController+Social.m */; };
 		A5C8243416763F7A002ACE3D /* MainTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8243316763F7A002ACE3D /* MainTBC.m */; };
+		A5CE5EC51AC998CD002ECE73 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287519E995D300CBCE86 /* ShinobiCharts.framework */; };
+		A5CE5EC91AC9A1F4002ECE73 /* ExerciseChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5EC81AC9A1F4002ECE73 /* ExerciseChartViewController.m */; };
+		A5CE5ECC1AC9A409002ECE73 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE5ECB1AC9A409002ECE73 /* Workout.m */; };
 		A5D3E1B31832D3A500814553 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D3E1B21832D3A500814553 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +282,10 @@
 		A5C8242B16763C41002ACE3D /* UIViewController+Social.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Social.m"; path = "../UIViewController+Social.m"; sourceTree = "<group>"; };
 		A5C8243216763F7A002ACE3D /* MainTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTBC.h; path = ../MainTBC.h; sourceTree = "<group>"; };
 		A5C8243316763F7A002ACE3D /* MainTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTBC.m; path = ../MainTBC.m; sourceTree = "<group>"; };
+		A5CE5EC71AC9A1F4002ECE73 /* ExerciseChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseChartViewController.h; sourceTree = "<group>"; };
+		A5CE5EC81AC9A1F4002ECE73 /* ExerciseChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseChartViewController.m; sourceTree = "<group>"; };
+		A5CE5ECA1AC9A409002ECE73 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		A5CE5ECB1AC9A409002ECE73 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		A5D3E1B21832D3A500814553 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CE5EC51AC998CD002ECE73 /* ShinobiCharts.framework in Frameworks */,
 				A513287C19E9966A00CBCE86 /* libc++.dylib in Frameworks */,
 				A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */,
 				A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */,
@@ -497,6 +505,7 @@
 		A54B62C715CB0FC70085C0E5 /* 90 DWT 1 */ = {
 			isa = PBXGroup;
 			children = (
+				A5CE5EC61AC9A164002ECE73 /* ShinobiControls */,
 				581CDD0A1837F5740012829F /* Layout */,
 				580E7D9917432DD30088AB0A /* CorePlot */,
 				580E7D7A174321520088AB0A /* In-App Purchases */,
@@ -510,6 +519,8 @@
 				A5C823EE16763870002ACE3D /* ScrollViewContainer.h */,
 				A5C823EF16763870002ACE3D /* ScrollViewContainer.m */,
 				A54B62D315CB0FC70085C0E5 /* _0_DWT_1.xcdatamodeld */,
+				A5CE5ECA1AC9A409002ECE73 /* Workout.h */,
+				A5CE5ECB1AC9A409002ECE73 /* Workout.m */,
 				5836DFE7172B47FD005759B6 /* SWRevealViewController */,
 				A5C8242E16763C63002ACE3D /* Categories */,
 				A5C823841676339C002ACE3D /* NavControllers */,
@@ -708,6 +719,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		A5CE5EC61AC9A164002ECE73 /* ShinobiControls */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE5EC71AC9A1F4002ECE73 /* ExerciseChartViewController.h */,
+				A5CE5EC81AC9A1F4002ECE73 /* ExerciseChartViewController.m */,
+			);
+			name = ShinobiControls;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -780,9 +800,11 @@
 			files = (
 				A54B62CE15CB0FC70085C0E5 /* main.m in Sources */,
 				A54B62D215CB0FC70085C0E5 /* AppDelegate.m in Sources */,
+				A5CE5ECC1AC9A409002ECE73 /* Workout.m in Sources */,
 				A54B62D515CB0FC70085C0E5 /* _0_DWT_1.xcdatamodeld in Sources */,
 				A5C8237C16763345002ACE3D /* WorkoutListClassicPhase1TVC.m in Sources */,
 				A5C8237D16763345002ACE3D /* WorkoutListClassicPhase2TVC.m in Sources */,
+				A5CE5EC91AC9A1F4002ECE73 /* ExerciseChartViewController.m in Sources */,
 				A5C8237E16763345002ACE3D /* WorkoutListDoublesPhase1TVC.m in Sources */,
 				A5C8237F16763345002ACE3D /* WorkoutListDoublesPhase2TVC.m in Sources */,
 				A5C8238016763345002ACE3D /* WorkoutListLeanPhase2TVC.m in Sources */,

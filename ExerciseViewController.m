@@ -235,6 +235,18 @@
 
 - (void)createSliderButton {
     
+    // *****TESTING*****
+    // Delete this section before submitting to appstore.
+    
+    //NSLog(@"Allow Slider");
+    self.sliderButton.enabled = YES;
+    
+    // Slider Setup
+    [self.sliderButton setTarget: self.revealViewController];
+    [self.sliderButton setAction: @selector(revealToggle:)];
+    [self.toolbar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    /*
     if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.slidergraph"]) {
         
         //NSLog(@"Allow Slider");
@@ -245,6 +257,7 @@
         [self.sliderButton setAction: @selector(revealToggle:)];
         [self.toolbar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     }
+     */
 }
 
 - (void)didReceiveMemoryWarning

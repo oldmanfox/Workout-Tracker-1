@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataNavController.h"
 #import "UITableViewController+Design.h"
+#import <iAd/iAd.h>
 
 @interface WorkoutListDoublesPhase3_2TVC : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;

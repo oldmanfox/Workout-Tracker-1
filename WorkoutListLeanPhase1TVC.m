@@ -7,6 +7,7 @@
 //
 
 #import "WorkoutListLeanPhase1TVC.h"
+#import "DWT1IAPHelper.h"
 
 @interface WorkoutListLeanPhase1TVC ()
 
@@ -27,6 +28,18 @@
 {
     [super viewDidLoad];
     
+    // Show or Hide Ads
+    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
+
     // Configure tableview.
     NSArray *tableCell = @[self.cell1,
                             self.cell2,

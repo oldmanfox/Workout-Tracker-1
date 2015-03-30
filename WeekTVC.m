@@ -32,6 +32,18 @@
     
     self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
     
+    // Show or Hide Ads
+    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        self.canDisplayBannerAds = YES;
+    }
+    
     NSArray *tableCell = @[self.cell1,
                             self.cell2,
                             self.cell3,
