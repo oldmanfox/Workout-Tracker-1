@@ -359,37 +359,44 @@
     
     if (section == 0) {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     else if (section == 1) {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     else if (section == 2) {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     else if (section == 3) {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     else if (section == 4) {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     else if (section == 5) {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     else {
         
-        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %d", ((DataNavController *)self.parentViewController).week, section + 1];
+        NSInteger tempsection = section + 1;
+        routineWeek = [((DataNavController *)self.parentViewController).routine stringByAppendingFormat:@" - %@ - Day %ld", ((DataNavController *)self.parentViewController).week, (long)tempsection];
     }
     
     return routineWeek;
