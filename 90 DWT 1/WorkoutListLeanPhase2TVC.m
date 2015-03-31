@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     // Show or Hide Ads
-    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWTBB.removeads"]) {
+    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.removeads1"]) {
         
         // User purchased the Remove Ads in-app purchase so don't show any ads.
         self.canDisplayBannerAds = NO;
