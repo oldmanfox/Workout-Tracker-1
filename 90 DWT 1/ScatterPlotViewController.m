@@ -138,10 +138,20 @@
     // 3 - Set up plot space
 	[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:aaplPlot, googPlot, nil]];
 	CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
-	[xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    
+    
+	//[xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    [xRange expandRangeByFactor:[NSNumber numberWithFloat:(1.1f)]];
+    
+    
 	plotSpace.xRange = xRange;
 	CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
-	[yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+	
+    
+    //[yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+    [yRange expandRangeByFactor:[NSNumber numberWithFloat:(1.2f)]];
+    
+    
 	plotSpace.yRange = yRange;
     
 	// 4 - Create styles and symbols
@@ -214,7 +224,12 @@
         NSString *cleanDate = [[NSString alloc] initWithString:[date substringFromIndex:5]];
 		CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:cleanDate  textStyle:x.labelTextStyle];
 		CGFloat location = i++;
-		label.tickLocation = CPTDecimalFromCGFloat(location);
+        
+        
+		//label.tickLocation = CPTDecimalFromCGFloat(location);
+        label.tickLocation = [NSNumber numberWithFloat:(location)];
+        
+        
 		label.offset = x.majorTickLength;
 		if (label) {
 			[xLabels addObject:label];
@@ -251,13 +266,19 @@
 		NSUInteger mod = j % majorIncrement;
 		if (mod == 0) {
 			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:y.labelTextStyle];
-			NSDecimal location = CPTDecimalFromInteger(j);
+            
+            
+			//NSDecimal location = CPTDecimalFromInteger(j);
+            NSNumber *location = [NSNumber numberWithInteger:j];
+            
+            
 			label.tickLocation = location;
+            
 			label.offset = -y.majorTickLength - y.labelOffset;
 			if (label) {
 				[yLabels addObject:label];
 			}
-			[yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+			[yMajorLocations addObject:location];
 		} else {
 			[yMinorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromInteger(j)]];
 		}

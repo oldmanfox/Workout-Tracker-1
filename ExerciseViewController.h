@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
 #import "DataNavController.h"
 #import "AppDelegate.h"
 #import "ResultsViewController.h"

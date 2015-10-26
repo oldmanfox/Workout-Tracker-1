@@ -10,9 +10,15 @@
 #import "DataNavController.h"
 #import "WorkoutListRecoveryTVC.h"
 #import "UITableViewController+Design.h"
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
+#import "MPAdView.h"
 
-@interface WeekTVC : UITableViewController
+@interface WeekTVC : UITableViewController <MPAdViewDelegate>
+
+@property (nonatomic) MPAdView *adView;
+
+@property (nonatomic, strong) UIView *headerView;
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell3;
