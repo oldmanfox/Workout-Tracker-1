@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) UIView *headerView;
 
+@property CGSize bannerSize;
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell3;

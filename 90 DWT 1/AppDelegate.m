@@ -53,6 +53,11 @@
     
     //[UIViewController prepareInterstitialAds];
     
+    if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.removeads1"]) {
+        
+        self.purchasedAdRemoveBeforeAppLaunch = YES;
+    }
+    
     return YES;
 }
 

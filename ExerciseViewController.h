@@ -14,8 +14,13 @@
 #import "MainTBC.h"
 #import "ScatterPlotViewController.h"
 #import "DWT1IAPHelper.h"
+#import "MPAdView.h"
 
-@interface ExerciseViewController : UIViewController <ADBannerViewDelegate>
+@interface ExerciseViewController : UIViewController <ADBannerViewDelegate, MPAdViewDelegate>
+
+@property (nonatomic) MPAdView *adView;
+
+@property CGSize bannerSize;
 
 // Current Labels
 @property (weak, nonatomic) IBOutlet UILabel *currentRepsLabel;

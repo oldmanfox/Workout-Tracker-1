@@ -41,12 +41,26 @@
         
         self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 0)];
         
-        self.adView = [[MPAdView alloc] initWithAdUnitId:@"4bed96fcb70a4371b972bf19d149e433"
-                                                    size:MOPUB_BANNER_SIZE];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            // iPhone
+            self.adView = [[MPAdView alloc] initWithAdUnitId:@"4bed96fcb70a4371b972bf19d149e433"
+                                                        size:MOPUB_BANNER_SIZE];
+            self.bannerSize = MOPUB_BANNER_SIZE;
+            
+        } else {
+            
+            // iPad
+            self.adView = [[MPAdView alloc] initWithAdUnitId:@"7c80f30698634a22b77778b084e3087e"
+                                                        size:MOPUB_LEADERBOARD_SIZE];
+            self.bannerSize = MOPUB_LEADERBOARD_SIZE;
+            
+        }
+        
         self.adView.delegate = self;
-        self.adView.frame = CGRectMake((self.view.bounds.size.width - MOPUB_BANNER_SIZE.width) / 2,
-                                       MOPUB_BANNER_SIZE.height - MOPUB_BANNER_SIZE.height,
-                                       MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
+        self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       self.bannerSize.height - self.bannerSize.height,
+                                       self.bannerSize.width, self.bannerSize.height);
         
         [self.headerView addSubview:self.adView];
         
@@ -111,9 +125,9 @@
     } else {
         
         // Show ads
-        self.adView.frame = CGRectMake((self.view.bounds.size.width - MOPUB_BANNER_SIZE.width) / 2,
-                                       MOPUB_BANNER_SIZE.height - MOPUB_BANNER_SIZE.height,
-                                       MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
+        self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       self.bannerSize.height - self.bannerSize.height,
+                                       self.bannerSize.width, self.bannerSize.height);
         self.adView.hidden = NO;
     }
 }
@@ -463,13 +477,13 @@
 {
     CGSize size = [view adContentViewSize];
     CGFloat centeredX = (self.view.bounds.size.width - size.width) / 2;
-    CGFloat bottomAlignedY = MOPUB_BANNER_SIZE.height - size.height;
+    CGFloat bottomAlignedY = self.bannerSize.height - size.height;
     view.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
     
     if (self.headerView.frame.size.height == 0) {
         
         // No ads shown yet.  Animate showing the ad.
-        CGRect headerViewFrame = CGRectMake(0, 0, self.view.bounds.size.width, MOPUB_BANNER_SIZE.height);
+        CGRect headerViewFrame = CGRectMake(0, 0, self.view.bounds.size.width, self.bannerSize.height);
         
         [UIView animateWithDuration:0.25 animations:^{ self.headerView.frame = headerViewFrame;
             self.tableView.tableHeaderView = self.headerView;
