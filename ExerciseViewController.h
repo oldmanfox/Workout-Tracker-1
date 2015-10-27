@@ -16,7 +16,7 @@
 #import "DWT1IAPHelper.h"
 #import "MPAdView.h"
 
-@interface ExerciseViewController : UIViewController <ADBannerViewDelegate, MPAdViewDelegate>
+@interface ExerciseViewController : UIViewController <MPAdViewDelegate>
 
 @property (nonatomic) MPAdView *adView;
 

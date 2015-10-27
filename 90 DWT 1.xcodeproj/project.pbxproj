@@ -2330,9 +2330,6 @@
 					"$(PROJECT_DIR)/90",
 					DWT,
 					1,
-					"$(PROJECT_DIR)/90",
-					DWT,
-					1,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2366,9 +2363,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/90",
-					DWT,
-					1,
 					"$(PROJECT_DIR)/90",
 					DWT,
 					1,
@@ -2445,9 +2439,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/90",
-					DWT,
-					1,
 					"$(PROJECT_DIR)/90",
 					DWT,
 					1,
