@@ -122,6 +122,14 @@
         
         [self.adView loadAd];
     }
+    
+    // Set Content Insets to account for the new Adview on the screen
+    CGFloat top = self.workoutSummary.contentInset.top;
+    CGFloat left = self.workoutSummary.contentInset.left;
+    CGFloat bottom = self.workoutSummary.contentInset.bottom + self.bannerSize.height;
+    CGFloat right = self.workoutSummary.contentInset.right;
+    
+    [self.workoutSummary setContentInset:UIEdgeInsetsMake(top, left, bottom, right)];
 }
 
 - (void)didReceiveMemoryWarning
