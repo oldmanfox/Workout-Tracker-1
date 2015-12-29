@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "UIViewController+Social.h"
+#import "CoreDataHelper.h"
+#import "MeasurementsNavController.h"
 
 @interface MeasurementsViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 
@@ -41,5 +43,4 @@
 - (IBAction)hideKeyboard:(id)sender;
 - (IBAction)actionSheet:(UIBarButtonItem *)sender;
 - (IBAction)saveAction:(UIButton *)sender;
-
 @end

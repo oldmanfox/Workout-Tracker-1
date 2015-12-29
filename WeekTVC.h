@@ -11,7 +11,11 @@
 #import "WorkoutListRecoveryTVC.h"
 #import "UITableViewController+Design.h"
 //#import <iAd/iAd.h>
+#import "CoreDataHelper.h"
+#import "AppDelegate.h"
+#import "Workout.h"
 #import "MPAdView.h"
+#import "UITableViewController+ConvertAllToCoreData.h"
 
 @interface WeekTVC : UITableViewController <MPAdViewDelegate>
 

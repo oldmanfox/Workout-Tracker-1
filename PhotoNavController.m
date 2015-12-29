@@ -65,6 +65,11 @@
     
 }
 
+- (void)saveImageToCoreData {
+    
+    
+}
+
 //loading an image
 
 - (UIImage*)loadImage:(NSString*)imageName {
@@ -79,6 +84,11 @@
     
 }
 
+- (void)loadImageFromCoreData {
+    
+    
+}
+
 //loading an image for email attachment
 
 - (NSData*)emailImage:(NSString *)imageName {
@@ -90,6 +100,11 @@
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.JPG", imageName]];
     
     return [NSData dataWithContentsOfFile:fullPath];
+    
+}
+
+- (void)emailImageFromCoreData {
+    
     
 }
 
@@ -108,6 +123,10 @@
     [fileManager removeItemAtPath: fullPath error:NULL];
     
     //NSLog(@"image removed");
+    
+}
+
+- (void)removeImageFromCoreData {
     
 }
 @end

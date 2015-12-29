@@ -15,6 +15,8 @@
 
 @implementation WeekTVC
 
+#define debug 0
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,8 +30,16 @@
 {
     [super viewDidLoad];
     
-    // Configure tableview.
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
     
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
+
     self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
     
     // Show or Hide Ads
@@ -98,6 +108,12 @@
                                 @YES,
                                 @YES];
     [self configureTableView:tableCell :accessoryIcon];
+    
+    [self convertPhotosToCoreData];
+    [self convertMeasurementsToCoreData];
+    [self convertSettingsToCoreData];
+    [self addSession1ToExistingCoreDataObjects];
+    [self findAutoLockSetting];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -121,29 +137,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    // Get path to documents directory
-    NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *defaultWorkoutFile = nil;
-    defaultWorkoutFile = [docDir stringByAppendingPathComponent:@"Default Workout.out"];
-    
-    if  ([[NSFileManager defaultManager] fileExistsAtPath:defaultWorkoutFile]) {
-        
-        // File has already been created. Get value of routine from it.
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:defaultWorkoutFile];
-        self.navigationItem.title = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
-        [fileHandle closeFile];
-        
-        ((DataNavController *)self.parentViewController).routine = self.navigationItem.title;
-    }
-    
-    else {
-        
-        // File has not been created so this is the first time the app has been opened or user has not changed workout.
-        ((DataNavController *)self.parentViewController).routine = @"Normal";
-        self.navigationItem.title = ((DataNavController *)self.parentViewController).routine;
-    }
-    
-    //NSLog(@"Routine = %@", ((DataNavController *)self.parentViewController).routine);
+    [self findDefaultRoutine];
     
     // Show or Hide Ads
     if ([[DWT1IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT1.removeads1"]) {
@@ -359,5 +353,89 @@
     self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
     
     self.adView.hidden = NO;
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        
+        [self performSelector:@selector(findDefaultRoutine) withObject:nil afterDelay:5.0 ];
+    }
+    else {
+        [self findDefaultRoutine];
+        [self findAutoLockSetting];
+    }
+}
+
+- (void)findDefaultRoutine {
+    
+    // Fetch defaultRoutine objects
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Routine" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] != 0) {
+        
+        // Object has already been created. Get value of routine from it.
+        matches = objects[[objects count] - 1];
+        self.navigationItem.title = [matches valueForKey:@"defaultRoutine"];
+        ((DataNavController *)self.parentViewController).routine = self.navigationItem.title;
+    }
+    else {
+        
+        // Object has not been created so this is the first time the app has been opened.
+        ((DataNavController *)self.parentViewController).routine = @"Normal";
+        self.navigationItem.title = ((DataNavController *)self.parentViewController).routine;
+    }
+}
+
+- (void)findAutoLockSetting {
+    
+    // Fetch useBands objects
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"AutoLock" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    NSString *coredataAutoLockSetting;
+    
+    if ([objects count] != 0) {
+        
+        // Object has already been created. Get value of autolock from it.
+        matches = objects[[objects count] - 1];
+        
+        coredataAutoLockSetting = [matches valueForKey:@"useAutoLock"];
+    }
+    
+    else {
+        
+        // No matches.
+        if (debug==1) {
+            NSLog(@"No match found");
+        }
+        
+        // Default setting is OFF
+        coredataAutoLockSetting = @"OFF";
+    }
+    
+    if ([coredataAutoLockSetting isEqualToString:@"ON"]) {
+        
+        // User wants to disable the autolock timer.
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+    }
+    
+    else {
+        // User doesn't want to disable the autolock timer.
+        [UIApplication sharedApplication].idleTimerDisabled = NO;
+    }
 }
 @end

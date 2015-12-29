@@ -41,12 +41,6 @@
                                 @YES,
                                 @YES];
     [self configureTableView:tableCell :accessoryIcon];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -80,6 +74,28 @@
 
 #pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        if (indexPath.row == 0) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"1";
+        }
+        
+        if (indexPath.row == 1) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"2";
+        }
+        
+        if (indexPath.row == 2) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"3";
+        }
+        
+        if (indexPath.row == 3) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"4";
+        }
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Set navigation bar title
@@ -87,6 +103,6 @@
     MeasurementsViewController *mvc = (MeasurementsViewController *)segue.destinationViewController;
     MeasurementsReportViewController *mrvc = (MeasurementsReportViewController *)segue.destinationViewController;
     mvc.navigationItem.title = segue.identifier;
-    mrvc.navigationItem.title = segue.identifier;    
+    mrvc.navigationItem.title = segue.identifier;
 }
 @end
