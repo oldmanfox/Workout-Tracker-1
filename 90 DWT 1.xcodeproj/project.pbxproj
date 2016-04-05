@@ -209,7 +209,6 @@
 		A505C0B51CB41AE7001D56DD /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A505BFF81CB41AE7001D56DD /* MPRewardedVideoReward.m */; };
 		A505C0B61CB41BF5001D56DD /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A505BE6E1CB41AE7001D56DD /* GoogleMobileAds.framework */; };
 		A505C0B71CB41C30001D56DD /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A505BE7B1CB41AE7001D56DD /* MMAdSDK.framework */; };
-		A505C0B81CB41FB7001D56DD /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD1F01BD7F7DA00488F52 /* libCorePlot-CocoaTouch.a */; };
 		A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287719E9962400CBCE86 /* OpenGLES.framework */; };
 		A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287919E9963D00CBCE86 /* CoreText.framework */; };
 		A518AA481C0E182D0042B4CD /* UITableViewController+ConvertAllToCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = A518AA471C0E182D0042B4CD /* UITableViewController+ConvertAllToCoreData.m */; };
@@ -300,6 +299,7 @@
 		A5C8242C16763C41002ACE3D /* UITableViewController+Design.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8242916763C41002ACE3D /* UITableViewController+Design.m */; };
 		A5C8242D16763C41002ACE3D /* UIViewController+Social.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8242B16763C41002ACE3D /* UIViewController+Social.m */; };
 		A5C8243416763F7A002ACE3D /* MainTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C8243316763F7A002ACE3D /* MainTBC.m */; };
+		A5CDAD6A1CB4256D0057EE8A /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD1F01BD7F7DA00488F52 /* libCorePlot-CocoaTouch.a */; };
 		A5CE5F1F1AC9C1AA002ECE73 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CE5F1E1AC9C1AA002ECE73 /* Accelerate.framework */; };
 		A5D3E1B31832D3A500814553 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D3E1B21832D3A500814553 /* Images.xcassets */; };
 		A5E46D1F1BF659D100B4FBAE /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E46D121BF659D100B4FBAE /* CoreDataHelper.m */; };
@@ -955,7 +955,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A505C0B81CB41FB7001D56DD /* libCorePlot-CocoaTouch.a in Frameworks */,
+				A5CDAD6A1CB4256D0057EE8A /* libCorePlot-CocoaTouch.a in Frameworks */,
 				A505C0B71CB41C30001D56DD /* MMAdSDK.framework in Frameworks */,
 				A505C0B61CB41BF5001D56DD /* GoogleMobileAds.framework in Frameworks */,
 				A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */,
@@ -2542,7 +2542,12 @@
 				INFOPLIST_FILE = "90 DWT 1/90 DWT 1-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/90 DWT 1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/90",
+					DWT,
+					1,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.-0-DWT-1";
@@ -2574,7 +2579,12 @@
 				INFOPLIST_FILE = "90 DWT 1/90 DWT 1-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/90 DWT 1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/90",
+					DWT,
+					1,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.-0-DWT-1";
@@ -2640,7 +2650,12 @@
 				INFOPLIST_FILE = "90 DWT 1/90 DWT 1-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/90 DWT 1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/90",
+					DWT,
+					1,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.-0-DWT-1";
