@@ -900,17 +900,17 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             let destinationNavController = segue.destination as? UINavigationController
             let destinationVC = destinationNavController?.topViewController as! ExerciseChartViewController
             
-            destinationVC.session = session
-            destinationVC.workoutRoutine = workoutRoutine
-            destinationVC.selectedWorkout = selectedWorkout
-            destinationVC.workoutIndex = workoutIndex
+            destinationVC.session = self.session
+            destinationVC.workoutRoutine = self.workoutRoutine
+            destinationVC.selectedWorkout = self.selectedWorkout
+            destinationVC.workoutIndex = self.workoutIndex
             
             let button = sender as! UIButton
             let view = button.superview
             let cell = view?.superview as! WorkoutTVC_WorkoutTableViewCell
             
             destinationVC.exerciseName = cell.nonUpperCaseExerciseName
-            destinationVC.navigationItem.title = selectedWorkout
+            destinationVC.navigationItem.title = CDOperation.trimStringForWorkoutName(self.selectedWorkout)
             
             // Find the number of series to show on the graph and pass it to ExerciseChartViewController
             // Find the series configuration to layout the graph and pass it to ExerciseChartViewController

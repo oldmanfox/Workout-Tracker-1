@@ -13,7 +13,6 @@
 		A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287719E9962400CBCE86 /* OpenGLES.framework */; };
 		A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287919E9963D00CBCE86 /* CoreText.framework */; };
 		A517ABC21E4E65C90021C359 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A517ABC11E4E65C90021C359 /* Chartboost.framework */; };
-		A531361E1E48F1F000769EFF /* ExerciseLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531361D1E48F1F000769EFF /* ExerciseLineChartViewController.swift */; };
 		A53136251E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */; };
 		A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62BF15CB0FC70085C0E5 /* UIKit.framework */; };
 		A54B62C215CB0FC70085C0E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62C115CB0FC70085C0E5 /* Foundation.framework */; };
@@ -296,7 +295,6 @@
 		A513287719E9962400CBCE86 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A513287919E9963D00CBCE86 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		A517ABC11E4E65C90021C359 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
-		A531361D1E48F1F000769EFF /* ExerciseLineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseLineChartViewController.swift; sourceTree = "<group>"; };
 		A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTVC_ShuffleTableViewCell.swift; sourceTree = "<group>"; };
 		A54B62BB15CB0FC70085C0E5 /* 90 DWT 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54B62BF15CB0FC70085C0E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1635,7 +1633,6 @@
 				A5F92F251E43DAC200D115A4 /* PrivateHeaders */,
 				A5F92F281E43DAC200D115A4 /* ShinobiCharts */,
 				A5F92F2A1E43DB0700D115A4 /* ExerciseChartViewController.swift */,
-				A531361D1E48F1F000769EFF /* ExerciseLineChartViewController.swift */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -2080,7 +2077,6 @@
 				A5F92F711E43DC0D00D115A4 /* PhotoTVC.swift in Sources */,
 				A5F92E351E43D8E400D115A4 /* MPNativePositionSource.m in Sources */,
 				A5F92E2C1E43D8E400D115A4 /* MPImageDownloadQueue.m in Sources */,
-				A531361E1E48F1F000769EFF /* ExerciseLineChartViewController.swift in Sources */,
 				A5F92E121E43D8E400D115A4 /* MPVASTAd.m in Sources */,
 				A5F92F871E43DCBE00D115A4 /* NotesViewController.swift in Sources */,
 				A5F92E2F1E43D8E400D115A4 /* MPNativeAd+Internal.m in Sources */,

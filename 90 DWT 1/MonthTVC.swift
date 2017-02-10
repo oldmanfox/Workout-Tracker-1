@@ -399,9 +399,11 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     self.indexPath = tempIndexPath
                     
                     // get affected cell
-                    let cell = self.tableView.cellForRow(at: self.indexPath)
+                    let cell = self.tableView.cellForRow(at: self.indexPath) as! MonthTVC_TableViewCell
                     
-                    let tempMessage = ("Set the status for all \(CDOperation.getCurrentRoutine())-\(cell!.textLabel!.text!) workouts.")
+                    let titleText = cell.titleLabel.text
+                    
+                    let tempMessage = ("Set the status for all \(CDOperation.getCurrentRoutine())-\(titleText!) workouts.")
                     
                     let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
                     
@@ -429,7 +431,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                         
                         popover.sourceView = cell
                         popover.delegate = self
-                        popover.sourceRect = (cell?.bounds)!
+                        popover.sourceRect = (cell.bounds)
                         popover.permittedArrowDirections = .any
                     }
                     
@@ -617,11 +619,13 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     func verifyAddDeleteRequestFromTableViewCell() {
         
         // get affected cell
-        let cell = self.tableView.cellForRow(at: self.indexPath)
+        let cell = self.tableView.cellForRow(at: self.indexPath) as! MonthTVC_TableViewCell
         
         self.position = self.findArrayPosition(self.indexPath)
         
-        let tempMessage = ("You are about to set the status for all \(CDOperation.getCurrentRoutine())-\(cell!.textLabel!.text!) workouts to:\n\n\(self.request)\n\nDo you want to proceed?")
+        let titleText = cell.titleLabel.text
+        
+        let tempMessage = ("You are about to set the status for all \(CDOperation.getCurrentRoutine())-\(titleText!) workouts to:\n\n\(self.request)\n\nDo you want to proceed?")
         
         let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
