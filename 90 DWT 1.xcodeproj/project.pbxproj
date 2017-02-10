@@ -12,6 +12,7 @@
 		580E7DF117432EA00088AB0A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580E7DF017432E9F0088AB0A /* Security.framework */; };
 		A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287719E9962400CBCE86 /* OpenGLES.framework */; };
 		A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287919E9963D00CBCE86 /* CoreText.framework */; };
+		A517ABC21E4E65C90021C359 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A517ABC11E4E65C90021C359 /* Chartboost.framework */; };
 		A531361E1E48F1F000769EFF /* ExerciseLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531361D1E48F1F000769EFF /* ExerciseLineChartViewController.swift */; };
 		A53136251E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */; };
 		A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62BF15CB0FC70085C0E5 /* UIKit.framework */; };
@@ -39,7 +40,6 @@
 		A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */; };
 		A5AE49A71E43E43D00E0BEB6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */; };
 		A5AE49C31E43E45200E0BEB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C21E43E45200E0BEB6 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A5AE49C51E43E49100E0BEB6 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C41E43E49100E0BEB6 /* Chartboost.framework */; };
 		A5AE49C71E43E75200E0BEB6 /* ShinobiCharts in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */; };
 		A5AE49DA1E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49C81E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift */; };
 		A5AE49DB1E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49C91E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift */; };
@@ -295,6 +295,7 @@
 		580E7DF017432E9F0088AB0A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A513287719E9962400CBCE86 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A513287919E9963D00CBCE86 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A517ABC11E4E65C90021C359 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		A531361D1E48F1F000769EFF /* ExerciseLineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseLineChartViewController.swift; sourceTree = "<group>"; };
 		A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTVC_ShuffleTableViewCell.swift; sourceTree = "<group>"; };
 		A54B62BB15CB0FC70085C0E5 /* 90 DWT 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,7 +326,6 @@
 		A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A5AE49C21E43E45200E0BEB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		A5AE49C41E43E49100E0BEB6 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = ShinobiCharts; path = ../../../../Downloads/ShinobiCharts_Premium/ShinobiCharts.framework/ShinobiCharts; sourceTree = "<group>"; };
 		A5AE49C81E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5AE49C91E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -947,6 +947,7 @@
 				A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */,
 				A55DD44D1BD8407B00488F52 /* libxml2.tbd in Frameworks */,
 				A5AE49C71E43E75200E0BEB6 /* ShinobiCharts in Frameworks */,
+				A517ABC21E4E65C90021C359 /* Chartboost.framework in Frameworks */,
 				A55DD44A1BD8403E00488F52 /* EventKit.framework in Frameworks */,
 				A55DD44B1BD8403E00488F52 /* EventKitUI.framework in Frameworks */,
 				A55DD4471BD8402900488F52 /* CoreMedia.framework in Frameworks */,
@@ -962,7 +963,6 @@
 				A55DD4411BD83FBE00488F52 /* CoreTelephony.framework in Frameworks */,
 				A55DD43F1BD83FB600488F52 /* CoreLocation.framework in Frameworks */,
 				A54B62C415CB0FC70085C0E5 /* CoreGraphics.framework in Frameworks */,
-				A5AE49C51E43E49100E0BEB6 /* Chartboost.framework in Frameworks */,
 				A55DD43D1BD83FA400488F52 /* AVFoundation.framework in Frameworks */,
 				A54B62E315CB115D0085C0E5 /* AudioToolbox.framework in Frameworks */,
 				A55DD43B1BD83F9000488F52 /* AdSupport.framework in Frameworks */,
@@ -1001,8 +1001,8 @@
 		A54B62BE15CB0FC70085C0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A517ABC11E4E65C90021C359 /* Chartboost.framework */,
 				A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */,
-				A5AE49C41E43E49100E0BEB6 /* Chartboost.framework */,
 				A5AE49C21E43E45200E0BEB6 /* WebKit.framework */,
 				A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */,
 				A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */,
@@ -2394,7 +2394,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -2425,7 +2425,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -2491,7 +2491,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
