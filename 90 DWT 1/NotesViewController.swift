@@ -22,6 +22,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
     var workoutIndex = 0
     var originalNoteText = ""
     var workoutWeek = ""
+    var month = ""
 
     var adView = MPAdView()
     var bannerSize = CGSize()
@@ -78,17 +79,18 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
         else {
             
-            // Show the Banner Ad
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
-                self.adView = MPAdView(adUnitId: "fafc7a2b987947b4ab04a50837c9c157", size: MOPUB_BANNER_SIZE)
+                // Month Ad Unit
+                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
                 self.bannerSize = MOPUB_BANNER_SIZE
             }
             else {
                 
                 // iPad
-                self.adView = MPAdView(adUnitId: "e7644c669987496b9bfbf86d4265d9e3", size: MOPUB_LEADERBOARD_SIZE)
+                // Month Ad Unit
+                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
             
@@ -181,7 +183,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         if currentNotes.text != "" && currentNotes.text != originalNoteText {
             
-            CDOperation.saveNoteWithPredicateNoExercise(session, routine: workoutRoutine, workout: selectedWorkout, week: workoutWeek, index: workoutIndex as NSNumber, note: currentNotes.text, round: "Round 1")
+            CDOperation.saveNoteWithPredicateNoExercise(session, routine: workoutRoutine, workout: selectedWorkout, month: month, week: workoutWeek, index: workoutIndex as NSNumber, note: currentNotes.text, round: "Round 1")
         }
     }
     

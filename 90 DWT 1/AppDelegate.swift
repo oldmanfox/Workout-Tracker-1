@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         // Initialize rewarded video before loading any ads.
         MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: nil, delegate: self)
         
+        CoreDataHelper.shared().iCloudAccountIsSignedIn()
+        
         return true
     }
     

@@ -20,8 +20,10 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     var workoutRoutine = ""
     var selectedWorkout = ""
     var workoutWeek = ""
+    var month = ""
     var workoutIndex = 0
     var graphButtonText = "Reward Video = 1hr Graph"
+    var segmentedControlTitle = "Round 1"
     
     var graphViewPurchased = false
     var adView = MPAdView()
@@ -41,6 +43,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         static let straight_1 = "WorkoutCell_Straight_1"
         static let straight_2 = "WorkoutCell_Straight_2"
         //static let straight_3 = "WorkoutCell_Straight_3"
+        static let shuffle = "ShuffleCell"
         static let completion = "CompletionCell"
     }
     
@@ -67,7 +70,15 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadExerciseNameArray(selectedWorkout)
+        if segmentedControlTitle == "Round 1" {
+            
+            loadExerciseNameArray(selectedWorkout)
+        }
+        else {
+            
+            // Will only be "Chest + Back & Ab Workout" so no argument needs to be passed.
+            loadShuffledExerciseNameArray()
+        }
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 88
@@ -89,15 +100,15 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
-                // Workout Ad Unit
-                self.adView = MPAdView(adUnitId: "b07a306314f545b38f6223cf6b403313", size: MOPUB_BANNER_SIZE)
+                // Month Ad Unit
+                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
                 self.bannerSize = MOPUB_BANNER_SIZE
             }
             else {
                 
                 // iPad
-                // Workout Ad Unit
-                self.adView = MPAdView(adUnitId: "1cddea5ee8f241b6a7ecef2829bf5b53", size: MOPUB_LEADERBOARD_SIZE)
+                // Month Ad Unit
+                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
             
@@ -154,8 +165,6 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                                            width: self.bannerSize.width, height: self.bannerSize.height)
             self.adView.isHidden = false
         }
-        
-        
         
         // Setup timer if reward video was viewed
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -390,7 +399,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                 
                 let cellIdentifier = cellIdentifierArray[0]
                 
-                if cellIdentifier != "CompletionCell" {
+                if cellIdentifier == "WorkoutCell_Straight_1" || cellIdentifier == "WorkoutCell_Straight_2" {
                     
                     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WorkoutTVC_WorkoutTableViewCell
                     
@@ -403,6 +412,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     cell.workoutIndex = workoutIndex // Index of the workout in the program
                     cell.session = session
                     cell.workoutWeek = workoutWeek
+                    cell.month = month
 
                     if let roundNumbers = workoutObject[1] as? [String] {
                         
@@ -513,7 +523,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     cell.previousNotes.text = "PREVIOUS NOTES"
 
                     // Current Weight Fields and Notes
-                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: workoutIndex as NSNumber)  as? [Workout] {
+                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: workoutIndex as NSNumber) as? [Workout] {
                         
                         if debug == 1 {
                             
@@ -643,7 +653,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     }
 
                     // Previous Weight Fields
-                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: workoutIndex - 1 as NSNumber)  as? [Workout] {
+                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: (workoutIndex - 1) as NSNumber) as? [Workout] {
                         
                         if debug == 1 {
                             
@@ -757,8 +767,39 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     
                     return cell
                 }
+                else if cellIdentifier == "ShuffleCell" {
+                    
+                    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WorkoutTVC_ShuffleTableViewCell
+                    
+                    cell.segmentedControlTap = { (WorkoutTVC_ShuffleTableViewCell) in
+                        
+                        // Add Code here
+                        self.segmentedControlTitle = cell.roundSegmentedControl.titleForSegment(at: cell.roundSegmentedControl.selectedSegmentIndex)!
+                        
+                        if self.segmentedControlTitle == "Round 1" {
+                            
+                            self.loadExerciseNameArray(self.selectedWorkout)
+                        }
+                        else {
+                            
+                            // Round 2
+                            self.loadShuffledExerciseNameArray()
+                        }
+                        
+                        //  Reload tableview and scroll to the top.
+                        self.tableView.reloadData()
+                        
+                        var newIndexPath = indexPath
+                        newIndexPath.section = 0
+                        newIndexPath.row = 0
+                        self.tableView.scrollToRow(at: newIndexPath, at: UITableViewScrollPosition.none, animated: true)
+                    }
+                    
+                    return cell
+                }
                 else {
                     
+                    // CompletionCell
                     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WorkoutTVC_CompletionTableViewCell
                     
                     cell.workoutRoutine = workoutRoutine // Bulk or Tone
@@ -766,7 +807,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     cell.workoutIndex = workoutIndex // Index of the workout in the program
                     cell.session = session
                     cell.indexPath = indexPath
-
+                    
                     cell.updateWorkoutCompleteCellUI()
                     
                     cell.previousDateButton.addTarget(self, action: #selector(WorkoutTVC.previousButtonPressed(_:)), for: .touchUpInside)
@@ -871,15 +912,47 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             destinationVC.exerciseName = cell.nonUpperCaseExerciseName
             destinationVC.navigationItem.title = selectedWorkout
             
-//            let graphDataPoints = [cell.repNumberLabel1.text,
-//                                   cell.repNumberLabel2.text,
-//                                   cell.repNumberLabel3.text,
-//                                   cell.repNumberLabel4.text,
-//                                   cell.repNumberLabel5.text,
-//                                   cell.repNumberLabel6.text]
-//            
-//            destinationVC.graphDataPoints = graphDataPoints
-            
+            // Find the number of series to show on the graph and pass it to ExerciseChartViewController
+            // Find the series configuration to layout the graph and pass it to ExerciseChartViewController
+            // 0 = OFF
+            // 1 = ON
+            if cell.currentRep1.isHidden == false &&
+                cell.currentRep2.isHidden == false &&
+                cell.currentWeight1.isHidden == false &&
+                cell.currentWeight2.isHidden == false {
+                
+                //  Both round 1 and round 2 Reps and Weight fields are showing
+                destinationVC.numberOfSeriesToShow = 4
+                destinationVC.seriesConfiguration = 1111 // ON, ON, ON, ON
+            }
+            else if cell.currentRep1.isHidden == false &&
+                cell.currentRep2.isHidden == false &&
+                cell.currentWeight1.isHidden == true &&
+                cell.currentWeight2.isHidden == true {
+                
+                //  Only round 1 and round 2 Reps fields are showing
+                destinationVC.numberOfSeriesToShow = 2
+                destinationVC.seriesConfiguration = 1010 // ON, OFF, ON, OFF
+            }
+            else if cell.currentRep1.isHidden == false &&
+                cell.currentRep2.isHidden == true &&
+                cell.currentWeight1.isHidden == false &&
+                cell.currentWeight2.isHidden == true {
+                
+                //  Only round 1 Reps and Weight fields are showing
+                destinationVC.numberOfSeriesToShow = 2
+                destinationVC.seriesConfiguration = 1100 // ON, ON, OFF, OFF
+            }
+            else if cell.currentRep1.isHidden == false &&
+                cell.currentRep2.isHidden == true &&
+                cell.currentWeight1.isHidden == true &&
+                cell.currentWeight2.isHidden == true {
+                
+                //  Only round 1 Reps fields are showing
+                destinationVC.numberOfSeriesToShow = 1
+                destinationVC.seriesConfiguration = 1000 // ON, OFF, OFF, OFF
+            }
+
             let exerciseName = cell.nonUpperCaseExerciseName
             
             if debug == 1 {
@@ -983,6 +1056,13 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                           [false, false, false, false, true, true],
                           [CellType.straight_2]]
             
+            let cell13 = [["Shuffle The Next Round"],
+                          [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                          [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                          [Color.light,Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                          [false, false, false, false, true, true],
+                          [CellType.shuffle]]
+            
             let completeCell = [[],
                                 [],
                                 [],
@@ -992,7 +1072,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             
             cellArray = [[cell1, cell2, cell3, cell4],
                          [cell5, cell6, cell7, cell8],
-                         [cell9, cell10, cell11, cell12],
+                         [cell9, cell10, cell11, cell12, cell13],
                          [completeCell]]
             
         case "Shoulders + Arms & Ab Workout":
@@ -1844,6 +1924,114 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         default:
             break
         }
+    }
+    
+    func loadShuffledExerciseNameArray() {
+        
+        // Shuffled cells for "Chest + Back & Ab Workout"
+        
+        let cell1 = [["Wide Pull-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true],
+                     [CellType.straight_2]]
+        
+        let cell2 = [["Push-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true], // isHidden
+            [CellType.straight_2]]
+                
+        let cell3 = [["Underhand Pull-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true],
+                     [CellType.straight_2]]
+        
+        let cell4 = [["Shoulder Width Push-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true],
+                     [CellType.straight_2]]
+        
+        let cell5 = [["Narrow Pull-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true],
+                     [CellType.straight_2]]
+        
+        let cell6 = [["Wide Push-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true],
+                     [CellType.straight_2]]
+        
+        let cell7 = [["Bent Over Rows"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, false, false, false, true, true],
+                     [CellType.straight_2]]
+        
+        let cell8 = [["Decline Push-Ups"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, true, false, true, true, true],
+                     [CellType.straight_2]]
+        
+        let cell9 = [["Single Arm Bent Over Rows"],
+                     [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                     [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                     [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                     [false, false, false, false, true, true],
+                     [CellType.straight_2]]
+        
+        let cell10 = [["Diamonds"],
+                      [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                      [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                      [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                      [false, true, false, true, true, true],
+                      [CellType.straight_2]]
+        
+        let cell11 = [["Seated Back Flys"],
+                      [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                      [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                      [Color.light,Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                      [false, false, false, false, true, true],
+                      [CellType.straight_2]]
+        
+        let cell12 = [["Under The Wall"],
+                      [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                      [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                      [Color.light, Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                      [false, true, false, true, true, true],
+                      [CellType.straight_2]]
+        
+        let cell13 = [["Shuffle The Next Round"],
+                      [Round.round1, Round.round2, Round.empty, Round.empty, Round.empty, Round.empty],
+                      [LabelType.reps, LabelType.weight, LabelType.reps, LabelType.weight, LabelType.empty, LabelType.empty],
+                      [Color.light,Color.light, Color.dark, Color.dark, UIColor.white, UIColor.white],
+                      [false, false, false, false, true, true],
+                      [CellType.shuffle]]
+        
+        let completeCell = [[],
+                            [],
+                            [],
+                            [],
+                            [],
+                            [CellType.completion]]
+        
+        cellArray = [[cell1, cell2, cell3, cell4],
+                     [cell5, cell6, cell7, cell8],
+                     [cell9, cell10, cell11, cell12, cell13],
+                     [completeCell]]
     }
     
     // MARK: - <MPAdViewDelegate>

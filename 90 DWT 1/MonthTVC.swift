@@ -81,6 +81,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
             
+            
             self.adView.delegate = self
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
                                            y: self.bannerSize.height - self.bannerSize.height,
@@ -160,8 +161,8 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             
             // Show ads
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           y: self.bannerSize.height - self.bannerSize.height,
-                                           width: self.bannerSize.width, height: self.bannerSize.height)
+                                                     y: self.bannerSize.height - self.bannerSize.height,
+                                                     width: self.bannerSize.width, height: self.bannerSize.height)
             self.adView.isHidden = false
         }
 
@@ -329,6 +330,21 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             destinationVC?.session = session
             destinationVC?.workoutRoutine = navigationItem.title!
             destinationVC?.workoutWeek = (sectionsArray[(selectedRow?.section)!][(selectedRow?.row)!] as? String)!
+            
+            switch (selectedRow?.section)! as Int {
+            case 0:
+                
+                // Month 1
+                destinationVC?.month = "Month 1"
+            case 1:
+                
+                // Month 2
+                destinationVC?.month = "Month 2"
+
+            default:
+                // Month 3
+                destinationVC?.month = "Month 3"
+            }
         }
     }
     
@@ -2076,9 +2092,9 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             UIView.animate(withDuration: 0.25, animations: {self.headerView.frame = headerViewFrame
                 self.tableView.tableHeaderView = self.headerView
                 self.adView.isHidden = true},
-                                       completion: {(finished: Bool) in
-                                        self.adView.isHidden = false
-                                        
+                           completion: {(finished: Bool) in
+                            self.adView.isHidden = false
+                            
             })
         }
         else {

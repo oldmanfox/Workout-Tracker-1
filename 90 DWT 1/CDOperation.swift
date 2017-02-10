@@ -175,7 +175,7 @@ class CDOperation {
         return newObject 
     }
     
-    class func saveRepsWithPredicate(_ session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, reps: String, round: String) {
+    class func saveRepsWithPredicate(_ session: String, routine: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, reps: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -209,6 +209,7 @@ class CDOperation {
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
+                    insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
                     insertWorkoutInfo.exercise = exercise
                     insertWorkoutInfo.round = round
@@ -253,7 +254,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
 
-    class func saveWeightWithPredicate(_ session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, weight: String, round: String) {
+    class func saveWeightWithPredicate(_ session: String, routine: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, weight: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -287,6 +288,7 @@ class CDOperation {
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
+                    insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
                     insertWorkoutInfo.exercise = exercise
                     insertWorkoutInfo.round = round
@@ -331,7 +333,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func saveNoteWithPredicate(_ session: String, routine: String, workout: String, week: String, exercise: String, index: NSNumber, note: String, round: String) {
+    class func saveNoteWithPredicate(_ session: String, routine: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, note: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -365,6 +367,7 @@ class CDOperation {
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
+                    insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
                     insertWorkoutInfo.exercise = exercise
                     insertWorkoutInfo.round = round
@@ -409,7 +412,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func saveNoteWithPredicateNoExercise(_ session: String, routine: String, workout: String, week: String, index: NSNumber, note: String, round: String) {
+    class func saveNoteWithPredicateNoExercise(_ session: String, routine: String, workout: String, month: String, week: String, index: NSNumber, note: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -442,6 +445,7 @@ class CDOperation {
                     insertWorkoutInfo.session = session
                     insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
+                    insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
                     insertWorkoutInfo.round = round
                     insertWorkoutInfo.index = index
@@ -534,7 +538,54 @@ class CDOperation {
         return []
     }
     
-    class func getWeightTextForExerciseRound(_ session: String, routine: String, workout: String, exercise: String, round: NSNumber, index: NSNumber) -> String? {
+    class func getRepsTextForExerciseRound(_ session: String, routine: String, workout: String, exercise: String, round: String, index: NSNumber) -> String? {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
+        let sortDate = NSSortDescriptor( key: "date", ascending: true)
+        request.sortDescriptors = [sortDate]
+        
+        // Reps with index and round
+        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round = %@",
+                                 session,
+                                 routine,
+                                 workout,
+                                 exercise,
+                                 index,
+                                 round)
+        
+        request.predicate = filter
+        
+        do {
+            if let workoutObjects = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
+                
+                //print("workoutObjects.count = \(workoutObjects.count)")
+                
+                switch workoutObjects.count {
+                case 0:
+                    // No matches for this object.
+                    
+                    return "0.0"
+                    
+                case 1:
+                    let matchedWorkoutInfo = workoutObjects[0]
+                    
+                    return matchedWorkoutInfo.reps
+                    
+                default:
+                    // More than one match
+                    // Sort by most recent date and pick the newest
+                    // print("More than one match for object")
+                    let matchedWorkoutInfo = workoutObjects.last
+                    
+                    return matchedWorkoutInfo!.reps
+                }
+            }
+        } catch { print(" ERROR executing a fetch request: \( error)") }
+        
+        return "0.0"
+    }
+    
+    class func getWeightTextForExerciseRound(_ session: String, routine: String, workout: String, exercise: String, round: String, index: NSNumber) -> String? {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
@@ -565,7 +616,14 @@ class CDOperation {
                 case 1:
                     let matchedWorkoutInfo = workoutObjects[0]
                     
-                    return matchedWorkoutInfo.weight
+                    if matchedWorkoutInfo.weight == nil || matchedWorkoutInfo.weight == "" {
+                        
+                        return "0.0"
+                    }
+                    else {
+                        
+                        return matchedWorkoutInfo.weight
+                    }
                     
                 default:
                     // More than one match
@@ -573,7 +631,14 @@ class CDOperation {
                     // print("More than one match for object")
                     let matchedWorkoutInfo = workoutObjects.last
                     
-                    return matchedWorkoutInfo!.weight
+                    if matchedWorkoutInfo?.weight == nil || matchedWorkoutInfo?.weight == "" {
+                        
+                        return "0.0"
+                    }
+                    else {
+                        
+                        return matchedWorkoutInfo?.weight
+                    }
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }

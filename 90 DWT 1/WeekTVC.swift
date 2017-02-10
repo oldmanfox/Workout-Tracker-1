@@ -23,6 +23,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
     var workoutRoutine = ""
     var session = ""
     var workoutWeek = ""
+    var month = ""
     
     var adView = MPAdView()
     var headerView = UIView()
@@ -89,15 +90,15 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
-                // Week Ad Unit
-                self.adView = MPAdView(adUnitId: "2873fe37e0974d3b8e006f5039df0f82", size: MOPUB_BANNER_SIZE)
+                // Month Ad Unit
+                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
                 self.bannerSize = MOPUB_BANNER_SIZE
             }
             else {
                 
                 // iPad
-                // Week Ad Unit
-                self.adView = MPAdView(adUnitId: "d96a62c382c344a19845448de04fc12e", size: MOPUB_LEADERBOARD_SIZE)
+                // Month Ad Unit
+                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
             
@@ -591,7 +592,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             
         case "Tan":
             cell.dayOfWeekTextField.backgroundColor = UIColor(red: 254/255, green: 211/255, blue: 150/255, alpha: 1.0)
-            cell.dayOfWeekTextField.textColor = UIColor.white
+            cell.dayOfWeekTextField.textColor = UIColor.black
             
         case "White":
             cell.dayOfWeekTextField.backgroundColor = UIColor.white
@@ -700,6 +701,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             destinationVC!.workoutRoutine = self.workoutRoutine
             destinationVC?.session = self.session
             destinationVC?.workoutWeek = self.workoutWeek
+            destinationVC?.month = self.month
         }
         else {
             // NotesViewController
@@ -713,6 +715,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             destinationVC!.workoutRoutine = self.workoutRoutine
             destinationVC?.session = self.session
             destinationVC!.workoutWeek = self.workoutWeek
+            destinationVC?.month = self.month
         }
     }
     
@@ -1602,9 +1605,9 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             UIView.animate(withDuration: 0.25, animations: {self.headerView.frame = headerViewFrame
                 self.tableView.tableHeaderView = self.headerView
                 self.adView.isHidden = true},
-                                       completion: {(finished: Bool) in
-                                        self.adView.isHidden = false
-                                        
+                           completion: {(finished: Bool) in
+                            self.adView.isHidden = false
+                            
             })
         }
         else {

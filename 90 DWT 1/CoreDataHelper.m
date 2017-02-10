@@ -30,7 +30,7 @@
 }
 
 #pragma mark - FILES
-NSString *storeFilename = @"_0_DWT_BB.sqlite";
+NSString *storeFilename = @"_0_DWT_1.sqlite";
 NSString *sourceStoreFilename = @"DefaultData.sqlite";
 NSString *iCloudStoreFilename = @"iCloud.sqlite";
 
@@ -1008,7 +1008,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     @{
       NSMigratePersistentStoresAutomaticallyOption:@YES
       ,NSInferMappingModelAutomaticallyOption:@YES
-      ,NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_BB"
+      ,NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_1"
       //,NSPersistentStoreUbiquitousContentURLKey:@"ChangeLogs" // Optional since iOS7
       };
     NSError *error;
@@ -1329,7 +1329,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     
     NSDictionary *options =
     @{
-      NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_BB"
+      NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_1"
       //,NSPersistentStoreUbiquitousContentURLKey:@"ChangeLogs" // Optional since iOS7
       };
     NSError *error;
