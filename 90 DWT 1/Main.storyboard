@@ -716,6 +716,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFU-qx-a2i">
                                             <rect key="frame" x="45.5" y="140" width="100" height="50"/>
                                             <color key="backgroundColor" red="0.33725490196078434" green="0.56862745098039214" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="H47-uk-PAZ"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="e0g-ee-sJN"/>
@@ -733,6 +734,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cLx-l2-qtU">
                                             <rect key="frame" x="229.5" y="140" width="100" height="50"/>
                                             <color key="backgroundColor" red="0.16862745098039217" green="0.28235294117647058" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Obt-FE-dBC"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="yHR-hj-hHA"/>
@@ -796,6 +798,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="CURRENT NOTES" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rcs-Os-4f9">
                                             <rect key="frame" x="192" y="198" width="175" height="40"/>
                                             <color key="backgroundColor" red="0.33725490196078434" green="0.56862745098039214" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="gFP-yj-yoq"/>
                                             </constraints>
@@ -1116,6 +1119,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geo-u1-uxu">
                                             <rect key="frame" x="16.5" y="140" width="70" height="50"/>
                                             <color key="backgroundColor" red="0.33725490196078434" green="0.56862745098039214" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="BAh-Ut-mW4"/>
                                                 <constraint firstAttribute="height" constant="50" id="DTJ-wj-NWs"/>
@@ -1133,6 +1137,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfh-Zi-NRz">
                                             <rect key="frame" x="104.5" y="140" width="70" height="50"/>
                                             <color key="backgroundColor" red="0.33725490196078434" green="0.56862745098039214" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="7D4-WX-PZE"/>
                                                 <constraint firstAttribute="height" constant="50" id="xaA-nq-aUI"/>
@@ -1150,6 +1155,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-Qk-B6X">
                                             <rect key="frame" x="200.5" y="140" width="70" height="50"/>
                                             <color key="backgroundColor" red="0.16862745098039217" green="0.28235294117647058" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="e5p-lX-kQq"/>
                                                 <constraint firstAttribute="height" constant="50" id="fR6-9n-tpL"/>
@@ -1184,6 +1190,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="CURRENT NOTES" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WXt-6u-RSS">
                                             <rect key="frame" x="192" y="198" width="175" height="40"/>
                                             <color key="backgroundColor" red="0.33725490200000002" green="0.56862745100000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="pAT-is-UXk"/>
                                             </constraints>
@@ -1240,6 +1247,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-JP-Bls">
                                             <rect key="frame" x="288.5" y="140" width="70" height="50"/>
                                             <color key="backgroundColor" red="0.16862745098039217" green="0.28235294117647058" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="JSW-He-tWQ"/>
                                                 <constraint firstAttribute="height" constant="50" id="WRT-EK-d7S"/>
