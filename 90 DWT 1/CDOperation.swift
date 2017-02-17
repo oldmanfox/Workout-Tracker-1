@@ -569,7 +569,14 @@ class CDOperation {
                 case 1:
                     let matchedWorkoutInfo = workoutObjects[0]
                     
-                    return matchedWorkoutInfo.reps
+                    if matchedWorkoutInfo.reps == nil || matchedWorkoutInfo.reps == ""  {
+                        
+                        return "0.0"
+                    }
+                    else {
+                        
+                        return matchedWorkoutInfo.reps
+                    }
                     
                 default:
                     // More than one match
@@ -577,7 +584,14 @@ class CDOperation {
                     // print("More than one match for object")
                     let matchedWorkoutInfo = workoutObjects.last
                     
-                    return matchedWorkoutInfo!.reps
+                    if matchedWorkoutInfo?.reps == nil || matchedWorkoutInfo?.reps == ""  {
+                        
+                        return "0.0"
+                    }
+                    else {
+                        
+                        return matchedWorkoutInfo?.reps
+                    }
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
