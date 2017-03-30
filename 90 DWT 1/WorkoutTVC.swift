@@ -150,6 +150,18 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         
         self.graphViewPurchased = self.wasGraphViewPurchased()
         
+        // Set the AutoLock Setting
+        if CDOperation.getAutoLockSetting() == "ON" {
+            
+            // User wants to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            
+            // User doesn't want to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             

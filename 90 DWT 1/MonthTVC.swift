@@ -150,6 +150,18 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         // Force fetch when notified of significant data changes
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
+        // Set the AutoLock Setting
+        if CDOperation.getAutoLockSetting() == "ON" {
+            
+            // User wants to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            
+            // User doesn't want to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+        
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             
@@ -498,10 +510,22 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     
                     CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
                 }
+                
+            case "Tone":
+                
+                // Tone
+                let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
+                let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
+                
+                for i in 0..<nameArray.count {
+                    
+                    CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
+                }
+
 
             default:
                 
-                // Tone
+                // 2-A-Days
                 let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
                 let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
                 
@@ -528,9 +552,20 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
                 }
                 
-            default:
+            case "Tone":
                 
                 // Tone
+                let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
+                let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
+                
+                for i in 0..<nameArray.count {
+                    
+                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
+                }
+
+            default:
+                
+                // 2-A-Days
                 let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
                 let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
                 
@@ -564,9 +599,23 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     }
                 }
                 
-            default:
+            case "Tone":
                 
                 // Tone
+                for i in 0..<CDOperation.loadWorkoutNameArray().count {
+                    
+                    let nameArray = CDOperation.loadWorkoutNameArray()[i]
+                    let indexArray = CDOperation.loadWorkoutIndexArray()[i]
+                    
+                    for j in 0..<nameArray.count {
+                        
+                        CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber)
+                    }
+                }
+                
+            default:
+                
+                // 2-A-Days
                 for i in 0..<CDOperation.loadWorkoutNameArray().count {
                     
                     let nameArray = CDOperation.loadWorkoutNameArray()[i]
@@ -598,10 +647,24 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                         CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
                     }
                 }
+                
+            case "Tone":
+                
+                // Tone
+                for i in 0..<CDOperation.loadWorkoutNameArray().count {
+                    
+                    let nameArray = CDOperation.loadWorkoutNameArray()[i]
+                    let indexArray = CDOperation.loadWorkoutIndexArray()[i]
+                    
+                    for j in 0..<nameArray.count {
+                        
+                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
+                    }
+                }
 
             default:
                 
-                // Tone
+                // 2-A-Days
                 for i in 0..<CDOperation.loadWorkoutNameArray().count {
                     
                     let nameArray = CDOperation.loadWorkoutNameArray()[i]
