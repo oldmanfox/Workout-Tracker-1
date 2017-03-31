@@ -38,9 +38,10 @@
 		A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */; };
 		A5A5F6E81E8EED0A00A4FB79 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6E61E8EED0A00A4FB79 /* Session+CoreDataClass.swift */; };
 		A5A5F6E91E8EED0A00A4FB79 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6E71E8EED0A00A4FB79 /* Session+CoreDataProperties.swift */; };
+		A5A5F6F01E8F10B000A4FB79 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A5F6EF1E8F10B000A4FB79 /* Chartboost.framework */; };
+		A5A5F6F21E8F10C600A4FB79 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A5F6F11E8F10C600A4FB79 /* ShinobiCharts.framework */; };
 		A5AE49A71E43E43D00E0BEB6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */; };
 		A5AE49C31E43E45200E0BEB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C21E43E45200E0BEB6 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A5AE49C71E43E75200E0BEB6 /* ShinobiCharts in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */; };
 		A5AE49DA1E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49C81E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift */; };
 		A5AE49DB1E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49C91E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift */; };
 		A5AE49DC1E43E9FE00E0BEB6 /* Measurement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49CA1E43E9FE00E0BEB6 /* Measurement+CoreDataClass.swift */; };
@@ -289,7 +290,6 @@
 		A5FFBCAA1E8D6D8C00C323B1 /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFBBF41E8D6D8C00C323B1 /* MPRewardedVideoCustomEvent.m */; };
 		A5FFBCAB1E8D6D8C00C323B1 /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFBBF61E8D6D8C00C323B1 /* MPRewardedVideoError.m */; };
 		A5FFBCAC1E8D6D8C00C323B1 /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FFBBF81E8D6D8C00C323B1 /* MPRewardedVideoReward.m */; };
-		A5FFBCEA1E8D6DCE00C323B1 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFBCE91E8D6DCE00C323B1 /* Chartboost.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -328,9 +328,10 @@
 		A5A5F6E51E8EEC8A00A4FB79 /* _0_DWT_ 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_ 4.xcdatamodel"; sourceTree = "<group>"; };
 		A5A5F6E61E8EED0A00A4FB79 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5A5F6E71E8EED0A00A4FB79 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5A5F6EF1E8F10B000A4FB79 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
+		A5A5F6F11E8F10C600A4FB79 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
 		A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A5AE49C21E43E45200E0BEB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = ShinobiCharts; path = ../../../../Downloads/ShinobiCharts_Premium/ShinobiCharts.framework/ShinobiCharts; sourceTree = "<group>"; };
 		A5AE49C81E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5AE49C91E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5AE49CA1E43E9FE00E0BEB6 /* Measurement+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -940,7 +941,6 @@
 		A5FFBBF61E8D6D8C00C323B1 /* MPRewardedVideoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoError.m; sourceTree = "<group>"; };
 		A5FFBBF71E8D6D8C00C323B1 /* MPRewardedVideoReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoReward.h; sourceTree = "<group>"; };
 		A5FFBBF81E8D6D8C00C323B1 /* MPRewardedVideoReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoReward.m; sourceTree = "<group>"; };
-		A5FFBCE91E8D6DCE00C323B1 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -952,8 +952,6 @@
 				A5AE49A71E43E43D00E0BEB6 /* libc++.tbd in Frameworks */,
 				A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */,
 				A55DD44D1BD8407B00488F52 /* libxml2.tbd in Frameworks */,
-				A5AE49C71E43E75200E0BEB6 /* ShinobiCharts in Frameworks */,
-				A5FFBCEA1E8D6DCE00C323B1 /* Chartboost.framework in Frameworks */,
 				A55DD44A1BD8403E00488F52 /* EventKit.framework in Frameworks */,
 				A55DD44B1BD8403E00488F52 /* EventKitUI.framework in Frameworks */,
 				A55DD4471BD8402900488F52 /* CoreMedia.framework in Frameworks */,
@@ -965,6 +963,7 @@
 				A55DD4451BD83FE600488F52 /* PassKit.framework in Frameworks */,
 				A55DD4431BD83FDD00488F52 /* MobileCoreServices.framework in Frameworks */,
 				A54B62E615CB115D0085C0E5 /* MessageUI.framework in Frameworks */,
+				A5A5F6F01E8F10B000A4FB79 /* Chartboost.framework in Frameworks */,
 				A54B62DC15CB10FB0085C0E5 /* MediaPlayer.framework in Frameworks */,
 				A55DD4411BD83FBE00488F52 /* CoreTelephony.framework in Frameworks */,
 				A55DD43F1BD83FB600488F52 /* CoreLocation.framework in Frameworks */,
@@ -975,6 +974,7 @@
 				A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */,
 				A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */,
 				580E7DF117432EA00088AB0A /* Security.framework in Frameworks */,
+				A5A5F6F21E8F10C600A4FB79 /* ShinobiCharts.framework in Frameworks */,
 				A54B62E415CB115D0085C0E5 /* CoreImage.framework in Frameworks */,
 				A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */,
 				A54B62C215CB0FC70085C0E5 /* Foundation.framework in Frameworks */,
@@ -1007,8 +1007,8 @@
 		A54B62BE15CB0FC70085C0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5FFBCE91E8D6DCE00C323B1 /* Chartboost.framework */,
-				A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */,
+				A5A5F6F11E8F10C600A4FB79 /* ShinobiCharts.framework */,
+				A5A5F6EF1E8F10B000A4FB79 /* Chartboost.framework */,
 				A5AE49C21E43E45200E0BEB6 /* WebKit.framework */,
 				A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */,
 				A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */,
@@ -2416,10 +2416,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Chartboost-iOS-6.6.2",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -2450,10 +2447,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Chartboost-iOS-6.6.2",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
@@ -2519,10 +2513,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Chartboost-iOS-6.6.2",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 1/90 DWT 1-Prefix.pch";
 				GCC_VERSION = "";
