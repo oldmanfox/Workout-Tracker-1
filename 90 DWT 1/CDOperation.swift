@@ -859,6 +859,39 @@ class CDOperation {
         return "1"
     }
     
+    class func getImportPreviousSessionData() -> Bool {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Session")
+        let sortDate = NSSortDescriptor( key: "date", ascending: true)
+        request.sortDescriptors = [sortDate]
+        
+        do {
+            if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
+                
+                // print("sessionObjects.count = \(sessionObjects.count)")
+                
+                if sessionObjects.count != 0 {
+                    
+                    // Match Found.
+                    return (sessionObjects.last?.importPreviousSessionData)! as! Bool
+                }
+                else {
+                    
+                    // No Matches Found.  Create new record and save.
+                    let insertSessionInfo = NSEntityDescription.insertNewObject(forEntityName: "Session", into: CoreDataHelper.shared().context) as! Session
+                    
+                    insertSessionInfo.importPreviousSessionData = false
+                    
+                    CoreDataHelper.shared().backgroundSaveContext()
+                    
+                    return false
+                }
+            }
+        } catch { print(" ERROR executing a fetch request: \( error)") }
+        
+        return false
+    }
+
     class func getAutoLockSetting() -> String {
         
         // Fetch AutoLock data.
@@ -3444,6 +3477,153 @@ class CDOperation {
         default:
             // Round 3
             return 2
+        }
+    }
+    
+    class func findMaxIndexForWorkout(routine: String, workoutName: String) -> Int {
+        
+        switch routine {
+        case "Normal":
+            
+            switch workoutName {
+            case "Chest + Back & Ab Workout":
+                return 5
+                
+            case "Plyometrics":
+                return 10
+                
+            case "Shoulders + Arms & Ab Workout":
+                return 5
+                
+            case "Yoga":
+                return 16
+                
+            case "Legs + Back & Ab Workout":
+                return 10
+                
+            case "Judo Chop":
+                return 13
+                
+            case "Chest + Shoulders + Tri & Ab Workout":
+                return 5
+                
+            case "Back + Biceps & Ab Workout":
+                return 5
+                
+            case "Core Fitness":
+                return 6
+                
+            case "Full on Cardio":
+                return 0
+                
+            case "Ab Workout":
+                return 30
+                
+            case "Stretch or Rest":
+                return 16
+                
+            case "Rest":
+                return 13
+                
+            default:
+                // No matches
+                return 0
+            }
+            
+        case "Tone":
+            
+            switch workoutName {
+            case "Chest + Back & Ab Workout":
+                return 2
+                
+            case "Plyometrics":
+                return 0
+                
+            case "Shoulders + Arms & Ab Workout":
+                return 5
+                
+            case "Yoga":
+                return 16
+                
+            case "Legs + Back & Ab Workout":
+                return 6
+                
+            case "Judo Chop":
+                return 13
+                
+            case "Chest + Shoulders + Tri & Ab Workout":
+                return 5
+                
+            case "Back + Biceps & Ab Workout":
+                return 2
+                
+            case "Core Fitness":
+                return 14
+                
+            case "Full on Cardio":
+                return 12
+                
+            case "Ab Workout":
+                return 20
+                
+            case "Stretch or Rest":
+                return 16
+                
+            case "Rest":
+                return 13
+                
+            default:
+                // No matches
+                return 0
+            }
+            
+        default:
+            // "2-A-Days"
+            
+            switch workoutName {
+            case "Chest + Back & Ab Workout":
+                return 5
+                
+            case "Plyometrics":
+                return 10
+                
+            case "Shoulders + Arms & Ab Workout":
+                return 5
+                
+            case "Yoga":
+                return 16
+                
+            case "Legs + Back & Ab Workout":
+                return 10
+                
+            case "Judo Chop":
+                return 13
+                
+            case "Chest + Shoulders + Tri & Ab Workout":
+                return 5
+                
+            case "Back + Biceps & Ab Workout":
+                return 5
+                
+            case "Core Fitness":
+                return 6
+                
+            case "Full on Cardio":
+                return 25
+                
+            case "Ab Workout":
+                return 30
+                
+            case "Stretch or Rest":
+                return 16
+                
+            case "Rest":
+                return 13
+                
+            default:
+                // No matches
+                return 0
+            }
         }
     }
 }

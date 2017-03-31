@@ -36,6 +36,8 @@
 		A55DD44B1BD8403E00488F52 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD4491BD8403E00488F52 /* EventKitUI.framework */; };
 		A55DD44D1BD8407B00488F52 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD44C1BD8407B00488F52 /* libxml2.tbd */; };
 		A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */; };
+		A5A5F6E81E8EED0A00A4FB79 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6E61E8EED0A00A4FB79 /* Session+CoreDataClass.swift */; };
+		A5A5F6E91E8EED0A00A4FB79 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6E71E8EED0A00A4FB79 /* Session+CoreDataProperties.swift */; };
 		A5AE49A71E43E43D00E0BEB6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */; };
 		A5AE49C31E43E45200E0BEB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C21E43E45200E0BEB6 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A5AE49C71E43E75200E0BEB6 /* ShinobiCharts in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */; };
@@ -45,8 +47,6 @@
 		A5AE49DD1E43E9FE00E0BEB6 /* Measurement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49CB1E43E9FE00E0BEB6 /* Measurement+CoreDataProperties.swift */; };
 		A5AE49DE1E43E9FE00E0BEB6 /* Routine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49CC1E43E9FE00E0BEB6 /* Routine+CoreDataClass.swift */; };
 		A5AE49DF1E43E9FE00E0BEB6 /* Routine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49CD1E43E9FE00E0BEB6 /* Routine+CoreDataProperties.swift */; };
-		A5AE49E01E43E9FE00E0BEB6 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49CE1E43E9FE00E0BEB6 /* Session+CoreDataClass.swift */; };
-		A5AE49E11E43E9FE00E0BEB6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49CF1E43E9FE00E0BEB6 /* Session+CoreDataProperties.swift */; };
 		A5AE49E21E43E9FE00E0BEB6 /* Bands+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49D01E43E9FE00E0BEB6 /* Bands+CoreDataClass.swift */; };
 		A5AE49E31E43E9FE00E0BEB6 /* Bands+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49D11E43E9FE00E0BEB6 /* Bands+CoreDataProperties.swift */; };
 		A5AE49E41E43E9FE00E0BEB6 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE49D21E43E9FE00E0BEB6 /* Workout+CoreDataClass.swift */; };
@@ -325,6 +325,9 @@
 		A55DD4491BD8403E00488F52 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		A55DD44C1BD8407B00488F52 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A5A5F6E51E8EEC8A00A4FB79 /* _0_DWT_ 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_ 4.xcdatamodel"; sourceTree = "<group>"; };
+		A5A5F6E61E8EED0A00A4FB79 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5A5F6E71E8EED0A00A4FB79 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A5AE49C21E43E45200E0BEB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A5AE49C61E43E75200E0BEB6 /* ShinobiCharts */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = ShinobiCharts; path = ../../../../Downloads/ShinobiCharts_Premium/ShinobiCharts.framework/ShinobiCharts; sourceTree = "<group>"; };
@@ -334,8 +337,6 @@
 		A5AE49CB1E43E9FE00E0BEB6 /* Measurement+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5AE49CC1E43E9FE00E0BEB6 /* Routine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5AE49CD1E43E9FE00E0BEB6 /* Routine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Routine+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A5AE49CE1E43E9FE00E0BEB6 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A5AE49CF1E43E9FE00E0BEB6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5AE49D01E43E9FE00E0BEB6 /* Bands+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bands+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5AE49D11E43E9FE00E0BEB6 /* Bands+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bands+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5AE49D21E43E9FE00E0BEB6 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -1079,14 +1080,14 @@
 		A5F92C2B1E43D17100D115A4 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5A5F6E61E8EED0A00A4FB79 /* Session+CoreDataClass.swift */,
+				A5A5F6E71E8EED0A00A4FB79 /* Session+CoreDataProperties.swift */,
 				A5AE49C81E43E9FE00E0BEB6 /* AutoLock+CoreDataClass.swift */,
 				A5AE49C91E43E9FE00E0BEB6 /* AutoLock+CoreDataProperties.swift */,
 				A5AE49CA1E43E9FE00E0BEB6 /* Measurement+CoreDataClass.swift */,
 				A5AE49CB1E43E9FE00E0BEB6 /* Measurement+CoreDataProperties.swift */,
 				A5AE49CC1E43E9FE00E0BEB6 /* Routine+CoreDataClass.swift */,
 				A5AE49CD1E43E9FE00E0BEB6 /* Routine+CoreDataProperties.swift */,
-				A5AE49CE1E43E9FE00E0BEB6 /* Session+CoreDataClass.swift */,
-				A5AE49CF1E43E9FE00E0BEB6 /* Session+CoreDataProperties.swift */,
 				A5AE49D01E43E9FE00E0BEB6 /* Bands+CoreDataClass.swift */,
 				A5AE49D11E43E9FE00E0BEB6 /* Bands+CoreDataProperties.swift */,
 				A5AE49D21E43E9FE00E0BEB6 /* Workout+CoreDataClass.swift */,
@@ -2103,6 +2104,7 @@
 				A5FFBC7B1E8D6D8C00C323B1 /* MPNativeCustomEvent.m in Sources */,
 				A5FFBC281E8D6D8C00C323B1 /* MRBridge.m in Sources */,
 				A5F92F631E43DBF900D115A4 /* PhotoCollectionHeaderView.swift in Sources */,
+				A5A5F6E91E8EED0A00A4FB79 /* Session+CoreDataProperties.swift in Sources */,
 				A5F92F721E43DC0D00D115A4 /* SettingsTVC.swift in Sources */,
 				A5FFBCA71E8D6D8C00C323B1 /* MPRewardedVideoAdManager.m in Sources */,
 				A5FFBC661E8D6D8C00C323B1 /* MPNativeAdSourceQueue.m in Sources */,
@@ -2145,7 +2147,6 @@
 				A5FFBC891E8D6D8C00C323B1 /* MOPUBNativeVideoImpressionAgent.m in Sources */,
 				A5FFBC2F1E8D6D8C00C323B1 /* MRNativeCommandHandler.m in Sources */,
 				A5F92F351E43DB7F00D115A4 /* CoreDataHelper.m in Sources */,
-				A5AE49E01E43E9FE00E0BEB6 /* Session+CoreDataClass.swift in Sources */,
 				A5FFBC611E8D6D8C00C323B1 /* MPImageDownloadQueue.m in Sources */,
 				A5FFBBFF1E8D6D8C00C323B1 /* MPActivityViewControllerHelper.m in Sources */,
 				A5FFBC821E8D6D8C00C323B1 /* MOPUBActivityIndicatorView.m in Sources */,
@@ -2222,7 +2223,6 @@
 				A5FFBC511E8D6D8C00C323B1 /* MPVASTModel.m in Sources */,
 				A5FFBC8E1E8D6D8C00C323B1 /* MOPUBNativeVideoAdRenderer.m in Sources */,
 				A5F92F8A1E43DCDD00D115A4 /* AppDelegate.swift in Sources */,
-				A5AE49E11E43E9FE00E0BEB6 /* Session+CoreDataProperties.swift in Sources */,
 				A5FFBC221E8D6D8C00C323B1 /* MPInstanceProvider.m in Sources */,
 				A5FFBC0F1E8D6D8C00C323B1 /* MPVideoConfig.m in Sources */,
 				A5AE49E41E43E9FE00E0BEB6 /* Workout+CoreDataClass.swift in Sources */,
@@ -2309,6 +2309,7 @@
 				A5FFBC161E8D6D8C00C323B1 /* MPQRunLoopOperation.m in Sources */,
 				A54B62D515CB0FC70085C0E5 /* _0_DWT_1.xcdatamodeld in Sources */,
 				A5FFBC431E8D6D8C00C323B1 /* MPSessionTracker.m in Sources */,
+				A5A5F6E81E8EED0A00A4FB79 /* Session+CoreDataClass.swift in Sources */,
 				A5FFBC2C1E8D6D8C00C323B1 /* MRController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2570,11 +2571,12 @@
 		A54B62D315CB0FC70085C0E5 /* _0_DWT_1.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A5A5F6E51E8EEC8A00A4FB79 /* _0_DWT_ 4.xcdatamodel */,
 				A5F92C2A1E43CD9100D115A4 /* _0_DWT_ 3.xcdatamodel */,
 				A5E46D281BFA81B100B4FBAE /* _0_DWT_ 2.xcdatamodel */,
 				A54B62D415CB0FC70085C0E5 /* _0_DWT_1.xcdatamodel */,
 			);
-			currentVersion = A5F92C2A1E43CD9100D115A4 /* _0_DWT_ 3.xcdatamodel */;
+			currentVersion = A5A5F6E51E8EEC8A00A4FB79 /* _0_DWT_ 4.xcdatamodel */;
 			path = _0_DWT_1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
