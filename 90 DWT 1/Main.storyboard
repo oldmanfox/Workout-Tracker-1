@@ -51,12 +51,12 @@
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Cxm-vU-MNJ" firstAttribute="leading" secondItem="Tam-qx-89k" secondAttribute="leadingMargin" constant="-8" id="Dqx-Ma-o6a"/>
                                         <constraint firstItem="m39-Fk-LzU" firstAttribute="centerY" secondItem="Tam-qx-89k" secondAttribute="centerY" id="F6u-AC-kET"/>
                                         <constraint firstItem="Cxm-vU-MNJ" firstAttribute="centerY" secondItem="Tam-qx-89k" secondAttribute="centerY" id="iUq-h6-v41"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="eUL-Zu-z6I" secondAttribute="trailing" constant="-6" id="iZg-Ks-kix"/>
                                         <constraint firstItem="eUL-Zu-z6I" firstAttribute="centerY" secondItem="Tam-qx-89k" secondAttribute="centerY" id="nGI-hR-R3u"/>
                                         <constraint firstItem="m39-Fk-LzU" firstAttribute="leading" secondItem="Cxm-vU-MNJ" secondAttribute="trailing" constant="8" symbolic="YES" id="ok4-lI-cd4"/>
+                                        <constraint firstItem="Cxm-vU-MNJ" firstAttribute="leading" secondItem="Tam-qx-89k" secondAttribute="leading" id="pKT-16-Zna"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -128,10 +128,10 @@
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="AkZ-SI-NlD" firstAttribute="leading" secondItem="uxW-Aa-Qk1" secondAttribute="leadingMargin" constant="-8" id="GbO-p3-NPp"/>
                                         <constraint firstItem="e7Y-cW-mw8" firstAttribute="centerY" secondItem="uxW-Aa-Qk1" secondAttribute="centerY" id="cUK-wO-fNk"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7UE-JP-Fxv" secondAttribute="trailing" constant="-6" id="joy-y2-zaL"/>
                                         <constraint firstItem="AkZ-SI-NlD" firstAttribute="centerY" secondItem="uxW-Aa-Qk1" secondAttribute="centerY" id="nEN-UU-b27"/>
+                                        <constraint firstItem="AkZ-SI-NlD" firstAttribute="leading" secondItem="uxW-Aa-Qk1" secondAttribute="leading" id="orx-gk-PF4"/>
                                         <constraint firstItem="e7Y-cW-mw8" firstAttribute="leading" secondItem="AkZ-SI-NlD" secondAttribute="trailing" constant="8" symbolic="YES" id="qJD-ib-bBo"/>
                                         <constraint firstItem="7UE-JP-Fxv" firstAttribute="centerY" secondItem="uxW-Aa-Qk1" secondAttribute="centerY" id="th9-dp-T3D"/>
                                     </constraints>
