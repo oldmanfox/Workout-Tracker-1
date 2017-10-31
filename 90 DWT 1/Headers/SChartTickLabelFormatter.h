@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** Get the formatted string representation for the value of a data object on an axis
  
  */
--(NSString *)stringForObjectValue:(id)obj onAxis:(SChartAxis *)axis;
+-(nullable NSString *)stringForObjectValue:(id)obj onAxis:(SChartAxis *)axis;
 
 @end
 

@@ -194,15 +194,6 @@ typedef NS_ENUM(NSInteger, SChartRadialSeriesDrawDirection) {
  */
 @property (nonatomic) SChartRadialSeriesDrawDirection drawDirection;
 
-/** Creates the labels for the slices in the donut series, and displays them on the chart. 
- 
- The labels are displayed on each slice in the series.
- 
- @param datasource The datasource for the chart. The series gets the labels from the datasource, then displays them in the correct position on the chart.
- @param chart The chart containing the donut series.
- */
--(void)createLabels:(id <SChartDatasource>)datasource onChart:(ShinobiChart *)chart;
-
 #pragma mark -
 #pragma mark Rotate a slice
 /** @name Rotate a slice */

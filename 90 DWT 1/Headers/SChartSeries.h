@@ -14,7 +14,7 @@
 #import "SChartDataPoint.h"
 #import "SChartTheme.h"
 #import "SChartAxis.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class SChartSeriesStyle;
 @class SChartDataPoint;
@@ -237,7 +237,7 @@ typedef NS_ENUM(NSInteger, SChartSeriesOrientation) {
  @param datapoint The datapoint for which we want to retrieve the primary color
  @return The primary color associated with the specfied datapoint
  */
-- (UIColor *)primarySeriesColorForDatapoint:(id<SChartData>)datapoint;
+- (nullable UIColor *)primarySeriesColorForDatapoint:(id<SChartData>)datapoint;
 
 #pragma mark -
 #pragma mark Styling

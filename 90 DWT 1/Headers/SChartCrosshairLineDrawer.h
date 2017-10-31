@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param yAxis The y-axis associated with the series.
  */
 -(UIBezierPath*)drawLinesForCrosshair:(CGRect)plotAreaFrame
-                               series:(SChartMappedSeries*)series
+                               series:(nullable SChartMappedSeries*)series
                trackedDataPointCenter:(CGPoint)trackedDataPointCenter
                                 xAxis:(SChartAxis*)xAxis
                                 yAxis:(SChartAxis*)yAxis;

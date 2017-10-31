@@ -23,14 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
  
  @warning The class type of the point style has changed from `SChartBasePointStyle` to `SChartBaselinePointStyle`.
  */
-- (SChartBaselinePointStyle* _Nullable) pointStyle;
+- (SChartBaselinePointStyle*) pointStyle;
 - (void) setPointStyle:(SChartBaselinePointStyle *)pointStyle;
 
 /** The style of points that are selected
  
  @warning The class type of the point style has changed from `SChartBasePointStyle` to `SChartBaselinePointStyle`.
  */
-- (SChartBaselinePointStyle* _Nullable) selectedPointStyle;
+- (SChartBaselinePointStyle*) selectedPointStyle;
 - (void) setSelectedPointStyle:(SChartBaselinePointStyle *) selectedPointStyle;
 
 /** Supplements this style object by taking styles this object doesn't have, from the argument, `style` */

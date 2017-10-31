@@ -114,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param style The style object that will be used to style this OHLC point
  
  */
-- (UIColor*)fillColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartOHLCSeriesStyle*)style;
+- (nullable UIColor*)fillColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartOHLCSeriesStyle*)style;
 
 /** Specifies the gradient fill color of the trunk for a OHLC on a per-point basis
  
@@ -127,7 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param style The style object that will be used to style this OHLC point
  
  */
-- (UIColor*)gradientColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartOHLCSeriesStyle*)style;
+- (nullable UIColor*)gradientColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartOHLCSeriesStyle*)style;
 
 @end
 

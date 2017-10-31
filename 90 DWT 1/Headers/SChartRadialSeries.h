@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
  By default, this property is set to @"%.2f" which shows the value to two decimal places.
  
  @warning *DEPRECATED* - This property has been moved onto `SChartDonutSeries`. */
-@property (nonatomic, retain) NSString *labelFormatString DEPRECATED_ATTRIBUTE;
+@property (nonatomic, retain) NSString *labelFormatString SCHART_DEPRECATED;
 
 @end
 

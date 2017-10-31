@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SChartNumberAxis.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class SChartNumberAxis;
 

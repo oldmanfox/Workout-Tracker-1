@@ -77,6 +77,13 @@ NS_ASSUME_NONNULL_BEGIN
  By default, this property is set to `0`. */
 @property (nonatomic, assign)     CGFloat cornerRatio;
 
+/**
+ A custom spacing for the bar/column series. This is the amount of space (in data-terms) that the bar/column should take up on its corresponding axis.
+
+ Defaults to `nil` - i.e. no custom value.
+ */
+@property(nonatomic, strong) NSNumber *barColumnSpacing;
+
 /** Updates this style object using the settings from the passed-in style. 
  
  @param style The style with which to configure this style object.

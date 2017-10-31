@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ShinobiHeaderMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param time Time is provided as a CGFloat between 0.f and 1.f, where 0.f is the beginning of the animation and 1.f is the end of the animation. (time = elapsed time / duration)
  */
--(CGFloat)valueAtTime:(CGFloat)time DEPRECATED_MSG_ATTRIBUTE("Use 'valueAtProgress' instead.");
+-(CGFloat)valueAtTime:(CGFloat)time SCHART_MSG_DEPRECATED("Use 'valueAtProgress' instead.");
 
 /** Should return an appropriate value for the animation curve at the given progress.
  

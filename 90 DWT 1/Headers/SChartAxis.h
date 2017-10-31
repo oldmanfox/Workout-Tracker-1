@@ -293,12 +293,6 @@ typedef NS_ENUM(NSInteger, SChartDiscontinuousTickLabelClipping) {
 
  @param range the range to be displayed, in data terms.
  @param animation whether or not to animate the range change.
-
- @return Whether or not the operation was successful.
-
- See `setRange:`.
-
- @warning Changing range with animation isn't currently supported by radial charts.
  */
 - (void)setRange:(SChartRange *)range withAnimation:(BOOL)animation;
 
@@ -457,35 +451,6 @@ This property allows you to alter the tick label clipping mode for the lower end
 
 #pragma mark -
 #pragma mark BarColumn Series
-/** @name BarColumn Series */
-/** The smallest change in value between any adjacent bars or columns. 
- 
- Specifying this can improve the render time of the chart - it will not have to traverse all of the data to compare differences. */
-@property (nonatomic) double barColSpacing;
-
-/** The minimum value of a bar or column across all of the bar/column series for this axis.
- You can set this by using the appropriate `configureBars:withMinY:withMaxY:` or `configureBars:withMinY:withMaxY:` method for the axis orientation. */
-@property (nonatomic, readonly, nullable) NSNumber *barColMin;
-
-/** The maximum value of a bar or column across all of the bar/column series for this axis. 
-  You can set this by using the appropriate `configureBars:withMinY:withMaxY:` or `configureBars:withMinY:withMaxY:` method for the axis orientation. */
-@property (nonatomic, readonly, nullable) NSNumber *barColMax;
-
-/** Provide bounds and spacing data for column series within the chart to improve performance 
- 
- @param colSpacing the minimum distance between any two columns along the axis, in data terms.
- @param minX the smallest `xValue` of any column on the axis.
- @param maxX the largest `xValue` of any column on the axis.
- */
-- (void)configureColumns:(double) colSpacing withMinX:(NSNumber *)minX withMaxX:(NSNumber *)maxX;
-
-/** Provide bounds and spacing data for bar series within the chart to improve performance 
- 
- @param barSpacing the minimum distance between any two bars along the axis, in data terms.
- @param minY the smallest `yValue` of any bar on the axis.
- @param maxY the largest `yValue` of any bar on the axis.
- */
-- (void)configureBars:(double) barSpacing withMinY:(NSNumber *)minY withMaxY:(NSNumber *)maxY;
 
 #pragma mark -
 #pragma mark Zooming
@@ -632,7 +597,7 @@ This property allows you to alter the tick label clipping mode for the lower end
 /** Returns a string representation of the given object.
  
  This will use the 'labelFormatter' where possible.  This is used for creating ticklabel and crosshair text. */
-- (NSString *)stringForId:(id)obj;
+- (nullable NSString *)stringForId:(id)obj;
 
 #pragma mark -
 #pragma mark  Drawing

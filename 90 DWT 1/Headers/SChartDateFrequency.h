@@ -56,91 +56,91 @@ NS_ASSUME_NONNULL_BEGIN
  @param newYear The frequency of the new object, in years.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithYear:(NSInteger)newYear
+- (instancetype)initWithYear:(NSInteger)newYear
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of months.
  @param newMonth The frequency of the new object, in months.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithMonth:(NSInteger)newMonth
+- (instancetype)initWithMonth:(NSInteger)newMonth
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of week-of-months.
  @param newWeek The frequency of the new object, in weeks.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithWeekOfMonth:(NSInteger)newWeek
+- (instancetype)initWithWeekOfMonth:(NSInteger)newWeek
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of week-of-years.
  @param newWeek The frequency of the new object, in weeks.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithWeekOfYear:(NSInteger)newWeek
+- (instancetype)initWithWeekOfYear:(NSInteger)newWeek
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of days.
  @param newDay The frequency of the new object, in days.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithDay:(NSInteger)newDay
+- (instancetype)initWithDay:(NSInteger)newDay
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of hours.
  @param newHour The frequency of the new object, in hours.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithHour:(NSInteger)newHour
+- (instancetype)initWithHour:(NSInteger)newHour
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of minutes.
  @param newMinute The frequency of the new object, in minutes.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithMinute:(NSInteger)newMinute
+- (instancetype)initWithMinute:(NSInteger)newMinute
     NS_DESIGNATED_INITIALIZER;
 
 /** Initializes and returns a newly allocated date frequency object, with a frequency of the specified number of seconds.
  @param newSecond The frequency of the new object, in seconds.
  @return An initialized date frequency object, or `nil` if the object couldn't be created.
  */
-- (id)initWithSecond:(NSInteger)newSecond
+- (instancetype)initWithSecond:(NSInteger)newSecond
     NS_DESIGNATED_INITIALIZER;
 
 /** @name Factory methods */
 
 /** Returns a new date frequency object, with a frequency of the specified number of years. 
  @param newYear The frequency to use, in years. */
-+ (id)dateFrequencyWithYear:(NSInteger)newYear;
++ (instancetype)dateFrequencyWithYear:(NSInteger)newYear;
 
 /** Returns a new date frequency object, with a frequency of the specified number of months.
  @param newMonth The frequency to use, in months. */
-+ (id)dateFrequencyWithMonth:(NSInteger)newMonth;
++ (instancetype)dateFrequencyWithMonth:(NSInteger)newMonth;
 
 /** Returns a new date frequency object, with a frequency of the specified number of weeks.
  @param newWeek The frequency to use, in weeks. */
-+ (id)dateFrequencyWithWeekOfMonth:(NSInteger)newWeek;
++ (instancetype)dateFrequencyWithWeekOfMonth:(NSInteger)newWeek;
 
 /** Returns a new date frequency object, with a frequency of the specified number of weeks.
  @param newWeek The frequency to use, in weeks. */
-+ (id)dateFrequencyWithWeekOfYear:(NSInteger)newWeek;
++ (instancetype)dateFrequencyWithWeekOfYear:(NSInteger)newWeek;
 
 /** Returns a new date frequency object, with a frequency of the specified number of days.
  @param newDay The frequency to use, in days. */
-+ (id)dateFrequencyWithDay:(NSInteger)newDay;
++ (instancetype)dateFrequencyWithDay:(NSInteger)newDay;
 
 /** Returns a new date frequency object, with a frequency of the specified number of hours.
  @param newHour The frequency to use, in hours. */
-+ (id)dateFrequencyWithHour:(NSInteger)newHour;
++ (instancetype)dateFrequencyWithHour:(NSInteger)newHour;
 
 /** Returns a new date frequency object, with a frequency of the specified number of minutes.
  @param newMinute The frequency to use, in minutes. */
-+ (id)dateFrequencyWithMinute:(NSInteger)newMinute;
++ (instancetype)dateFrequencyWithMinute:(NSInteger)newMinute;
 
 /** Returns a new date frequency object, with a frequency of the specified number of seconds.
  @param newSecond The frequency to use, in seconds. */
-+ (id)dateFrequencyWithSecond:(NSInteger)newSecond;
++ (instancetype)dateFrequencyWithSecond:(NSInteger)newSecond;
 
 #pragma mark -
 #pragma mark Setting a new frequency

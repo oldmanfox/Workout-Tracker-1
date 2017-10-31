@@ -10,6 +10,7 @@
 
 #import "SChartSeriesStyle.h"
 #import "SChartSpokeStyle.h"
+#import "ShinobiHeaderMacros.h"
 
 typedef NS_ENUM(NSInteger, SChartRadialChartEffect) {
     SChartRadialChartEffectFlat,
@@ -103,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic)                  CGFloat                       protrusion;
 
 /* DEPRECATED - This will be removed from the public API in a future commit. */
-@property (nonatomic)                   BOOL                        protrusionSet DEPRECATED_MSG_ATTRIBUTE("This should not be public API");
+@property (nonatomic)                   BOOL                        protrusionSet SCHART_MSG_DEPRECATED("This should not be public API");
 
 /** @name Labels */
 

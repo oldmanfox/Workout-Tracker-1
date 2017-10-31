@@ -13,6 +13,6 @@
 /* Create a tick mark with a particular label. */
 - (id)initWithLabel:(CGRect)labelFrame
             andText:(NSString *)text
-DEPRECATED_MSG_ATTRIBUTE("Use 'init'");
+SCHART_MSG_DEPRECATED("Use 'init'");
 
 @end

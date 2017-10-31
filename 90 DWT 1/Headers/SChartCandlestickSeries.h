@@ -125,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param style The style object that will be used to style this candlestick point
  
  */
-- (UIColor*)fillColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartCandlestickSeriesStyle*)style;
+- (nullable UIColor*)fillColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartCandlestickSeriesStyle*)style;
 
 /** Specifies the gradient fill color for a candlestick on a per-point basis
  
@@ -138,7 +138,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param style The style object that will be used to style this candlestick point
  
  */
-- (UIColor*)gradientColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartCandlestickSeriesStyle*)style;
+- (nullable UIColor*)gradientColorForPoint:(id<SChartData>)point previousPoint:(id<SChartData> _Nullable)prevPoint style:(SChartCandlestickSeriesStyle*)style;
 
 @end
 

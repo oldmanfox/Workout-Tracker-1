@@ -16,6 +16,6 @@
  
  NOTE: When altering this property's value after the chart has been rendered, you'll need to explicitly call the `redrawChart` method on the chart responsible for displaying the data point.
  */
-@property (nonatomic, assign) BOOL selected SCHART_DEPRECATED("Use `selectedDataPoints` on `SChartSeries` instead.");
+@property (nonatomic, assign) BOOL selected SCHART_MSG_DEPRECATED("Use `selectedDataPoints` on `SChartSeries` instead.");
 
 @end

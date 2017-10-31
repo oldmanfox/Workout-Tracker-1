@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SChartCrosshairTooltip.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class SChartAxis;
 

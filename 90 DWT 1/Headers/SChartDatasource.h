@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class ShinobiChart;
 @class SChartSeries;
@@ -197,7 +197,7 @@ NS_SWIFT_NAME(sChart(_:innerRadiusForDataPointAtIndex:forSeriesAtIndex:));
  
  If this method is implemented and a non-nil UILabel is returned for a 'slice' in a radial chart series, that UILabel will be added to the chart.
  */
-- (UILabel * _Nullable)getLabelsForRadialChartSeries:(SChartSeries *)series forIndex:(NSInteger)sliceIndex DEPRECATED_MSG_ATTRIBUTE("use sChart:labelForSliceAtIndex:inRadialSeries: instead");
+- (UILabel *)getLabelsForRadialChartSeries:(SChartSeries *)series forIndex:(NSInteger)sliceIndex SCHART_MSG_DEPRECATED("use sChart:labelForSliceAtIndex:inRadialSeries: instead");
 
 /** Returns a UILabel corresponding to a 'slice' of a radial chart series.
  
@@ -208,7 +208,7 @@ NS_SWIFT_NAME(sChart(_:innerRadiusForDataPointAtIndex:forSeriesAtIndex:));
  
  @warning The 'series' parameter will change to type `SChartSeries` to cope with `SChartRadialSeries` being removed in a future release.
  */
-- (UILabel * _Nullable)sChart:(ShinobiChart *)chart labelForSliceAtIndex:(NSInteger)sliceIndex inRadialSeries:(SChartRadialSeries *)series;
+- (UILabel *)sChart:(ShinobiChart *)chart labelForSliceAtIndex:(NSInteger)sliceIndex inRadialSeries:(SChartRadialSeries *)series;
 
 #pragma mark -
 #pragma mark Axes

@@ -6,6 +6,8 @@
 //
 //
 
+#import "ShinobiHeaderMacros.h"
+
 @interface SChartAnimation ()
 
 /* The duration of the animation.
@@ -15,6 +17,6 @@
  The duration of an animation created via alloc/init is 1/64 seconds (instant).
  Use this property to configure how long an animation should take to complete.
  */
-@property (nonatomic, strong) NSNumber *duration SCHART_DEPRECATED("Use the `duration` property on the `SChartTimeAnimationProgressCalculator` class.");
+@property (nonatomic, strong) NSNumber *duration SCHART_MSG_DEPRECATED("Use the `duration` property on the `SChartTimeAnimationProgressCalculator` class.");
 
 @end

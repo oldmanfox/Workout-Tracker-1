@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SChartGesturePanType.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

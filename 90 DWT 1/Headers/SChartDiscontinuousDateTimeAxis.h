@@ -7,7 +7,7 @@
 #import <Foundation/Foundation.h>
 
 #import "SChartDateTimeAxis.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class SChartTimePeriod;
 @class SChartRepeatedTimePeriod;

@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "SChartAxis.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class SChartRange;
 @class SChartDataSeries;

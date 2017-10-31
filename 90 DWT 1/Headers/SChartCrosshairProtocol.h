@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ShinobiHeaderMacros.h"
 
 @class ShinobiChart;
 @class SChartCrosshairStyle;
@@ -63,8 +64,8 @@ NS_ASSUME_NONNULL_BEGIN
  * mySubclass.tooltip = ...
  * chart.crosshair = mySubclass;
  */
-@property(nonatomic, retain) SChartCrosshairStyle *style DEPRECATED_ATTRIBUTE;
-@property(nonatomic, retain) SChartCrosshairTooltip *tooltip DEPRECATED_ATTRIBUTE;
+@property(nonatomic, retain) SChartCrosshairStyle *style SCHART_DEPRECATED;
+@property(nonatomic, retain) SChartCrosshairTooltip *tooltip SCHART_DEPRECATED;
 
 @end
 

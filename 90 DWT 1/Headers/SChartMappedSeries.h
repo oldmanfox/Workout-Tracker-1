@@ -54,13 +54,18 @@ NS_ASSUME_NONNULL_BEGIN
  
  @see SChartRange
  */
--(SChartRange *)rangeOfDataInX;
+-(nullable SChartRange *)rangeOfDataInX;
 
 /** Returns the range of the data in the Y axis.
  
  @see SChartRange
  */
--(SChartRange *)rangeOfDataInY;
+-(nullable SChartRange *)rangeOfDataInY;
+
+/**
+ * The series' data range with adjustments made to ensure the baseline, stacked series and bar/column widths are included within the range.
+ */
+-(SChartRange *)paddedRangeOnAxis:(SChartAxis *)axis;
 
 @end
 

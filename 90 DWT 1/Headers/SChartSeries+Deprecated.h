@@ -21,20 +21,20 @@
  
  @warning Currently, animation is not supported on radial series (SChartRadialLineSeries).
  */
-@property (nonatomic)           BOOL    animationEnabled SCHART_DEPRECATED("Use the chart's `animationTracker` method `showSeries:animation:completion:` instead.");
+@property (nonatomic)           BOOL    animationEnabled SCHART_MSG_DEPRECATED("Use the chart's `animationTracker` method `showSeries:animation:completion:` instead.");
 
 /* The animation which describes how the series will enter the chart.
  
  The chart series will enter when the chart is first drawn, or when its `hidden` property is set to `NO` (having previously been `YES`).
  See `SChartAnimation` for more details.
  */
-@property (retain, nonatomic) SChartAnimation *entryAnimation SCHART_DEPRECATED("Use the chart's `animationTracker` method `showSeries:animation:completion:` instead.");
+@property (retain, nonatomic) SChartAnimation *entryAnimation SCHART_MSG_DEPRECATED("Use the chart's `animationTracker` method `showSeries:animation:completion:` instead.");
 
 /* The animation which describes how the series will exit the chart.
  
  The chart series will exit the chart when its `hidden` property is set to `YES` (having previously been `NO`).
  See `SChartAnimation` for more details.
  */
-@property (retain, nonatomic) SChartAnimation *exitAnimation SCHART_DEPRECATED("Use the chart's `animationTracker` method `hideSeries:animation:completion:` instead.");
+@property (retain, nonatomic) SChartAnimation *exitAnimation SCHART_MSG_DEPRECATED("Use the chart's `animationTracker` method `hideSeries:animation:completion:` instead.");
 
 @end

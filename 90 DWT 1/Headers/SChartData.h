@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,7 +66,7 @@ This is only required for series with more than one x value and keys are specifi
 /* @name Selection */
 
 /* Returns `YES` if this data point is selected. */
-- (BOOL)sChartPointIsSelected SCHART_DEPRECATED("Use `selectedDataPoints` on `SChartSeries` instead.");
+- (BOOL)sChartPointIsSelected SCHART_MSG_DEPRECATED("Use `selectedDataPoints` on `SChartSeries` instead.");
 
 /** @name Index */
 

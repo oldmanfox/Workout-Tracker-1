@@ -10,33 +10,25 @@
 
 @interface SChartCrosshair ()
 
--(id)initWithFrame:(CGRect)frame usingChart:(ShinobiChart *)parentChart DEPRECATED_MSG_ATTRIBUTE("Use initWithChart: instead.");
-
-/* DEPRECATED - This should be taken off the API in future releases.  It is used internally, but should not be set from outside of the class. */
-@property (nonatomic) BOOL enableCrosshairLinesSet DEPRECATED_ATTRIBUTE;
-
-/* DEPRECATED - When set to `YES` the lines from the target point to the axis will be displayed.
- 
- By default, this property is set to `YES`. */
-@property (nonatomic)         BOOL    enableCrosshairLines DEPRECATED_MSG_ATTRIBUTE("Use lineDrawer instead.");
+-(id)initWithFrame:(CGRect)frame usingChart:(ShinobiChart *)parentChart SCHART_MSG_DEPRECATED("Use initWithChart: instead.");
 
 /* DEPRECATED - This property will be taken off the API in future releases.
  
  By default, this property is set to `0.2`. */
-@property (nonatomic) CGFloat animationDuration DEPRECATED_ATTRIBUTE;
+@property (nonatomic) CGFloat animationDuration SCHART_DEPRECATED;
 
 /* DEPRECATED - This property will be taken off the API in future releases.
  
  By default, this property is set to `0.2`. */
-@property (nonatomic) CGFloat animationDelay DEPRECATED_ATTRIBUTE;
+@property (nonatomic) CGFloat animationDelay SCHART_DEPRECATED;
 
 /* DEPRECATED - This property will be taken off the API in future releases. */
-@property (nonatomic) BOOL animationEnabled DEPRECATED_ATTRIBUTE;
+@property (nonatomic) BOOL animationEnabled SCHART_DEPRECATED;
 
 /* This method informs the crosshair that there was a pinch/pan gesture on the chart.
  
  The default behavior in this case is to remove the crosshair. */
--(void)crosshairChartGotPinchAndPan DEPRECATED_ATTRIBUTE;
+-(void)crosshairChartGotPinchAndPan SCHART_DEPRECATED;
 
 /* This method is informs the crosshair that there was a tap gesture on the chart at a point.
  
@@ -44,7 +36,7 @@
  
  @param tap The point on the chart which was tapped.
  */
--(void)crosshairChartGotTapAt:(CGPoint)tap DEPRECATED_ATTRIBUTE;
+-(void)crosshairChartGotTapAt:(CGPoint)tap SCHART_DEPRECATED;
 
 /* This method informs the crosshair that there was a long press gesture on the chart at a point.
  
@@ -52,12 +44,7 @@
  
  @param longpress The point on the chart where the long press occurred.
  */
--(void)crosshairChartGotLongPressAt:(CGPoint)longpress DEPRECATED_ATTRIBUTE;
-
-/* Notifies the crosshair that its parent chart reloaded its data.
- 
- The default behavior in this case is to remove the crosshair. */
--(void)chartDidReload DEPRECATED_ATTRIBUTE;
+-(void)crosshairChartGotLongPressAt:(CGPoint)longpress SCHART_DEPRECATED;
 
 @end
 

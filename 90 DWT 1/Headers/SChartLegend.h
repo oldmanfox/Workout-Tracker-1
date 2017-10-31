@@ -106,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Formatting
 /** @name Formatting the legend */
 /**Sets a title for the legend. */
-@property (nonatomic, retain) NSString *title;
+@property (nullable, nonatomic, retain) NSString *title;
 
 /** Specifies the positioning of the legend on the chart.
  

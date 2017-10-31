@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @class ShinobiChart;
 @class SChartPixelToPointMapping;

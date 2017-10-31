@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SChartRadialLineRenderMode.h"
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

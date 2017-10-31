@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ShinobiMacros.h"
+#import "ShinobiHeaderMacros.h"
 
 @protocol SChartData;
 

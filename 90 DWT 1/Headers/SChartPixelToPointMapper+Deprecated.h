@@ -24,6 +24,6 @@
  */
 - (SChartPixelToPointMapping *)mappingForPoint:(CGPoint)pixelPoint
                                       onSeries:(SChartMappedSeries *)series
-                                       onChart:(ShinobiChart *)chart DEPRECATED_MSG_ATTRIBUTE("Use mappingForPoint:seriesToSearch:onChart:");
+                                       onChart:(ShinobiChart *)chart SCHART_MSG_DEPRECATED("Use mappingForPoint:seriesToSearch:onChart:");
 
 @end

@@ -56,6 +56,8 @@
 @property (nonatomic, strong) EAGLContext *context;
 -(CAEAGLLayer *) getEAGLLayer;
 
+@property (nonatomic, assign) BOOL isEnteringBackground;
+
 - (void)reset;
 
 // @name beginRender */
