@@ -194,7 +194,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         self.adView.removeFromSuperview()
     }
     
-    func doNothing() {
+    @objc func doNothing() {
         
         // Do nothing
         self.tableView.reloadData()
@@ -397,7 +397,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         lightWorkoutList = [[false, false, false, true], [false, false, false, true], [false, false, false, false, true]]
     }
     
-    func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
+    @objc func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
         
         if (sender.isEqual(self.longPGR)) {
             

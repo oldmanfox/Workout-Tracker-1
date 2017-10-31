@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         // Dark Grey Color
         // White Color
         UINavigationBar.appearance().barTintColor = UIColor (red: 81/255, green: 97/255, blue: 126/255, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
         // Change tab bar tint color
         // Redish Color
