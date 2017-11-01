@@ -239,7 +239,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         present(alertController, animated: true, completion: nil)
     }
 
-    func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
+    @objc func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
      
         if (sender.isEqual(self.longPGR)) {
             
