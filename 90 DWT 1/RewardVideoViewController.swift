@@ -15,6 +15,8 @@ class RewardVideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // set delegate
+        //Appodeal.setRewardedVideoDelegate(self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -22,28 +24,26 @@ class RewardVideoViewController: UIViewController {
         
         if shouldShowAd {
             
-            // Fetch the rewarded video ad.
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-                
-                // iPhone
-                // Rewarded Ad Unit
-                MPRewardedVideo.presentAd(forAdUnitID: "f41f0c37b0aa4e939b052e74322a8719", from: self, with: nil)
-            }
-            else {
-                
-                // iPad
-                // Rewarded Ad Unit
-                MPRewardedVideo.presentAd(forAdUnitID: "895ad8786fb7436f86219a3bff896c1f", from: self, with: nil)
-            }
-            
-            shouldShowAd = false
+            //Appodeal.showAd(AppodealShowStyle.rewardedVideo, rootViewController: self)
         }
         else {
             
             dismiss(animated: true, completion: nil)
         }
     }
-    
+    /*
+    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String!){
+        //NSLog("video ad was fully watched")
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        appDelegate.endDate = NSDate.init(timeIntervalSinceNow: (60.0 * 60.0))
+        appDelegate.shouldShowRewardGraph = true
+        
+        shouldShowAd = false
+        
+    }
+ */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

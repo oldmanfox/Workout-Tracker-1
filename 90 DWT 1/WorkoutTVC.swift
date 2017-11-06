@@ -9,8 +9,9 @@
 import UIKit
 import Social
 import CoreData
+import MessageUI
 
-class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, MPAdViewDelegate {
+class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate {
 
     // **********
     let debug = 0
@@ -26,7 +27,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     var segmentedControlTitle = "Round 1"
     
     var graphViewPurchased = false
-    var adView = MPAdView()
+    //var bannerView: AppodealBannerView!
     var headerView = UIView()
     var bannerSize = CGSize()
     
@@ -87,36 +88,41 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(WorkoutTVC.actionButtonPressed(_:)))
         
         self.graphViewPurchased = self.wasGraphViewPurchased()
-        
+        /*
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             
             // User purchased the Remove Ads in-app purchase so don't show any ads.
         }
         else {
+            // Show Ads
             
-            // Show the Banner Ad
+            // Set the header height
             self.headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0)
             
+            // Set banner size based on device type
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
-                // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
-                self.bannerSize = MOPUB_BANNER_SIZE
+                self.bannerSize = kAPDAdSize320x50
             }
             else {
                 
                 // iPad
-                // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
-                self.bannerSize = MOPUB_LEADERBOARD_SIZE
+                self.bannerSize = kAPDAdSize728x90
             }
             
-            self.adView.delegate = self
-            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+            self.bannerView = AppodealBannerView(size: bannerSize, rootViewController: self.navigationController)
+            
+            self.bannerView.setDelegate(self)
+            
+            bannerView.usesSmartSizing = true
+            
+            // Center the bannerView
+            self.bannerView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
                                            y: self.bannerSize.height - self.bannerSize.height,
                                            width: self.bannerSize.width, height: self.bannerSize.height)
         }
+ */
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -127,16 +133,13 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             
             // Don't show ads.
             self.tableView.tableHeaderView = nil
-            self.adView.delegate = nil
             
         } else {
-            
+            /*
             // Show ads
-            self.headerView.addSubview(self.adView)
-            
-            self.adView.loadAd()
-            
-            self.adView.isHidden = true;
+            self.view.addSubview(self.bannerView)
+            self.bannerView.loadAd()
+            */
         }
         
         self.tableView.reloadData()
@@ -144,6 +147,8 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         // Force fetch when notified of significant data changes
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
@@ -161,21 +166,17 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             // User doesn't want to disable the autolock timer.
             UIApplication.shared.isIdleTimerDisabled = false
         }
-
+        
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             
             // Don't show ads.
             self.tableView.tableHeaderView = nil
-            self.adView.delegate = nil
             
         } else {
             
             // Show ads
-            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           y: self.bannerSize.height - self.bannerSize.height,
-                                           width: self.bannerSize.width, height: self.bannerSize.height)
-            self.adView.isHidden = false
+            //self.view.addSubview(self.bannerView)
         }
         
         // Setup timer if reward video was viewed
@@ -202,8 +203,9 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        self.adView.removeFromSuperview()
+        //self.bannerView.removeFromSuperview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -2067,19 +2069,16 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                      [cell9, cell10, cell11, cell12, cell13],
                      [completeCell]]
     }
-    
-    // MARK: - <MPAdViewDelegate>
-    func viewControllerForPresentingModalView() -> UIViewController! {
+    /*
+    // MARK: - <AppodealBannerViewDelegate>
+    /**
+     *  Method called when banner did load firstly, after refresh this method not call
+     *
+     *  @param bannerView Nonnul, ready to show banner
+     */
+    func bannerViewDidLoadAd(_ bannerView: APDBannerView!) {
         
-        return self
-    }
-    
-    func adViewDidLoadAd(_ view: MPAdView!) {
-        
-        let size = view.adContentViewSize()
-        let centeredX = (self.view.bounds.size.width - size.width) / 2
-        let bottomAlignedY = self.bannerSize.height - size.height
-        view.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
+        //NSLog("Banner view was loaded")
         
         if (self.headerView.frame.size.height == 0) {
             
@@ -2088,10 +2087,10 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             
             UIView.animate(withDuration: 0.25, animations: {self.headerView.frame = headerViewFrame
                 self.tableView.tableHeaderView = self.headerView
-                self.adView.isHidden = true},
-                                       completion: {(finished: Bool) in
-                                        self.adView.isHidden = false
-                                        
+                self.bannerView.isHidden = true},
+                           completion: {(finished: Bool) in
+                            self.bannerView.isHidden = false
+                            
             })
         }
         else {
@@ -2101,20 +2100,47 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         }
     }
     
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+    /**
+     *  Method called in case that banner mediation failed
+     *
+     *  @param bannerView Nonnul failed banner view
+     *  @param error      Error occured while mediation
+     */
+    func bannerView(_ bannerView: APDBannerView!, didFailToLoadAdWithError error: Error!) {
         
-        self.adView.isHidden = true
-        self.adView.rotate(to: toInterfaceOrientation)
+        //NSLog("banner view failed to load")
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+    /**
+     *  Method called when user tap on banner
+     *
+     *  @param bannerView Nonnul banner view
+     */
+    func bannerViewDidInteract(_ bannerView: APDBannerView!) {
         
-        let size = self.adView.adContentViewSize()
-        let centeredX = (self.view.bounds.size.width - size.width) / 2
-        let bottomAlignedY = self.headerView.bounds.size.height - size.height
+        //NSLog("banner view was clicked")
+    }
+    
+    /*!
+     *  Method called after any banner was show
+     *
+     *  @param bannerView On screen banner view
+     */
+    func bannerViewDidShow(_ bannerView: APDBannerView!) {
         
-        self.adView.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
+        //NSLog("banner was shown")
+    }
+    
+    func bannerViewDidRefresh(_ bannerView: APDBannerView!) {
         
-        self.adView.isHidden = false
+        //NSLog("banner view was refreshed")
+    }
+    */
+    @objc func deviceRotated(){
+        /*
+        self.bannerView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       y: self.bannerSize.height - self.bannerSize.height,
+                                       width: self.bannerSize.width, height: self.bannerSize.height)
+ */
     }
 }

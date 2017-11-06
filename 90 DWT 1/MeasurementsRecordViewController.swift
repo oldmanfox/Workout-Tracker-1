@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Social
+import MessageUI
 
 class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate {
 

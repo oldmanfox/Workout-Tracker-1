@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
@@ -35,41 +35,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         // Redish Color
         UITabBar.appearance().tintColor = UIColor (red: 203/255, green: 116/255, blue: 49/255, alpha: 1)
         
-        // Initialize rewarded video before loading any ads.
-        MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: nil, delegate: self)
+        /*
+        // Appodeal Ads - True = Testing, False = Live on Appstore
+        Appodeal.setTestingEnabled(true)
         
+        // Appodeal Ads - Initialize
+        let adTypes: AppodealAdType = [.banner, .rewardedVideo]
+        Appodeal.initialize(withApiKey: "ce2046a42aec4d5396b890526a9e0a653f5e7e91a817874c", types: adTypes)
+        */
         CoreDataHelper.shared().iCloudAccountIsSignedIn()
         
         return true
-    }
-    
-    func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
-        
-        if reward.currencyType == "Hour" {
-            
-            // Set the endDate for the Graph to 60 minutes from now
-            endDate = NSDate.init(timeIntervalSinceNow: (60.0 * 60.0))
-            
-            // Allow the reward Graph to be shown
-            shouldShowRewardGraph = true
-        }
-    }
-    
-    func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
-        
-        // Fetch the rewarded video ad.
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-            
-            // iPhone
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "f41f0c37b0aa4e939b052e74322a8719", withMediationSettings: nil)
-        }
-        else {
-            
-            // iPad
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "895ad8786fb7436f86219a3bff896c1f", withMediationSettings: nil)
-        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -93,19 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        // Fetch the rewarded video ad.
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-            
-            // iPhone
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "f41f0c37b0aa4e939b052e74322a8719", withMediationSettings: nil)
-        }
-        else {
-            
-            // iPad
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "895ad8786fb7436f86219a3bff896c1f", withMediationSettings: nil)
-        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

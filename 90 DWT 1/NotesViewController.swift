@@ -9,8 +9,9 @@
 import UIKit
 import Social
 import CoreData
+import MessageUI
 
-class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, MPAdViewDelegate {
+class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate {
     
     // **********
     let debug = 0
@@ -24,7 +25,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
     var workoutWeek = ""
     var month = ""
 
-    var adView = MPAdView()
+    //var bannerView: AppodealBannerView!
     var bannerSize = CGSize()
     
     var bottomAlignedY = CGFloat()
@@ -73,35 +74,41 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         updateWorkoutCompleteCellUI()
         
+        /*
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             
             // User purchased the Remove Ads in-app purchase so don't show any ads.
         }
         else {
+            // Show Ads
             
+            // Set banner size based on device type
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
                 
                 // iPhone
-                // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
-                self.bannerSize = MOPUB_BANNER_SIZE
+                self.bannerSize = kAPDAdSize320x50
             }
             else {
                 
                 // iPad
-                // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
-                self.bannerSize = MOPUB_LEADERBOARD_SIZE
+                self.bannerSize = kAPDAdSize728x90
             }
             
-            self.adView.delegate = self
+            self.bannerView = AppodealBannerView(size: bannerSize, rootViewController: self.navigationController)
             
+            self.bannerView.setDelegate(self)
+            
+            bannerView.usesSmartSizing = true
+            
+            // Put the bannerView just above the tabbar
             self.bottomAlignedY = self.view.bounds.size.height - self.bannerSize.height - (self.tabBarController?.tabBar.bounds.size.height)!
             
-            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+            // Center the bannerView
+            self.bannerView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
                                            y: self.bottomAlignedY,
                                            width: self.bannerSize.width, height: self.bannerSize.height)
         }
+ */
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,21 +118,21 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             
             // Don't show ads.
-            self.adView.delegate = nil
             
         } else {
             
+            /*
             // Show ads
-            self.view.addSubview(self.adView)
-            
-            self.adView.loadAd()
-            
-            self.adView.isHidden = true;
+            self.view.addSubview(self.bannerView)
+            self.bannerView.loadAd()
+ */
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         // Force fetch when notified of significant data changes
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
@@ -141,20 +148,16 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             // User doesn't want to disable the autolock timer.
             UIApplication.shared.isIdleTimerDisabled = false
         }
-
+        
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
             
             // Don't show ads.
-            self.adView.delegate = nil
             
         } else {
             
             // Show ads
-            self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
-                                           y: self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
-                                           width: self.bannerSize.width, height: self.bannerSize.height)
-            self.adView.isHidden = false
+            //self.view.addSubview(self.bannerView)
         }
     }
     
@@ -164,16 +167,14 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         saveNote()
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        self.adView.removeFromSuperview()
+        //self.bannerView.removeFromSuperview()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
-//        
-//        self.adView.removeFromSuperview()
     }
     
     @objc func doNothing() {
@@ -478,41 +479,70 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         saveNote()
     }
 
+    /*
     // MARK: - <MPAdViewDelegate>
     func viewControllerForPresentingModalView() -> UIViewController! {
         
         return self
     }
     
-    func adViewDidLoadAd(_ view: MPAdView!) {
+    // MARK: - <AppodealBannerViewDelegate>
+    /**
+     *  Method called when banner did load firstly, after refresh this method not call
+     *
+     *  @param bannerView Nonnul, ready to show banner
+     */
+    func bannerViewDidLoadAd(_ bannerView: APDBannerView!) {
         
-        let size = view.adContentViewSize()
-        let centeredX = (self.view.bounds.size.width - size.width) / 2
-        
-        if (self.tabBarController?.tabBar.bounds.size.height) != nil {
-            
-            self.bottomAlignedY = self.view.bounds.size.height - size.height - (self.tabBarController?.tabBar.bounds.size.height)!
-        }
-        
-        //let bottomAlignedY = self.view.bounds.size.height - size.height - (self.tabBarController!.tabBar.bounds.size.height)
-        
-        view.frame = CGRect(x: centeredX, y: self.bottomAlignedY, width: size.width, height: size.height)
+        //NSLog("Banner view was loaded")
     }
     
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+    /**
+     *  Method called in case that banner mediation failed
+     *
+     *  @param bannerView Nonnul failed banner view
+     *  @param error      Error occured while mediation
+     */
+    func bannerView(_ bannerView: APDBannerView!, didFailToLoadAdWithError error: Error!) {
         
-        self.adView.isHidden = true
-        self.adView.rotate(to: toInterfaceOrientation)
+        //NSLog("banner view failed to load")
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+    /**
+     *  Method called when user tap on banner
+     *
+     *  @param bannerView Nonnul banner view
+     */
+    func bannerViewDidInteract(_ bannerView: APDBannerView!) {
         
-        let size = self.adView.adContentViewSize()
-        let centeredX = (self.view.bounds.size.width - size.width) / 2
-        let bottomAlignedY = self.view.bounds.size.height - size.height - self.tabBarController!.tabBar.bounds.size.height
+        //NSLog("banner view was clicked")
+    }
+    
+    /*!
+     *  Method called after any banner was show
+     *
+     *  @param bannerView On screen banner view
+     */
+    func bannerViewDidShow(_ bannerView: APDBannerView!) {
         
-        self.adView.frame = CGRect(x: centeredX, y: bottomAlignedY, width: size.width, height: size.height)
+        //NSLog("banner was shown")
+    }
+    
+    func bannerViewDidRefresh(_ bannerView: APDBannerView!) {
         
-        self.adView.isHidden = false
+        //NSLog("banner view was refreshed")
+    }
+    */
+    
+    @objc func deviceRotated(){
+        /*
+        // Put the bannerView just above the tabbar
+        self.bottomAlignedY = self.view.bounds.size.height - self.bannerSize.height - (self.tabBarController?.tabBar.bounds.size.height)!
+        
+        // Center the bannerView
+        self.bannerView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       y: self.bottomAlignedY,
+                                       width: self.bannerSize.width, height: self.bannerSize.height)
+ */
     }
 }
