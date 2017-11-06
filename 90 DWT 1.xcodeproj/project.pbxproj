@@ -12,6 +12,9 @@
 		580E7DF117432EA00088AB0A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580E7DF017432E9F0088AB0A /* Security.framework */; };
 		A513287819E9962400CBCE86 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287719E9962400CBCE86 /* OpenGLES.framework */; };
 		A513287A19E9963D00CBCE86 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513287919E9963D00CBCE86 /* CoreText.framework */; };
+		A515899A1FB0C4800047F45D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589991FB0C4800047F45D /* libsqlite3.tbd */; };
+		A515899C1FB0C48C0047F45D /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A515899B1FB0C48C0047F45D /* libxml2.2.tbd */; };
+		A515899E1FB0C49B0047F45D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A515899D1FB0C49A0047F45D /* libz.tbd */; };
 		A53136251E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */; };
 		A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62BF15CB0FC70085C0E5 /* UIKit.framework */; };
 		A54B62C215CB0FC70085C0E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62C115CB0FC70085C0E5 /* Foundation.framework */; };
@@ -310,6 +313,14 @@
 		580E7DF017432E9F0088AB0A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A513287719E9962400CBCE86 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A513287919E9963D00CBCE86 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A51589941FB0C3FC0047F45D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A51589951FB0C40E0047F45D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A51589961FB0C4550047F45D /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A51589971FB0C4600047F45D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A51589981FB0C46B0047F45D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A51589991FB0C4800047F45D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A515899B1FB0C48C0047F45D /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		A515899D1FB0C49A0047F45D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTVC_ShuffleTableViewCell.swift; sourceTree = "<group>"; };
 		A54B62BB15CB0FC70085C0E5 /* 90 DWT 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90 DWT 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54B62BF15CB0FC70085C0E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1004,6 +1015,8 @@
 				A55DD44B1BD8403E00488F52 /* EventKitUI.framework in Frameworks */,
 				A55DD4471BD8402900488F52 /* CoreMedia.framework in Frameworks */,
 				A54B62E815CB115D0085C0E5 /* Twitter.framework in Frameworks */,
+				A515899E1FB0C49B0047F45D /* libz.tbd in Frameworks */,
+				A515899A1FB0C4800047F45D /* libsqlite3.tbd in Frameworks */,
 				A54B62E715CB115D0085C0E5 /* SystemConfiguration.framework in Frameworks */,
 				580E7DEF17432E960088AB0A /* StoreKit.framework in Frameworks */,
 				A5C8236F1676319A002ACE3D /* Social.framework in Frameworks */,
@@ -1027,6 +1040,7 @@
 				A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */,
 				A54B62C215CB0FC70085C0E5 /* Foundation.framework in Frameworks */,
 				A54B62C615CB0FC70085C0E5 /* CoreData.framework in Frameworks */,
+				A515899C1FB0C48C0047F45D /* libxml2.2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1069,14 @@
 		A54B62BE15CB0FC70085C0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A515899D1FB0C49A0047F45D /* libz.tbd */,
+				A515899B1FB0C48C0047F45D /* libxml2.2.tbd */,
+				A51589991FB0C4800047F45D /* libsqlite3.tbd */,
+				A51589981FB0C46B0047F45D /* JavaScriptCore.framework */,
+				A51589971FB0C4600047F45D /* ImageIO.framework */,
+				A51589961FB0C4550047F45D /* GLKit.framework */,
+				A51589951FB0C40E0047F45D /* CoreMotion.framework */,
+				A51589941FB0C3FC0047F45D /* CFNetwork.framework */,
 				A5AE49C21E43E45200E0BEB6 /* WebKit.framework */,
 				A5AE49A61E43E43D00E0BEB6 /* libc++.tbd */,
 				A55DD44E1BD8408500488F52 /* CoreBluetooth.framework */,
