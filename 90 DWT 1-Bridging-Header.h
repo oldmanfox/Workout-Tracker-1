@@ -11,7 +11,7 @@
 #ifndef _0_DWT_1_Bridging_Header_h
 #define _0_DWT_1_Bridging_Header_h
 
-#import "MoPub-Bridging-Header.h"
+//#import "MoPub-Bridging-Header.h"
 #import "ShinobiChart-Bridging-Header.h"
 #import "CoreDataHelper.h"
 
