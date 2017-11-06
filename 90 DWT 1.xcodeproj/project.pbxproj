@@ -15,6 +15,11 @@
 		A515899A1FB0C4800047F45D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589991FB0C4800047F45D /* libsqlite3.tbd */; };
 		A515899C1FB0C48C0047F45D /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A515899B1FB0C48C0047F45D /* libxml2.2.tbd */; };
 		A515899E1FB0C49B0047F45D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A515899D1FB0C49A0047F45D /* libz.tbd */; };
+		A515899F1FB10A590047F45D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589941FB0C3FC0047F45D /* CFNetwork.framework */; };
+		A51589A01FB10A670047F45D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589951FB0C40E0047F45D /* CoreMotion.framework */; };
+		A51589A11FB10A790047F45D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589961FB0C4550047F45D /* GLKit.framework */; };
+		A51589A21FB10A890047F45D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589971FB0C4600047F45D /* ImageIO.framework */; };
+		A51589A31FB10A940047F45D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51589981FB0C46B0047F45D /* JavaScriptCore.framework */; };
 		A53136251E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53136241E4E152F00769EFF /* WorkoutTVC_ShuffleTableViewCell.swift */; };
 		A54B62C015CB0FC70085C0E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62BF15CB0FC70085C0E5 /* UIKit.framework */; };
 		A54B62C215CB0FC70085C0E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B62C115CB0FC70085C0E5 /* Foundation.framework */; };
@@ -417,6 +422,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51589A31FB10A940047F45D /* JavaScriptCore.framework in Frameworks */,
+				A51589A21FB10A890047F45D /* ImageIO.framework in Frameworks */,
+				A51589A11FB10A790047F45D /* GLKit.framework in Frameworks */,
+				A51589A01FB10A670047F45D /* CoreMotion.framework in Frameworks */,
+				A515899F1FB10A590047F45D /* CFNetwork.framework in Frameworks */,
 				A5AE49C31E43E45200E0BEB6 /* WebKit.framework in Frameworks */,
 				A5AE49A71E43E43D00E0BEB6 /* libc++.tbd in Frameworks */,
 				A55DD44F1BD8408500488F52 /* CoreBluetooth.framework in Frameworks */,
